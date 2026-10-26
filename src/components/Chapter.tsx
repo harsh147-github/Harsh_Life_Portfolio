@@ -1,8 +1,9 @@
-import { motion } from "motion/react";
-import { useState } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef, useState } from "react";
 import type { Act, Chapter as ChapterT } from "../data/content";
 import { mediaGroup } from "../lib/media";
 import { ease } from "../lib/motion";
+import { LoopVideo, TalkButton, VideoCard } from "./FounderVideo";
 import { BrowserFrame, Filmstrip, Mosaic, PhoneFrame, Shot } from "./Gallery";
 import { MotionPlayer } from "./MotionPlayer";
 import { Reveal, SplitLetters } from "./Reveal";
@@ -10,8 +11,14 @@ import { Reveal, SplitLetters } from "./Reveal";
 export function Chapter({ c, act, pos }: { c: ChapterT; act: Act; pos: number }) {
   const [archivesOpen, setArchivesOpen] = useState(!c.collapseArchives);
   const archiveCount = c.archives?.reduce((n, a) => n + mediaGroup(a.group).items.length, 0) ?? 0;
+  const bgVideo = c.video?.mode === "background" ? c.video : null;
+  const stage = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: stage, offset: ["start end", "end start"] });
+  const videoY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
   const visual = c.motion && !c.motionWide ? (
     <MotionPlayer id={c.motion.id} caption={c.motion.caption} inputProps={c.motion.props} />
+  ) : c.video?.mode === "card" ? (
+    <VideoCard v={c.video} />
   ) : c.pipeline ? (
     <Pipeline steps={c.pipeline} />
   ) : c.lead ? (
@@ -28,7 +35,16 @@ export function Chapter({ c, act, pos }: { c: ChapterT; act: Act; pos: number })
       data-act={act.id}
       data-label={`${act.title} · ${c.title}`}
     >
-      <header className="ch-head">
+      <div ref={stage} className={`ch-stage ${bgVideo ? "has-video" : ""}`}>
+      {bgVideo && (
+        <div className="ch-stage-media" aria-hidden>
+          <motion.div className="ch-stage-video" style={{ y: videoY }}>
+            <LoopVideo v={bgVideo} />
+          </motion.div>
+          <div className="ch-stage-scrim" />
+        </div>
+      )}
+      <header className={`ch-head ${c.headerImage ? "has-photo" : ""}`}>
         <div className="ch-index">
           <span className="ch-act" style={{ ["--c" as string]: act.color }}>
             <i /> Act {act.num} · {act.title}
@@ -58,6 +74,7 @@ export function Chapter({ c, act, pos }: { c: ChapterT; act: Act; pos: number })
             <dd>{c.period}</dd>
           </Reveal>
         </dl>
+        {c.headerImage && <Shot k={c.headerImage} className="ch-head-photo" sizes="(max-width: 860px) 60vw, 26vw" />}
       </header>
 
       <div className={`ch-body ${visual ? "" : "ch-body-solo"}`}>
@@ -83,6 +100,15 @@ export function Chapter({ c, act, pos }: { c: ChapterT; act: Act; pos: number })
           )}
         </div>
         {visual && <div className="ch-visual">{visual}</div>}
+      </div>
+      {bgVideo && (
+        <div className="ch-stage-foot">
+          <span>
+            <i /> {bgVideo.caption}
+          </span>
+          <TalkButton v={bgVideo} />
+        </div>
+      )}
       </div>
 
       {c.motion && c.motionWide && (

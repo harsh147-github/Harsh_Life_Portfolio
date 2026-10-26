@@ -3,14 +3,11 @@ import { hero, links } from "../data/content";
 import { media } from "../lib/media";
 import { ease } from "../lib/motion";
 import { scrollToId } from "../lib/scroll";
-import { useTheme } from "../lib/theme";
 import { Journey } from "./Journey";
 import { MotionPlayer } from "./MotionPlayer";
 import { Reveal, SplitLetters } from "./Reveal";
 
 export function Hero() {
-  const { mode } = useTheme();
-  const ink = mode === "light" ? "#0a0a0a" : "#f2f2ee";
   const photo = media("portrait");
 
   return (
@@ -31,7 +28,23 @@ export function Hero() {
         </ul>
       </div>
 
-      <motion.div className="hero-journey" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease, delay: 1.7 }}>
+      <div className="hero-motion">
+        <div className="hero-motion-head">
+          <Reveal className="label" delay={1.5}>
+            what I do
+          </Reveal>
+          <Reveal as="p" className="hero-motion-text" delay={1.6}>
+            {hero.whatIDo}
+          </Reveal>
+        </div>
+        <MotionPlayer
+          id="pinnHero"
+          className="motion-dark"
+          caption="Illustrative: a physics-informed neural network learns how a composite wing bends under load. The governing plate equation sits inside the loss, the residual at every collocation point is driven to zero, and the trained network then predicts the full stress field for each new design in one forward pass."
+        />
+      </div>
+
+      <motion.div className="hero-journey" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease, delay: 0.2 }}>
         <Journey />
       </motion.div>
 
@@ -72,19 +85,6 @@ export function Hero() {
         </figure>
       </div>
 
-      <div className="hero-motion">
-        <div className="hero-motion-head">
-          <Reveal className="label">what I do</Reveal>
-          <Reveal as="p" className="hero-motion-text" delay={0.1}>
-            {hero.whatIDo}
-          </Reveal>
-        </div>
-        <MotionPlayer
-          id="operator"
-          inputProps={{ ink, accent: "#ff5a1f" }}
-          caption="Illustrative: a physics-informed neural operator learns how a composite wing bends under load, then predicts the full stress field for every new design instantly. The governing equation sits inside the loss."
-        />
-      </div>
     </section>
   );
 }

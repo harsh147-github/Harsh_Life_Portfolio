@@ -1,5 +1,11 @@
 {
  "items": {
+  "iisc-building": {
+   "w": 1200,
+   "h": 1600,
+   "caption": "IISc Bengaluru · the Main Building",
+   "alt": "The Main Building of the Indian Institute of Science, Bengaluru: a stone tower under a cloudy sky"
+  },
   "portrait": {
    "w": 1080,
    "h": 1281,
@@ -95,12 +101,6 @@
    "h": 594,
    "caption": "The team, with the car",
    "alt": "Team Veloce Racing posing with the car"
-  },
-  "veloce-pit": {
-   "w": 808,
-   "h": 550,
-   "caption": "Pit lane",
-   "alt": "Team members talking in the pits"
   },
   "veloce-rank": {
    "w": 1350,
@@ -1104,23 +1104,17 @@
    "caption": "rself.tech",
    "alt": "RSelf website hero: Building intelligence. Connecting lives."
   },
-  "dateify-home": {
+  "rself-about": {
    "w": 2000,
    "h": 1250,
-   "caption": "dateify.app · less swiping, more butterflies",
-   "alt": "Dateify landing page"
+   "caption": "One intelligence. Every kind of connection.",
+   "alt": "RSelf about section"
   },
-  "dateify-feel": {
-   "w": 2000,
-   "h": 1250,
-   "caption": "How dating ought to feel",
-   "alt": "Dateify feature cards"
-  },
-  "dateify-phone": {
+  "rself-phone": {
    "w": 780,
    "h": 1688,
-   "caption": "Dateify on a phone",
-   "alt": "Dateify mobile landing page"
+   "caption": "rself.tech on a phone",
+   "alt": "RSelf mobile site"
   },
   "rself-deck-cover": {
    "w": 1800,
@@ -1145,18 +1139,6 @@
    "h": 1012,
    "caption": "4 applications of RSelf",
    "alt": "Pitch slide: Dateify, LinkedIn_fy, Founders and Investors, Future_fy"
-  },
-  "rself-deck-dateify": {
-   "w": 1800,
-   "h": 1012,
-   "caption": "Dateify · do you really believe this…?",
-   "alt": "Pitch slide: Dateify, money can't buy happiness"
-  },
-  "rself-deck-why": {
-   "w": 1800,
-   "h": 1012,
-   "caption": "Dateify · the right person is in the room",
-   "alt": "Pitch slide: Maslow's hierarchy and why busy people still deserve love"
   },
   "mvawt-home": {
    "w": 2000,
@@ -1188,6 +1170,7 @@
    "id": "life",
    "label": "Life",
    "items": [
+    "iisc-building",
     "portrait",
     "vit-campus",
     "basketball",
@@ -1216,7 +1199,6 @@
    "items": [
     "veloce-car",
     "veloce-team",
-    "veloce-pit",
     "veloce-rank"
    ]
   },
@@ -1463,9 +1445,8 @@
    "label": "RSelf",
    "items": [
     "rself-home",
-    "dateify-home",
-    "dateify-feel",
-    "dateify-phone"
+    "rself-about",
+    "rself-phone"
    ]
   },
   {
@@ -1475,9 +1456,7 @@
     "rself-deck-cover",
     "rself-deck-traits",
     "rself-deck-twin",
-    "rself-deck-apps",
-    "rself-deck-dateify",
-    "rself-deck-why"
+    "rself-deck-apps"
    ]
   },
   {

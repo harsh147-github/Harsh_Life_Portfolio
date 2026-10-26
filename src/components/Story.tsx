@@ -19,7 +19,7 @@ export function Story() {
               <SplitLetters text="story." />
             </h2>
             <Reveal as="p" className="story-sub" delay={0.1}>
-              How a mechanical engineer from Pune ended up building physics-informed ML at IISc, and three ventures alongside it.
+              How a mechanical engineer from Pune ended up building physics-informed ML for aerostructures at IISc, and three ventures alongside it. Eight steps, each one leading to the next.
             </Reveal>
           </div>
         </div>
@@ -30,15 +30,19 @@ export function Story() {
             <motion.li
               key={b.title}
               className="beat"
-              initial={{ opacity: 0.15 }}
+              initial={{ opacity: 0.32 }}
               whileInView={{ opacity: 1 }}
               viewport={{ margin: "-35% 0px -35% 0px" }}
               transition={{ duration: 0.6, ease }}
             >
-              <span className="beat-year">{b.year}</span>
+              <div className="beat-when">
+                <span className="beat-year">{b.when}</span>
+                <span className="beat-where">{b.where}</span>
+              </div>
               <div className="beat-body">
                 <h3>{b.title}</h3>
                 <p>{b.body}</p>
+                {b.thread && <p className="beat-thread">{b.thread}</p>}
                 {b.anchor && (
                   <a
                     href={`#${b.anchor}`}
@@ -48,7 +52,7 @@ export function Story() {
                       scrollToId(b.anchor!);
                     }}
                   >
-                    Go to chapter →
+                    {b.anchor === "piml" ? "Start with the work →" : "See this chapter →"}
                   </a>
                 )}
               </div>

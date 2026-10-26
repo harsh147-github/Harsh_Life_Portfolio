@@ -51,8 +51,21 @@ export function MotionPlayer({ id, inputProps, caption, className }: Props) {
   useEffect(() => {
     const p = player.current;
     if (!p) return;
-    if (visible && !paused && !reduced) p.play();
-    else p.pause();
+    const want = visible && !paused && !reduced;
+    if (!want) {
+      p.pause();
+      return;
+    }
+    p.play();
+    // the player can report "playing" while stuck on its first frame; nudge it forward if it stalls
+    let last = -1;
+    const id = window.setInterval(() => {
+      const f = p.getCurrentFrame();
+      if (!p.isPlaying()) p.play();
+      else if (f === last) p.seekTo(f + 1);
+      last = f;
+    }, 500);
+    return () => window.clearInterval(id);
   }, [visible, paused, reduced, ready]);
 
   return (

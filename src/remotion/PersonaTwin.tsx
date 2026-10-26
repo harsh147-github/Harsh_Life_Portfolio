@@ -65,7 +65,7 @@ const TRAITS: [string, string, number][] = [
   ["N", "Neuroticism", 0.31],
 ];
 const WORLD: { label: string; sub: string; deg: number }[] = [
-  { label: "Dateify", sub: "matchmaking", deg: -48 },
+  { label: "Matchmaking", sub: "the right person", deg: -48 },
   { label: "LinkedIn_fy", sub: "networking", deg: -16 },
   { label: "Future_fy", sub: "foresight", deg: 16 },
   { label: "Founders & Investors", sub: "growth", deg: 48 },

@@ -12,7 +12,6 @@ export const links = {
   sushaasan: "https://sushaasan.in",
   sushaasanDash: "https://sushaasan.in/dashboard",
   rself: "https://www.rself.tech",
-  dateify: "https://www.dateify.app",
   mvawt: "https://harsh147-github.github.io/Project_MVAWT/",
   preprint: "https://doi.org/10.2139/ssrn.7649064",
   bearingPaper: "https://doi.org/10.1007/978-981-97-2249-5_6",
@@ -20,7 +19,6 @@ export const links = {
   pinn: "https://github.com/harsh147-github/PINNs---Bernoulli",
   fan: "https://github.com/harsh147-github/CFD-ML-CAD-Final-year-project",
   mvawtRepo: "https://github.com/harsh147-github/Project_MVAWT",
-  dateifyRepo: "https://github.com/harsh147-github/Dateify_v3",
   outreach: "https://github.com/harsh147-github/Worldwide-Reachout-Dashboard",
   antigravity: "https://github.com/harsh147-github/Project_WIn",
 };
@@ -52,7 +50,7 @@ export const marquee = [
 /** The profile at a glance — the résumé, without the résumé. */
 export const glance: { label: string; value: string; detail: string; href?: string }[] = [
   { label: "Now", value: "IISc Bengaluru", detail: "Research Associate, physics-informed ML · NMCAD Lab", href: "iisc" },
-  { label: "Building", value: "3 ventures", detail: "Sushaasan · RSelf Ventures / Dateify · CarbonDistrict", href: "ventures" },
+  { label: "Building", value: "3 ventures", detail: "Sushaasan · RSelf.tech · CarbonDistrict", href: "ventures" },
   { label: "Before", value: "Aerospace & defence", detail: "Paninian Aerospace · Feynman · DIAT (DRDO)", href: "aerospace" },
   { label: "Raced", value: "World Rank 2", detail: "Head of Aero & Composites, Team Veloce Racing", href: "veloce" },
   { label: "Published", value: "2 papers", detail: "CMAME (under review) · Springer LNME", href: "also" },
@@ -61,54 +59,71 @@ export const glance: { label: string; value: string; detail: string; href?: stri
   { label: "The move", value: "Model → ship", detail: "Fast, verifiable models of complex systems, deployed as products", href: "story" },
 ];
 
-export type StoryBeat = { year: string; title: string; body: string; anchor?: string };
+export type StoryBeat = { when: string; where: string; title: string; body: string; thread?: string; anchor?: string };
 
+/** How I got here, in order. Each beat ends with the thread that leads to the next one. */
 export const story: StoryBeat[] = [
   {
-    year: "2021",
+    when: "2021",
+    where: "VIT Pune",
     title: "A mechanical engineer from Pune",
-    body: "B.Tech in Mechanical Engineering at VIT Pune on a fully funded Government of India merit scholarship.",
+    body: "I joined Vishwakarma Institute of Technology for a B.Tech in Mechanical Engineering on a fully funded Government of India merit scholarship, and finished in the department’s top 5% (CGPA 8.83).",
+    thread: "The next year I joined the college’s Formula Student team.",
   },
   {
-    year: "2022",
-    title: "Then I joined a race team",
-    body: "Veloce Racing. Within three seasons I was heading Aerodynamics & Composite Structures, had personally secured our carbon-fibre sponsorship, and was laying up the team’s first complete CFRP aero package by hand.",
+    when: "2022 – 2024",
+    where: "Team Veloce Racing",
+    title: "Head of Aerodynamics & Composites",
+    body: "Over three seasons and four international competitions I led a 5–6 person sub-team. We designed the team’s first complete carbon-fibre aero package in OpenFOAM (front wing, rear wing with DRS, diffuser) and laid it up by hand: 300 N of downforce and 1.8 s a lap faster. The team reached World Rank 2 (combustion, 2023) and All India Rank 1 at Formula Bharat.",
+    thread: "That is where I learned CFD and composites, and how many simulations a good design takes.",
     anchor: "veloce",
   },
   {
-    year: "2023",
-    title: "The car went to the world stage",
-    body: "World Rank 2 in Formula Student (combustion), All India Rank 1 at Formula Bharat. Meanwhile, a 10-sensor rig I built in the tribology lab turned into my first Springer paper, and I started teaching CFD workshops to juniors.",
+    when: "2022 – 2024",
+    where: "VIT Tribology & Fluids Lab",
+    title: "Measuring real hardware",
+    body: "In parallel, as an undergraduate research assistant, I built a 10-sensor test rig to compare plain and herringbone-grooved journal bearings up to 2,500 rpm. The grooved bearings ran 21% hotter, and the study became my first paper (Springer, ICMech-REC 2023). I also built a cold-plasma module with Whirlpool India.",
+    thread: "Experiments taught me what any model has to match.",
     anchor: "vitlab",
   },
   {
-    year: "2024",
-    title: "Birds, at 500 m/s",
-    body: "At DIAT, the DRDO’s defence institute, I simulated bird strikes and projectiles tearing into composite wings, and learned to optimise a laminate until it stopped failing.",
+    when: "2024",
+    where: "DIAT (DRDO), Pune",
+    title: "Composite wings under bird strike",
+    body: "For my B.Tech thesis at the Defence Institute of Advanced Technology I simulated birds and projectiles hitting composite wings at 250–500 m/s in LS-DYNA, then re-stacked the CFRP/Kevlar laminate with the Puck failure criterion until peak deformation fell by 30%.",
+    thread: "Each of those runs was expensive, so exploring many designs was out of reach.",
     anchor: "diat",
   },
   {
-    year: "2025",
+    when: "2025",
+    where: "Crompton",
     title: "The turn: ten simulations were enough",
-    body: "At Crompton the budget allowed ten CFD runs. I trained a Gaussian process on them and let it screen 3,000+ fan-blade designs. The model was cheaper than the simulation and still honest about its uncertainty. That changed how I work.",
+    body: "Crompton asked us to cut the power of a 1,200 mm ceiling fan with a budget of ten CFD runs. I trained a Gaussian-process surrogate on those ten, screened over 3,000 blade designs, and confirmed the winners in OpenFOAM: 15% less drive power at the same airflow, and the Forbes Marshall Best Project Award.",
+    thread: "A cheap model that knows its own uncertainty can explore where simulation can’t. The project grew into CFD × ML × CAD, a PINN-surrogate pipeline.",
     anchor: "crompton",
   },
   {
-    year: "2025–26",
-    title: "Airframes at Mach 0.9",
-    body: "Composite UAV airframes at Feynman and Paninian Aerospace: a topology-optimised monocoque 30% lighter, and an open-source MDO pipeline that made design iteration 5× faster.",
+    when: "2025 – 2026",
+    where: "Feynman → Paninian Aerospace",
+    title: "Composite airframes at Mach 0.9",
+    body: "As a trainee at Feynman Aerospace and then an aerostructural engineer at Paninian, I designed composite airframes for a UAV family flying to Mach 0.9 within 7g: a topology-optimised monocoque 30% lighter with a 20% higher factor of safety. I replaced a commercial workflow with an open-source MDO pipeline that made design iteration 5× faster.",
+    thread: "Industry made the bottleneck obvious: every design change still needed a fresh solve.",
     anchor: "paninian",
   },
   {
-    year: "2026",
-    title: "Physics-informed ML at IISc",
-    body: "Now a Research Associate at IISc Bengaluru, building weak-form PIELMs: one eigensolve for the whole spectrum, where iterating the strong form needed 79–111. On the side, a parametric PINN that replaces OpenFOAM for a whole family of nozzles.",
+    when: "Aug 2026 – now",
+    where: "IISc Bengaluru",
+    title: "Physics-informed ML for structures",
+    body: "Today I’m a Research Associate in IISc’s NMCAD lab with Prof. Dineshkumar Harursampath. Our weak-form PIELM returns a structure’s whole vibration spectrum in one eigensolve, where iterating the strong form needs 79–111 (under review at CMAME). Alongside it I built PINNs-Bernoulli, a network that stands in for OpenFOAM across a whole family of nozzles at 0.26 s per design.",
+    thread: "Models that obey the physics are fast enough to explore whole design spaces and trustworthy enough to use.",
     anchor: "iisc",
   },
   {
-    year: "Now",
-    title: "Same operator, new systems",
-    body: "The move never changed: build a fast, verifiable model of a complex system, then ship it. So I pointed it at cities (Sushaasan), at people (RSelf), and back at carbon fibre (CarbonDistrict). The work below starts here, today, and runs back to the race car.",
+    when: "2026 – now",
+    where: "Ventures",
+    title: "The same method, pointed outward",
+    body: "Sushaasan (DPIIT-recognised) turns citizens’ complaints into costed, ward-level action plans for Pune’s municipal officers. RSelf.tech applies the aerospace surrogate workflow to people, as human digital twins. CarbonDistrict makes carbon-fibre car parts with the methods from the race car.",
+    thread: "The work below starts here, today, and runs back to the race car.",
     anchor: "piml",
   },
 ];
@@ -130,6 +145,10 @@ export type Chapter = {
   motion?: { id: CompositionId; caption: string; props?: Record<string, unknown> };
   /** render the motion piece full-width under the text instead of beside it */
   motionWide?: boolean;
+  /** a photo shown beside the chapter title */
+  headerImage?: string;
+  /** founder talk: "background" plays behind the chapter opening, "card" sits beside the text */
+  video?: { mode: "background" | "card"; loop: string; poster: string; full: string; caption: string };
   /** original pitch-deck slides, shown uncropped */
   deck?: { label: string; slides: string[]; cols?: number; aspect?: string };
   /** a single hero image when there is no motion piece */
@@ -178,6 +197,7 @@ export const acts: Act[] = [
       theme: "paper",
       kicker: "Weak-form PIELM · research",
       title: "IISc Bengaluru",
+      headerImage: "iisc-building",
       org: "Indian Institute of Science · NMCAD Lab, Department of Aerospace Engineering",
       role: "Research Associate, Physics-Informed ML · with Prof. Dineshkumar Harursampath",
       period: "Aug 2026 – Present",
@@ -297,6 +317,7 @@ export const acts: Act[] = [
       motion: {
         id: "signal",
         caption: "From a hundred tickets to one costed brief. Headline numbers are from the pilot; the per-card values are illustrative.",
+        props: { bg: "rgba(14,10,6,0.62)", ink: "#fff4e8", accent: "#ff8a1f", good: "#3ddc84" },
       },
       showcase: {
         browsers: [
@@ -304,6 +325,13 @@ export const acts: Act[] = [
           { k: "sus-dashboard", url: "sushaasan.in/dashboard" },
         ],
         phone: "sus-live-phone",
+      },
+      video: {
+        mode: "background",
+        loop: "video/sushaasan-loop.mp4",
+        poster: "video/sushaasan-poster.jpg",
+        full: "video/sushaasan-talk.mp4",
+        caption: "Pitching Sushaasan on stage · Seva First Innovation Challenge, Mysore",
       },
       archives: [{ group: "sushaasan", label: "The pitch deck & product", tall: true }],
       tags: ["Next.js", "Supabase", "Inngest", "Apify", "Cloudflare", "Sarvam AI", "Claude"],
@@ -317,7 +345,7 @@ export const acts: Act[] = [
       theme: "rself",
       kicker: "RSelf Ventures · human digital twins",
       title: "RSelf.tech",
-      org: "RSelf Ventures · Human digital twins · first product Dateify",
+      org: "RSelf Ventures · Human digital twins",
       role: "Founder",
       period: "Jul 2026 – Present",
       lede: "Compounding human presence with digital twins. The aerospace surrogate workflow, applied to people: a 10-trait personality model and a pre-trained pairwise compatibility operator, tailored to you from about 20 reactions, then put to work in the world on your behalf.",
@@ -338,12 +366,19 @@ export const acts: Act[] = [
         caption: "Personality → extraction network Φ → latent compatibility function f(z) → digital twin → out into the world. Drawn live with Remotion; trait values are illustrative.",
       },
       motionWide: true,
+      video: {
+        mode: "card",
+        loop: "video/rself-loop.mp4",
+        poster: "video/rself-poster.jpg",
+        full: "video/rself-talk.mp4",
+        caption: "Explaining RSelf on stage: personality → network → function",
+      },
       deck: {
         label: "From the pitch · Mysore",
-        slides: ["rself-deck-cover", "rself-deck-traits", "rself-deck-twin", "rself-deck-apps", "rself-deck-dateify", "rself-deck-why"],
+        slides: ["rself-deck-cover", "rself-deck-traits", "rself-deck-twin", "rself-deck-apps"],
       },
       cards: [
-        { title: "Dateify", body: "Matchmaking for people who break up because they’re too busy. Your twin calibrates to you, then swipes, matches and goes on virtual café dates on your behalf." },
+        { title: "Matchmaking", body: "For people who break up because they’re too busy: the right person is out there, and a twin that knows you can find them." },
         { title: "LinkedIn_fy", body: "Networking: your personality’s presence, compounding in the background, so you’re in the right rooms at the right time." },
         { title: "Founders & Investors", body: "Growth: matching the people who build companies with the people who back them." },
         { title: "Future_fy", body: "Augmenting the future: giving people the ability to see where their personality is likely to take them." },
@@ -351,14 +386,13 @@ export const acts: Act[] = [
       showcase: {
         browsers: [
           { k: "rself-home", url: "rself.tech" },
-          { k: "dateify-home", url: "dateify.app" },
+          { k: "rself-about", url: "rself.tech/#about" },
         ],
-        phone: "dateify-phone",
+        phone: "rself-phone",
       },
-      tags: ["Random-feature models", "Bayesian updating", "Multi-fidelity", "Node + Express", "Claude", "Capacitor (Android)"],
+      tags: ["Random-feature models", "Bayesian updating", "Multi-fidelity", "Gaussian copulas", "LLM rehearsal", "Claude"],
       links: [
         { label: "rself.tech", href: links.rself },
-        { label: "dateify.app", href: links.dateify },
       ],
     },
     {
@@ -535,18 +569,19 @@ export const acts: Act[] = [
         { value: "#2", label: "world rank, FS combustion 2023" },
       ],
       motion: {
-        id: "airflow",
-        caption: "Live: potential flow around an inverted Joukowski wing, computed in your browser. Particles travel at the true local velocity.",
+        id: "veloceFlow",
+        caption: "Our full-body CFD of the car, top view: the colours are the solved velocity magnitude, and the moving streamlines are traced live over it, at speeds read from its colour bar.",
       },
+      motionWide: true,
       mosaics: [
         {
-          label: "Race",
-          tiles: [{ k: "veloce-car", span: "tall" }, { k: "veloce-team", span: "big" }, { k: "veloce-pit", span: "tall" }],
+          label: "Team, car and the build",
+          tiles: [{ k: "veloce-team", span: "big" }, { k: "veloce-car", span: "tall" }, { k: "v-layup-nose", span: "tall" }],
         },
         {
           label: "Simulate & make",
           tiles: [
-            { k: "v-fullbody", span: "wide" },
+            { k: "v-fw-tyres", span: "wide" },
             { k: "v-fw-upper" },
             { k: "v-rw-drs" },
             { k: "v-layup-sp" },
@@ -622,7 +657,7 @@ export const timeline: { start: string; end: string; now: string; lanes: { act: 
       color: "#f08a24",
       items: [
         { id: "sushaasan", label: "Sushaasan", role: "Founder", from: "2026-06", to: "now", note: "Civic AI · 836 complaints → 345 costed plans" },
-        { id: "rself", label: "RSelf.tech · Dateify", role: "Founder", from: "2026-07", to: "now", note: "Human digital twins" },
+        { id: "rself", label: "RSelf.tech", role: "Founder", from: "2026-07", to: "now", note: "Human digital twins" },
       ],
     },
     {
@@ -667,15 +702,6 @@ export const projects: Project[] = [
     img: "mvawt-home",
     href: links.mvawtRepo,
     site: links.mvawt,
-  },
-  {
-    name: "Dateify v3",
-    kind: "AI agents · consumer app",
-    body: "An AI-agent dating app: onboard, calibrate your personality in a chat, and your agent swipes, matches and goes on virtual café dates on your behalf, learning your voice over time.",
-    facts: ["Node + Express + Claude", "Android via Capacitor", "Razorpay subscriptions"],
-    img: "dateify-feel",
-    href: links.dateifyRepo,
-    site: links.dateify,
   },
   {
     name: "Outreach HQ",

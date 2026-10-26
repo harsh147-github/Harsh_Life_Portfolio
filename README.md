@@ -6,8 +6,8 @@ A single-page portfolio. It starts in black & white, and each chapter fades into
 
 - **Vite + React + TypeScript**
 - **Remotion** (`@remotion/player`): the motion pieces are real physics, computed in the browser:
-  - `operator` (hero): a physics-informed neural operator predicting the stress field on a composite wing as the design changes.
-  - `airflow`: potential flow around an inverted Joukowski wing (Veloce chapter).
+  - `pinnHero` (hero): a physics-informed network on a composite wing: collocation residuals, PDE/BC/data loss, backprop, then stress-field inference per design.
+  - `veloceFlow`: the Veloce full-body CFD image with streamlines traced live over it (velocity from the image colour bar, direction from potential flow around the car; field in `src/remotion/veloceField.ts`).
   - `eigen`: exact Euler–Bernoulli beam and Kirchhoff plate mode shapes.
   - `surrogate`: a Gaussian process (RBF kernel, Cholesky solve) learning from 10 samples.
   - `signal`: Sushaasan's complaints → clusters → costed briefs → dispatch.
