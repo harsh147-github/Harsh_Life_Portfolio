@@ -51,7 +51,7 @@ export const marquee = [
 /** The profile at a glance — the résumé, without the résumé. */
 export const glance: { label: string; value: string; detail: string; href?: string }[] = [
   { label: "Now", value: "IISc Bengaluru", detail: "Research Associate, physics-informed ML · NMCAD Lab", href: "iisc" },
-  { label: "Building", value: "3 ventures", detail: "Sushaasan · RSelf.tech / Dateify · CarbonDistrict", href: "ventures" },
+  { label: "Building", value: "3 ventures", detail: "Sushaasan · RSelf Ventures / Dateify · CarbonDistrict", href: "ventures" },
   { label: "Before", value: "Aerospace & defence", detail: "Paninian Aerospace · Feynman · Crompton · DIAT (DRDO)", href: "work" },
   { label: "Raced", value: "World Rank 2", detail: "Head of Aero & Composites, Team Veloce Racing", href: "veloce" },
   { label: "Published", value: "2 papers", detail: "CMAME (under review) · Springer LNME", href: "also" },
@@ -128,6 +128,10 @@ export type Chapter = {
   points: string[];
   stats: Stat[];
   motion?: { id: CompositionId; caption: string; props?: Record<string, unknown> };
+  /** render the motion piece full-width under the text instead of beside it */
+  motionWide?: boolean;
+  /** original pitch-deck slides, shown uncropped */
+  deck?: { label: string; slides: string[] };
   /** a single hero image when there is no motion piece */
   lead?: string;
   /** an animated tool-chain diagram, for work that can't be shown in pictures */
@@ -138,6 +142,8 @@ export type Chapter = {
   mosaics?: { label: string; tiles: Tile[] }[];
   /** complete archives (every image in a media group), as filmstrips */
   archives?: { group: string; label?: string; tall?: boolean }[];
+  /** hide the archives behind an "open the full archive" button */
+  collapseArchives?: boolean;
   note?: string;
   tags: string[];
   links?: { label: string; href: string }[];
@@ -176,29 +182,18 @@ export const work: Chapter[] = [
         tiles: [{ k: "veloce-car", span: "tall" }, { k: "veloce-team", span: "big" }, { k: "veloce-pit", span: "tall" }],
       },
       {
-        label: "Simulate",
+        label: "Simulate & make",
         tiles: [
           { k: "v-fullbody", span: "wide" },
           { k: "v-fw-upper" },
           { k: "v-rw-drs" },
-          { k: "v-fw-tyres", span: "wide" },
-          { k: "v-nose-cfd" },
-          { k: "v-rw-stream" },
-        ],
-      },
-      {
-        label: "Make",
-        tiles: [
-          { k: "v-layup-nose", span: "tall" },
           { k: "v-layup-sp" },
           { k: "v-vacuum-nose" },
-          { k: "v-rw-endplate", span: "tall" },
           { k: "v-main-element", span: "wide" },
-          { k: "v-rw-main", span: "wide" },
-          { k: "v-layup-floor", span: "wide" },
         ],
       },
     ],
+    collapseArchives: true,
     archives: [
       { group: "v-cad", label: "Archive · Design (CAD)" },
       { group: "v-cfd", label: "Archive · Aerodynamics (CFD)" },
@@ -399,30 +394,41 @@ export const ventures: Chapter[] = [
   },
   {
     id: "rself",
-    theme: "twin",
+    theme: "rself",
     index: "07",
-    kicker: "the",
-    title: "twin.",
-    org: "RSelf.tech · Human digital twins · first product Dateify",
+    kicker: "RSelf Ventures",
+    title: "rself.tech",
+    org: "RSelf Ventures · Human digital twins · first product Dateify",
     role: "Founder",
     period: "Jul 2026 – Present",
-    lede: "Compounding human presence with digital twins. The aerospace surrogate workflow, applied to people: a 10-trait personality model and a pre-trained pairwise compatibility operator, tailored to you from about 20 reactions.",
+    lede: "Compounding human presence with digital twins. The aerospace surrogate workflow, applied to people: a 10-trait personality model and a pre-trained pairwise compatibility operator, tailored to you from about 20 reactions, then put to work in the world on your behalf.",
     points: [
+      "Personality: the Big Five plus values, attachment, lifestyle and family intent",
       "Persona universe from Latin-hypercube + Gaussian-copula sampling: n = 224, 49,756 ordered pairs, 40 pair features",
       "Frozen random tanh layer (D = 300) + ridge regression, with a per-user Bayesian head",
       "Multi-fidelity ladder: simulator → LLM rehearsal → real date",
-      "Dateify: your AI agent calibrates to your personality, then swipes, matches and goes on virtual café dates for you",
     ],
     stats: [
-      { value: "0.59 → 0.73", label: "rank correlation, ceiling 0.78" },
+      { value: "0.73", label: "rank correlation, tailored (from 0.59 pre-trained · ceiling 0.78)" },
       { value: "0.831", label: "search value vs 0.107 random" },
       { value: "~44×", label: "cheaper per search" },
-      { value: "~20", label: "reactions to tailor" },
+      { value: "~20", label: "reactions to tailor a twin" },
     ],
     motion: {
-      id: "twin",
-      caption: "A twin learning from reactions: predictions converge on the planted truth as the per-user head updates. Illustrative data.",
+      id: "persona",
+      caption: "Personality → extraction network Φ → latent compatibility function f(z) → digital twin → out into the world. Drawn live with Remotion; trait values are illustrative.",
     },
+    motionWide: true,
+    deck: {
+      label: "From the pitch · Mysore",
+      slides: ["rself-deck-cover", "rself-deck-traits", "rself-deck-twin", "rself-deck-apps", "rself-deck-dateify", "rself-deck-why"],
+    },
+    cards: [
+      { title: "Dateify", body: "Matchmaking for people who break up because they’re too busy. Your twin calibrates to you, then swipes, matches and goes on virtual café dates on your behalf." },
+      { title: "LinkedIn_fy", body: "Networking: your personality’s presence, compounding in the background, so you’re in the right rooms at the right time." },
+      { title: "Founders & Investors", body: "Growth: matching the people who build companies with the people who back them." },
+      { title: "Future_fy", body: "Augmenting the future: giving people the ability to see where their personality is likely to take them." },
+    ],
     showcase: {
       browsers: [
         { k: "rself-home", url: "rself.tech" },
@@ -430,13 +436,6 @@ export const ventures: Chapter[] = [
       ],
       phone: "dateify-phone",
     },
-    cards: [
-      { title: "Dateify", body: "Matchmaking for people who break up because they’re too busy. The right person is out there; Dateify is the convenience that finds them." },
-      { title: "LinkedIn_fy", body: "Networking: your personality’s presence, compounding in the background, so you’re in the right rooms at the right time." },
-      { title: "Founders & Investors", body: "Growth: matching the people who build companies with the people who back them." },
-      { title: "Future_fy", body: "Augmenting the future: helping people see where their personality is likely to take them." },
-    ],
-    archives: [{ group: "rself", label: "RSelf & Dateify", tall: true }],
     tags: ["Random-feature models", "Bayesian updating", "Multi-fidelity", "Node + Express", "Claude", "Capacitor (Android)"],
     links: [
       { label: "rself.tech", href: links.rself },

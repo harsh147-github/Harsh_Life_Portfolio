@@ -972,30 +972,6 @@
    "caption": "Design sweep over throat diameter",
    "alt": "Grid of sweep plots"
   },
-  "sus-live-map": {
-   "w": 2200,
-   "h": 1375,
-   "caption": "Live: every issue pinned to its ward",
-   "alt": "Sushaasan web app showing Pune ward map and issue markers"
-  },
-  "sus-live-phone": {
-   "w": 780,
-   "h": 1688,
-   "caption": "On a phone",
-   "alt": "Sushaasan mobile view"
-  },
-  "sus-dashboard": {
-   "w": 2200,
-   "h": 1375,
-   "caption": "Transparency dashboard",
-   "alt": "Sushaasan transparency dashboard"
-  },
-  "sus-wards": {
-   "w": 2200,
-   "h": 1375,
-   "caption": "Ward by ward, by category",
-   "alt": "Grid of wards shaded by report count"
-  },
   "sus-deck-cover": {
    "w": 1800,
    "h": 1012,
@@ -1026,17 +1002,35 @@
    "caption": "Impact & scale",
    "alt": "Pitch slide: when the brief replaces the backlog"
   },
+  "sus-live-map": {
+   "w": 2200,
+   "h": 1375,
+   "caption": "Live: every issue pinned to its ward",
+   "alt": "Sushaasan web app showing Pune ward map and issue markers"
+  },
+  "sus-live-phone": {
+   "w": 780,
+   "h": 1688,
+   "caption": "On a phone",
+   "alt": "Sushaasan mobile view"
+  },
+  "sus-dashboard": {
+   "w": 2200,
+   "h": 1375,
+   "caption": "Transparency dashboard",
+   "alt": "Sushaasan transparency dashboard"
+  },
+  "sus-wards": {
+   "w": 2200,
+   "h": 1375,
+   "caption": "Ward by ward, by category",
+   "alt": "Grid of wards shaded by report count"
+  },
   "rself-home": {
    "w": 2000,
    "h": 1250,
    "caption": "rself.tech",
    "alt": "RSelf website hero: Building intelligence. Connecting lives."
-  },
-  "rself-about": {
-   "w": 2000,
-   "h": 1250,
-   "caption": "One intelligence. Every kind of connection.",
-   "alt": "RSelf about section"
   },
   "dateify-home": {
    "w": 2000,
@@ -1056,11 +1050,41 @@
    "caption": "Dateify on a phone",
    "alt": "Dateify mobile landing page"
   },
+  "rself-deck-cover": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "RSelf.tech · compounding human presence with digital twins",
+   "alt": "Pitch slide: RSelf.tech, compounding human presence with digital twins"
+  },
   "rself-deck-traits": {
    "w": 1800,
    "h": 1012,
-   "caption": "From the deck: personality as a latent space",
-   "alt": "Slide showing Big Five traits and an encoder-decoder network"
+   "caption": "Personality → extraction network → function",
+   "alt": "Pitch slide: the Big Five traits feeding an encoder–decoder network and a fitted function"
+  },
+  "rself-deck-twin": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "The function becomes a digital twin",
+   "alt": "Pitch slide: a fitted function linked to a human–digital handshake and a digital twin"
+  },
+  "rself-deck-apps": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "4 applications of RSelf",
+   "alt": "Pitch slide: Dateify, LinkedIn_fy, Founders and Investors, Future_fy"
+  },
+  "rself-deck-dateify": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "Dateify · do you really believe this…?",
+   "alt": "Pitch slide: Dateify, money can't buy happiness"
+  },
+  "rself-deck-why": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "Dateify · the right person is in the room",
+   "alt": "Pitch slide: Maslow's hierarchy and why busy people still deserve love"
   },
   "mvawt-home": {
    "w": 2000,
@@ -1336,11 +1360,21 @@
    "label": "RSelf",
    "items": [
     "rself-home",
-    "rself-about",
     "dateify-home",
     "dateify-feel",
-    "dateify-phone",
-    "rself-deck-traits"
+    "dateify-phone"
+   ]
+  },
+  {
+   "id": "rself-deck",
+   "label": "RSelf pitch",
+   "items": [
+    "rself-deck-cover",
+    "rself-deck-traits",
+    "rself-deck-twin",
+    "rself-deck-apps",
+    "rself-deck-dateify",
+    "rself-deck-why"
    ]
   },
   {

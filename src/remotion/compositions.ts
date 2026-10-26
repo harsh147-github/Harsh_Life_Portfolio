@@ -4,7 +4,7 @@ import { EigenModes } from "./EigenModes";
 import { meta, type CompositionId } from "./meta";
 import { SignalToBrief } from "./SignalToBrief";
 import { Surrogate } from "./Surrogate";
-import { TwinMatch } from "./TwinMatch";
+import { PersonaTwin } from "./PersonaTwin";
 
 export { FPS, type CompositionId } from "./meta";
 
@@ -34,5 +34,9 @@ export const compositions: Record<CompositionId, Entry> = {
     component: C(SignalToBrief),
     defaultProps: { bg: "#fffaf4", ink: "#1b1611", accent: "#ef7a12", good: "#1f7a4d" },
   },
-  twin: { ...meta.twin, component: C(TwinMatch), defaultProps: { bg: "#ffc9e0", ink: "#0b0b0b", accent: "#e8006f" } },
+  persona: {
+    ...meta.persona,
+    component: C(PersonaTwin),
+    defaultProps: { bg: "transparent", ink: "#f4f1ec", accent: "#ff3d8b", twin: "#3ef0b0" },
+  },
 };

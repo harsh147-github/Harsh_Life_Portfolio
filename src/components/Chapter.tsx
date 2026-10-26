@@ -1,12 +1,16 @@
 import { motion } from "motion/react";
+import { useState } from "react";
 import type { Chapter as ChapterT } from "../data/content";
+import { mediaGroup } from "../lib/media";
 import { ease } from "../lib/motion";
 import { BrowserFrame, Filmstrip, Mosaic, PhoneFrame, Shot } from "./Gallery";
 import { MotionPlayer } from "./MotionPlayer";
 import { Reveal, SplitLetters } from "./Reveal";
 
 export function Chapter({ c, total }: { c: ChapterT; total: number }) {
-  const visual = c.motion ? (
+  const [archivesOpen, setArchivesOpen] = useState(!c.collapseArchives);
+  const archiveCount = c.archives?.reduce((n, a) => n + mediaGroup(a.group).items.length, 0) ?? 0;
+  const visual = c.motion && !c.motionWide ? (
     <MotionPlayer id={c.motion.id} caption={c.motion.caption} inputProps={c.motion.props} />
   ) : c.pipeline ? (
     <Pipeline steps={c.pipeline} />
@@ -69,12 +73,43 @@ export function Chapter({ c, total }: { c: ChapterT; total: number }) {
         {visual && <div className="ch-visual">{visual}</div>}
       </div>
 
+      {c.motion && c.motionWide && (
+        <div className="ch-motion-wide">
+          <MotionPlayer id={c.motion.id} caption={c.motion.caption} inputProps={c.motion.props} />
+        </div>
+      )}
+
       {c.stats.length > 0 && (
         <div className="ch-stats">
           {c.stats.map((s, i) => (
             <Reveal key={s.label} className="stat" delay={i * 0.07}>
               <span className="stat-value">{s.value}</span>
               <span className="stat-label">{s.label}</span>
+            </Reveal>
+          ))}
+        </div>
+      )}
+
+      {c.deck && (
+        <div className="deck-block">
+          <div className="block-label">
+            <span className="accent">●</span> {c.deck.label}
+          </div>
+          <div className="deck-grid">
+            {c.deck.slides.map((k) => (
+              <Shot key={k} k={k} set={c.deck!.slides} className="deck-slide" sizes="(max-width: 860px) 100vw, 50vw" />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {c.cards && (
+        <div className="cards-grid">
+          {c.cards.map((card, i) => (
+            <Reveal key={card.title} className="idea-card" delay={i * 0.06}>
+              <span className="idea-n">{String(i + 1).padStart(2, "0")}</span>
+              <h3>{card.title}</h3>
+              <p>{card.body}</p>
             </Reveal>
           ))}
         </div>
@@ -91,21 +126,17 @@ export function Chapter({ c, total }: { c: ChapterT; total: number }) {
         </div>
       )}
 
-      {c.cards && (
-        <div className="cards-grid">
-          {c.cards.map((card, i) => (
-            <Reveal key={card.title} className="idea-card" delay={i * 0.06}>
-              <span className="idea-n">{String(i + 1).padStart(2, "0")}</span>
-              <h3>{card.title}</h3>
-              <p>{card.body}</p>
-            </Reveal>
-          ))}
-        </div>
-      )}
-
       {c.mosaics?.map((m) => <Mosaic key={m.label} label={m.label} tiles={m.tiles} />)}
 
-      {c.archives && (
+      {c.archives && c.collapseArchives && (
+        <button type="button" className="archive-toggle" onClick={() => setArchivesOpen((v) => !v)} aria-expanded={archivesOpen}>
+          <span>{archivesOpen ? "Close the full archive" : "Open the full archive"}</span>
+          <span className="archive-toggle-n">
+            {archiveCount} images {archivesOpen ? "↑" : "↓"}
+          </span>
+        </button>
+      )}
+      {c.archives && archivesOpen && (
         <div className="archives">
           {c.archives.map((a) => (
             <Filmstrip key={a.group} group={a.group} label={a.label} tall={a.tall} />

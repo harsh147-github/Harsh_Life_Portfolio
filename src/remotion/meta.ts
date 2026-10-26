@@ -8,7 +8,7 @@ export const meta = {
   eigen: { durationInFrames: 375, width: 1600, height: 900 },
   surrogate: { durationInFrames: 420, width: 1600, height: 900 },
   signal: { durationInFrames: 430, width: 1600, height: 900 },
-  twin: { durationInFrames: 420, width: 1600, height: 900 },
+  persona: { durationInFrames: 480, width: 1600, height: 800 },
 } as const;
 
 export type CompositionId = keyof typeof meta;
