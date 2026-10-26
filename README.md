@@ -35,6 +35,10 @@ npm run preview    # serve the build
 npm run studio     # open Remotion Studio to tweak or render the compositions as MP4
 ```
 
+## Deploying
+
+`npm run deploy` builds the site and publishes `dist/` to the `gh-pages` branch, which GitHub Pages serves at https://harsh147-github.github.io/Harsh_Life_Portfolio/. To use a custom domain later, add it under the repo's Settings → Pages and put a `CNAME` file containing the domain in `public/`.
+
 The build uses a relative base (`./`), so `dist/` can be deployed to any static host (Vercel, Netlify, GitHub Pages).
 
 ## Notes
