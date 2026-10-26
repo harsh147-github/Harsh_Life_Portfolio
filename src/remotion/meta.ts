@@ -1,0 +1,14 @@
+// Lightweight composition metadata (no Remotion imports) so the page can size
+// players before the Remotion bundle is lazy-loaded.
+export const FPS = 30;
+
+export const meta = {
+  airflow: { durationInFrames: 600, width: 1600, height: 900 },
+  airflowWide: { durationInFrames: 600, width: 1600, height: 560 },
+  eigen: { durationInFrames: 375, width: 1600, height: 900 },
+  surrogate: { durationInFrames: 420, width: 1600, height: 900 },
+  signal: { durationInFrames: 430, width: 1600, height: 900 },
+  twin: { durationInFrames: 420, width: 1600, height: 900 },
+} as const;
+
+export type CompositionId = keyof typeof meta;

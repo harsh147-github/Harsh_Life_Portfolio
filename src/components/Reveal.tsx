@@ -49,19 +49,3 @@ export function Reveal({
     </M>
   );
 }
-
-/** Image that wipes in from a clip mask; turns from monochrome to colour when its section is active. */
-export function Shot({ src, alt, caption, className }: { src: string; alt: string; caption?: string; className?: string }) {
-  return (
-    <motion.figure
-      className={`shot ${className ?? ""}`}
-      initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
-      whileInView={{ clipPath: "inset(0% 0% 0% 0%)" }}
-      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-      transition={{ duration: 1.2, ease }}
-    >
-      <img src={src} alt={alt} loading="lazy" decoding="async" />
-      {caption && <figcaption>{caption}</figcaption>}
-    </motion.figure>
-  );
-}

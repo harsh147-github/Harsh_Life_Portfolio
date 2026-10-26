@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
 import type { Chapter as ChapterT } from "../data/content";
 import { ease } from "../lib/motion";
+import { BrowserFrame, Filmstrip, Mosaic, PhoneFrame, Shot } from "./Gallery";
 import { MotionPlayer } from "./MotionPlayer";
-import { Reveal, Shot, SplitLetters } from "./Reveal";
+import { Reveal, SplitLetters } from "./Reveal";
 
 export function Chapter({ c, total }: { c: ChapterT; total: number }) {
   const visual = c.motion ? (
@@ -10,8 +11,10 @@ export function Chapter({ c, total }: { c: ChapterT; total: number }) {
   ) : c.pipeline ? (
     <Pipeline steps={c.pipeline} />
   ) : c.lead ? (
-    <Shot src={c.lead.src} alt={c.lead.alt} caption={c.lead.caption} className="shot-lead" />
+    <Shot k={c.lead} className="shot-lead" sizes="(max-width: 1100px) 100vw, 58vw" />
   ) : null;
+
+  const showcaseKeys = c.showcase ? [...c.showcase.browsers.map((b) => b.k), ...(c.showcase.phone ? [c.showcase.phone] : [])] : [];
 
   return (
     <section id={c.id} className={`chapter chapter-${c.id}`} data-theme={c.theme} data-label={`${c.index} — ${c.title}`}>
@@ -77,30 +80,47 @@ export function Chapter({ c, total }: { c: ChapterT; total: number }) {
         </div>
       )}
 
-      {c.lead && (c.motion || c.pipeline) && (
-        <div className="ch-gallery">
-          <Shot src={c.lead.src} alt={c.lead.alt} caption={c.lead.caption} className="span-wide" />
+      {c.showcase && (
+        <div className={`showcase ${c.showcase.phone ? "" : "showcase-solo"}`}>
+          <div className="showcase-browsers">
+            {c.showcase.browsers.map((b) => (
+              <BrowserFrame key={b.k} k={b.k} url={b.url} set={showcaseKeys} />
+            ))}
+          </div>
+          {c.showcase.phone && <PhoneFrame k={c.showcase.phone} set={showcaseKeys} />}
         </div>
       )}
 
-      {c.galleries?.map((g) => (
-        <div className="ch-gallery-block" key={g.label}>
-          <div className="ch-gallery-label">
-            <span className="accent">●</span> {g.label}
-          </div>
-          <div className="ch-gallery">
-            {g.items.map((m) => (
-              <Shot key={m.src} src={m.src} alt={m.alt} caption={m.caption} className={m.span ? `span-${m.span}` : ""} />
-            ))}
-          </div>
+      {c.cards && (
+        <div className="cards-grid">
+          {c.cards.map((card, i) => (
+            <Reveal key={card.title} className="idea-card" delay={i * 0.06}>
+              <span className="idea-n">{String(i + 1).padStart(2, "0")}</span>
+              <h3>{card.title}</h3>
+              <p>{card.body}</p>
+            </Reveal>
+          ))}
         </div>
-      ))}
+      )}
 
-      <ul className="ch-tags" aria-label="Tools">
-        {c.tags.map((t) => (
-          <li key={t}>{t}</li>
-        ))}
-      </ul>
+      {c.mosaics?.map((m) => <Mosaic key={m.label} label={m.label} tiles={m.tiles} />)}
+
+      {c.archives && (
+        <div className="archives">
+          {c.archives.map((a) => (
+            <Filmstrip key={a.group} group={a.group} label={a.label} tall={a.tall} />
+          ))}
+        </div>
+      )}
+
+      <footer className="ch-foot">
+        <ul className="ch-tags" aria-label="Tools">
+          {c.tags.map((t) => (
+            <li key={t}>{t}</li>
+          ))}
+        </ul>
+        {c.note && <p className="ch-note">{c.note}</p>}
+      </footer>
     </section>
   );
 }

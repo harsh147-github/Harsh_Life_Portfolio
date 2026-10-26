@@ -8,6 +8,7 @@ const items = [
   { id: "story", label: "Story" },
   { id: "work", label: "Work" },
   { id: "ventures", label: "Ventures" },
+  { id: "lab", label: "Lab" },
   { id: "also", label: "Also" },
   { id: "contact", label: "Contact" },
 ];

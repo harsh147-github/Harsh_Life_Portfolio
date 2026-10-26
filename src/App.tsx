@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { Chapter } from "./components/Chapter";
+import { Lightbox } from "./components/Gallery";
 import { Hero } from "./components/Hero";
 import { Marquee } from "./components/Marquee";
 import { Nav } from "./components/Nav";
 import { Preloader } from "./components/Preloader";
-import { Also, Contact, Divider } from "./components/Sections";
+import { Also, Contact, Divider, Glance, Lab } from "./components/Sections";
 import { Story } from "./components/Story";
 import { marquee, ventures, work } from "./data/content";
 import { scrollToId, startSmoothScroll } from "./lib/scroll";
@@ -30,6 +31,7 @@ export function App() {
       <main>
         <Hero />
         <Marquee items={marquee} />
+        <Glance />
         <Story />
         <Divider
           id="work"
@@ -52,9 +54,11 @@ export function App() {
         {ventures.map((c) => (
           <Chapter key={c.id} c={c} total={total} />
         ))}
+        <Lab />
         <Also />
         <Contact />
       </main>
+      <Lightbox />
     </ThemeProvider>
   );
 }

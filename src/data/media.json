@@ -1,0 +1,1356 @@
+{
+ "items": {
+  "portrait": {
+   "w": 690,
+   "h": 720,
+   "caption": "Harsh Sonavane",
+   "alt": "Harsh Sonavane in a convertible, looking over his shoulder"
+  },
+  "vit-campus": {
+   "w": 479,
+   "h": 719,
+   "caption": "VIT Pune, where it started",
+   "alt": "Vishwakarma Institute of Technology campus at sunset"
+  },
+  "basketball": {
+   "w": 1078,
+   "h": 606,
+   "caption": "Basketball for the Mechanical department, Vishwakarandak",
+   "alt": "Harsh shooting a basketball on an outdoor court"
+  },
+  "workshop-teach": {
+   "w": 640,
+   "h": 361,
+   "caption": "Teaching a CFD workshop",
+   "alt": "Harsh presenting a CFD workshop to students"
+  },
+  "workshop-room": {
+   "w": 639,
+   "h": 359,
+   "caption": "CFD workshop for the Mechanical department",
+   "alt": "Students working on CFD in a computer lab"
+  },
+  "workshop-group": {
+   "w": 640,
+   "h": 359,
+   "caption": "Workshop cohort with Team Veloce",
+   "alt": "Group photo of workshop participants holding a Veloce Racing flag"
+  },
+  "workshop-screens": {
+   "w": 639,
+   "h": 360,
+   "caption": "Hands-on: meshing and solving",
+   "alt": "Laptops showing CFD software during a workshop"
+  },
+  "siemens-team": {
+   "w": 538,
+   "h": 318,
+   "caption": "Representing VIT for Siemens software testing",
+   "alt": "Group photo at the Siemens office"
+  },
+  "siemens-testing": {
+   "w": 538,
+   "h": 311,
+   "caption": "Siemens software testing session",
+   "alt": "Engineers testing software on laptops"
+  },
+  "bearing-rig": {
+   "w": 928,
+   "h": 658,
+   "caption": "Journal-bearing test rig, VFD-driven to 2,500 rpm",
+   "alt": "Journal bearing test rig on a green frame with motor"
+  },
+  "bearing-sensors": {
+   "w": 776,
+   "h": 700,
+   "caption": "10-sensor LM35 array on the bearing housing",
+   "alt": "Close-up of thermal sensors wired to a bearing"
+  },
+  "bearing-paper": {
+   "w": 598,
+   "h": 294,
+   "caption": "Published · Springer, ICMech-REC 2023",
+   "alt": "Springer page for the journal-bearing paper"
+  },
+  "plasma-device": {
+   "w": 452,
+   "h": 285,
+   "caption": "Dielectric-barrier-discharge cold-plasma module",
+   "alt": "Plasma module in a black box with wires"
+  },
+  "plasma-diagram": {
+   "w": 931,
+   "h": 511,
+   "caption": "Plasma-activated water: how the DBD module works",
+   "alt": "Schematic of DBD plasma electrodes over water"
+  },
+  "veloce-car": {
+   "w": 783,
+   "h": 724,
+   "caption": "E04 · Veloce Racing Electric",
+   "alt": "Veloce Racing electric Formula Student car"
+  },
+  "veloce-team": {
+   "w": 794,
+   "h": 594,
+   "caption": "The team, with the car",
+   "alt": "Team Veloce Racing posing with the car"
+  },
+  "veloce-pit": {
+   "w": 808,
+   "h": 550,
+   "caption": "Pit lane",
+   "alt": "Team members talking in the pits"
+  },
+  "veloce-rank": {
+   "w": 1350,
+   "h": 260,
+   "caption": "Formula Student World Ranking List, Oct 2024 · VIT at #4",
+   "alt": "Formula Student world ranking table"
+  },
+  "v-nose-planes": {
+   "w": 876,
+   "h": 472,
+   "caption": "Nose surfaced from splines on stacked planes",
+   "alt": "CAD of the chassis with planes used to sketch the nose"
+  },
+  "v-hoop": {
+   "w": 650,
+   "h": 517,
+   "caption": "Front hoop to bulkhead, with impact attenuator",
+   "alt": "Chassis CAD with the impact attenuator"
+  },
+  "v-nose-final": {
+   "w": 872,
+   "h": 584,
+   "caption": "Final nose iteration",
+   "alt": "Chassis CAD with the final nose"
+  },
+  "v-sidepanel-cad": {
+   "w": 908,
+   "h": 514,
+   "caption": "Side panel over the chassis",
+   "alt": "Side panel CAD over the chassis"
+  },
+  "v-sidepanel-final": {
+   "w": 1088,
+   "h": 446,
+   "caption": "Final side panel, transparent view",
+   "alt": "Transparent side panel CAD"
+  },
+  "v-sidepod-outlet": {
+   "w": 1000,
+   "h": 715,
+   "caption": "Permissible outlet area, left sidepod",
+   "alt": "Side view of the left sidepod outlet area"
+  },
+  "v-sidepod-front": {
+   "w": 674,
+   "h": 645,
+   "caption": "Left sidepod, front view",
+   "alt": "Left sidepod front view CAD"
+  },
+  "v-sidepod-top": {
+   "w": 1194,
+   "h": 424,
+   "caption": "Left sidepod, top view",
+   "alt": "Left sidepod top view CAD"
+  },
+  "v-sidepod-side": {
+   "w": 923,
+   "h": 479,
+   "caption": "Left sidepod, side view",
+   "alt": "Left sidepod side view CAD"
+  },
+  "v-radiator": {
+   "w": 1070,
+   "h": 607,
+   "caption": "Radiator placement, right sidepod",
+   "alt": "Isometric CAD showing radiator placement"
+  },
+  "v-sidepod-dims": {
+   "w": 676,
+   "h": 435,
+   "caption": "Sidepod outlet dimensions",
+   "alt": "Sidepod outlet with dimensions"
+  },
+  "v-sidepod-sketch": {
+   "w": 1014,
+   "h": 696,
+   "caption": "Preliminary sidepod, 3D sketch",
+   "alt": "3D sketch of preliminary sidepod"
+  },
+  "v-rear-right-off": {
+   "w": 1190,
+   "h": 565,
+   "caption": "Rear body: without the right panel",
+   "alt": "Car side view without rear body panel"
+  },
+  "v-rear-right-on": {
+   "w": 776,
+   "h": 473,
+   "caption": "Rear body: with the right panel",
+   "alt": "Car side view with rear body panel"
+  },
+  "v-power-off": {
+   "w": 613,
+   "h": 370,
+   "caption": "Powertrain housing, without the left panel",
+   "alt": "Powertrain housing without panel"
+  },
+  "v-power-on": {
+   "w": 860,
+   "h": 494,
+   "caption": "Powertrain housing, with the left panel",
+   "alt": "Powertrain housing with panel"
+  },
+  "v-motor-off": {
+   "w": 774,
+   "h": 468,
+   "caption": "Motor housing, uncovered",
+   "alt": "Motor housing without covering"
+  },
+  "v-motor-on": {
+   "w": 708,
+   "h": 535,
+   "caption": "Motor housing, covered",
+   "alt": "Motor housing with covering"
+  },
+  "v-damper-rear": {
+   "w": 1196,
+   "h": 493,
+   "caption": "Damper access panel, rear view",
+   "alt": "Rear view of the upper damper panel"
+  },
+  "v-damper-iso": {
+   "w": 1191,
+   "h": 522,
+   "caption": "Damper access panel, clearances",
+   "alt": "Isometric view of damper panel gaps"
+  },
+  "v-fw-exploded": {
+   "w": 1219,
+   "h": 512,
+   "caption": "Front wing assembly, exploded",
+   "alt": "Exploded CAD of the front wing"
+  },
+  "v-truss-front": {
+   "w": 1063,
+   "h": 416,
+   "caption": "Front wing truss insert",
+   "alt": "Front view of truss insert"
+  },
+  "v-truss-iso": {
+   "w": 778,
+   "h": 419,
+   "caption": "Truss insert, isometric",
+   "alt": "Isometric view of truss insert"
+  },
+  "v-endplate-inner": {
+   "w": 790,
+   "h": 399,
+   "caption": "Inner endplate",
+   "alt": "CAD of inner endplate"
+  },
+  "v-rw-insert": {
+   "w": 979,
+   "h": 345,
+   "caption": "Rear wing insert",
+   "alt": "Front view of rear wing insert"
+  },
+  "v-stiffener-od": {
+   "w": 828,
+   "h": 681,
+   "caption": "Stiffener, inner and outer diameters",
+   "alt": "Stiffener cross-section"
+  },
+  "v-stiffener": {
+   "w": 1117,
+   "h": 385,
+   "caption": "910 mm stiffener",
+   "alt": "Long cylindrical stiffener"
+  },
+  "v-endplate-design": {
+   "w": 598,
+   "h": 536,
+   "caption": "Designed rear wing endplate",
+   "alt": "CAD of rear wing endplate"
+  },
+  "v-rw-exploded": {
+   "w": 1330,
+   "h": 718,
+   "caption": "Wing assembly, exploded",
+   "alt": "Exploded CAD of wing assembly"
+  },
+  "v-fullbody": {
+   "w": 1250,
+   "h": 628,
+   "caption": "Full-body velocity contour, top view",
+   "alt": "Full car CFD velocity contour from above"
+  },
+  "v-fullbody-stream": {
+   "w": 1100,
+   "h": 437,
+   "caption": "Full-body velocity streamlines",
+   "alt": "Full car CFD streamlines"
+  },
+  "v-fw-tyres": {
+   "w": 1049,
+   "h": 493,
+   "caption": "Front wing steering air over the tyres and A-arms",
+   "alt": "Streamlines from the front wing over tyres"
+  },
+  "v-nose-cfd": {
+   "w": 1228,
+   "h": 513,
+   "caption": "Nose: 13.56 N drag, 8.05 N downforce",
+   "alt": "Pressure contour around the nose"
+  },
+  "v-fw-upper": {
+   "w": 998,
+   "h": 594,
+   "caption": "Final front wing · pressure, upper surface",
+   "alt": "Front wing pressure contour"
+  },
+  "v-fw-lower": {
+   "w": 904,
+   "h": 539,
+   "caption": "Final front wing · pressure, lower surface",
+   "alt": "Front wing pressure contour, lower surface"
+  },
+  "v-fw-main": {
+   "w": 787,
+   "h": 370,
+   "caption": "Front wing main element · pressure",
+   "alt": "Pressure contour on front wing main element"
+  },
+  "v-fw-3el": {
+   "w": 1056,
+   "h": 593,
+   "caption": "Three-element section · velocity",
+   "alt": "Velocity streamlines around three elements"
+  },
+  "v-fw-2el-p": {
+   "w": 1075,
+   "h": 586,
+   "caption": "Two-element section · pressure",
+   "alt": "Pressure contour of two-element wing"
+  },
+  "v-fw-2el-v": {
+   "w": 1075,
+   "h": 598,
+   "caption": "Two-element section · velocity",
+   "alt": "Velocity streamline of two-element wing"
+  },
+  "v-fw-2el-p2": {
+   "w": 1071,
+   "h": 574,
+   "caption": "Two-element section · pressure",
+   "alt": "Pressure contour of two-element wing"
+  },
+  "v-fw-mesh": {
+   "w": 714,
+   "h": 484,
+   "caption": "Poly-Hexcore mesh, front wing",
+   "alt": "Front wing surface mesh"
+  },
+  "v-fw-stream": {
+   "w": 1073,
+   "h": 637,
+   "caption": "Front wing streamlines, front view",
+   "alt": "Streamlines over the front wing"
+  },
+  "v-rw-nondrs": {
+   "w": 814,
+   "h": 484,
+   "caption": "Final rear wing · non-DRS, upper surface",
+   "alt": "Rear wing pressure contour"
+  },
+  "v-rw-drs": {
+   "w": 878,
+   "h": 521,
+   "caption": "Final rear wing · DRS, upper surface",
+   "alt": "Rear wing pressure contour in DRS mode"
+  },
+  "v-rw-nondrs-low": {
+   "w": 911,
+   "h": 532,
+   "caption": "Final rear wing · non-DRS",
+   "alt": "Rear wing pressure contour"
+  },
+  "v-rw-drs-low": {
+   "w": 897,
+   "h": 532,
+   "caption": "Final rear wing · DRS, lower surface",
+   "alt": "Rear wing lower surface pressure in DRS mode"
+  },
+  "v-rw-noend": {
+   "w": 970,
+   "h": 544,
+   "caption": "Rear wing without endplates, DRS",
+   "alt": "Rear wing streamlines without endplates"
+  },
+  "v-rw-drs-stream": {
+   "w": 1074,
+   "h": 623,
+   "caption": "Rear wing streamlines, DRS",
+   "alt": "Rear wing streamlines in DRS mode"
+  },
+  "v-rw-stream": {
+   "w": 1039,
+   "h": 619,
+   "caption": "Rear wing streamlines, non-DRS",
+   "alt": "Rear wing streamlines"
+  },
+  "v-main-2d": {
+   "w": 755,
+   "h": 337,
+   "caption": "Main element, 2D CFD",
+   "alt": "2D airfoil velocity contour"
+  },
+  "v-main-2d-b": {
+   "w": 755,
+   "h": 337,
+   "caption": "Main element, 2D CFD",
+   "alt": "2D airfoil velocity contour"
+  },
+  "v-multi-2d": {
+   "w": 1242,
+   "h": 577,
+   "caption": "Multi-element rear wing, 2D",
+   "alt": "Multi-element airfoil CFD"
+  },
+  "v-e423": {
+   "w": 849,
+   "h": 828,
+   "caption": "Eppler E423 polars",
+   "alt": "Airfoil polar plots for E423"
+  },
+  "v-e387": {
+   "w": 701,
+   "h": 670,
+   "caption": "Eppler E387 polars",
+   "alt": "Airfoil polar plots for E387"
+  },
+  "v-sidepod-stream": {
+   "w": 683,
+   "h": 692,
+   "caption": "Left sidepod velocity streamlines",
+   "alt": "Streamlines through the left sidepod"
+  },
+  "v-sidepod-norad": {
+   "w": 643,
+   "h": 474,
+   "caption": "Right sidepod, without radiator",
+   "alt": "Streamlines in right sidepod without radiator"
+  },
+  "v-sidepod-rad": {
+   "w": 990,
+   "h": 696,
+   "caption": "Right sidepod, with radiator",
+   "alt": "Streamlines in right sidepod with radiator"
+  },
+  "v-sidepod-mesh": {
+   "w": 606,
+   "h": 276,
+   "caption": "Left sidepod mesh",
+   "alt": "Mesh of left sidepod"
+  },
+  "v-sidepod-infl": {
+   "w": 942,
+   "h": 464,
+   "caption": "Inflation layers, right sidepod",
+   "alt": "Mesh with inflation layers"
+  },
+  "v-sidepod-infl2": {
+   "w": 723,
+   "h": 467,
+   "caption": "Inflation layers, close-up",
+   "alt": "Close-up of inflation layer mesh"
+  },
+  "v-skid-front": {
+   "w": 1033,
+   "h": 472,
+   "caption": "Full-body streamlines, front view",
+   "alt": "Full car streamlines, front view"
+  },
+  "v-skid-rear": {
+   "w": 1052,
+   "h": 495,
+   "caption": "Full-body streamlines, rear view",
+   "alt": "Full car streamlines, rear view"
+  },
+  "v-domain": {
+   "w": 1207,
+   "h": 683,
+   "caption": "Computational domain",
+   "alt": "Isometric view of CFD domain"
+  },
+  "v-domain-mesh": {
+   "w": 978,
+   "h": 293,
+   "caption": "Meshed domain, side view",
+   "alt": "Side view of meshed domain"
+  },
+  "v-domain-top": {
+   "w": 1101,
+   "h": 513,
+   "caption": "Meshed domain, top view",
+   "alt": "Top view of meshed domain"
+  },
+  "v-skid-domain": {
+   "w": 874,
+   "h": 720,
+   "caption": "Skidpad domain",
+   "alt": "Curved skidpad CFD domain"
+  },
+  "v-skid-mesh": {
+   "w": 873,
+   "h": 552,
+   "caption": "Skidpad meshed domain",
+   "alt": "Mesh of skidpad domain"
+  },
+  "v-cop-linear": {
+   "w": 1396,
+   "h": 653,
+   "caption": "Centre of pressure, linear",
+   "alt": "Diagram of centre of pressure on car"
+  },
+  "v-cop-linear2": {
+   "w": 1141,
+   "h": 639,
+   "caption": "Centre of pressure by component, linear",
+   "alt": "Top-view diagram of centre of pressure"
+  },
+  "v-cop-skid": {
+   "w": 1280,
+   "h": 529,
+   "caption": "Centre of pressure, skidpad",
+   "alt": "Side diagram of centre of pressure"
+  },
+  "v-cop-skid2": {
+   "w": 1143,
+   "h": 671,
+   "caption": "Centre-of-pressure points, skidpad",
+   "alt": "Top-view diagram of centre of pressure, skidpad"
+  },
+  "v-sp-stress-setup": {
+   "w": 1052,
+   "h": 428,
+   "caption": "Side panel load case: driver egress",
+   "alt": "Side panel stress analysis setup"
+  },
+  "v-ply1": {
+   "w": 998,
+   "h": 560,
+   "caption": "Ply 1",
+   "alt": "Composite ply 1"
+  },
+  "v-ply2": {
+   "w": 959,
+   "h": 541,
+   "caption": "Ply 2",
+   "alt": "Composite ply 2"
+  },
+  "v-ply4": {
+   "w": 837,
+   "h": 469,
+   "caption": "Ply 4",
+   "alt": "Composite ply 4"
+  },
+  "v-sp-mesh": {
+   "w": 1079,
+   "h": 438,
+   "caption": "Shell mesh",
+   "alt": "Side panel mesh"
+  },
+  "v-sp-iso": {
+   "w": 897,
+   "h": 492,
+   "caption": "Side panel, isometric",
+   "alt": "Isometric side panel model"
+  },
+  "v-sp-stress": {
+   "w": 1148,
+   "h": 605,
+   "caption": "Stress",
+   "alt": "Stress contour on side panel"
+  },
+  "v-sp-disp": {
+   "w": 1147,
+   "h": 608,
+   "caption": "Displacement",
+   "alt": "Displacement contour on side panel"
+  },
+  "v-sp-cstress": {
+   "w": 1148,
+   "h": 603,
+   "caption": "Composite stresses",
+   "alt": "Composite stress contour"
+  },
+  "v-sp-cstrain": {
+   "w": 1078,
+   "h": 605,
+   "caption": "Composite strains",
+   "alt": "Composite strain contour"
+  },
+  "v-layup-nose": {
+   "w": 1085,
+   "h": 942,
+   "caption": "Hand lay-up · nose",
+   "alt": "Team laying up carbon fibre on the nose mould"
+  },
+  "v-layup-sp": {
+   "w": 935,
+   "h": 523,
+   "caption": "Hand lay-up · side panel",
+   "alt": "Hand lay-up of a side panel with resin brush"
+  },
+  "v-vacuum-sp": {
+   "w": 828,
+   "h": 866,
+   "caption": "Vacuum bagging · side panel",
+   "alt": "Side panel under vacuum bag"
+  },
+  "v-vacuum-nose": {
+   "w": 821,
+   "h": 412,
+   "caption": "Vacuum bagging · nose",
+   "alt": "Nose under vacuum bag"
+  },
+  "v-layup-floor": {
+   "w": 1176,
+   "h": 511,
+   "caption": "Hand lay-up · floor",
+   "alt": "Carbon fibre floor lay-up"
+  },
+  "v-layup-pods": {
+   "w": 533,
+   "h": 495,
+   "caption": "Hand lay-up · sidepods",
+   "alt": "Sidepod lay-up on mould"
+  },
+  "v-mould-nose": {
+   "w": 715,
+   "h": 1265,
+   "caption": "Nose mould",
+   "alt": "White nose mould"
+  },
+  "v-mould-sp": {
+   "w": 1201,
+   "h": 336,
+   "caption": "Side panel moulds",
+   "alt": "Side panel moulds"
+  },
+  "v-cfrp": {
+   "w": 350,
+   "h": 301,
+   "caption": "CFRP, before resin",
+   "alt": "Carbon-fibre fabric"
+  },
+  "v-main-element": {
+   "w": 1397,
+   "h": 554,
+   "caption": "Front wing main element",
+   "alt": "Long carbon fibre wing element"
+  },
+  "v-elements-core": {
+   "w": 462,
+   "h": 608,
+   "caption": "First and second elements, core inside",
+   "alt": "Carbon wing elements with core"
+  },
+  "v-rw-main": {
+   "w": 787,
+   "h": 590,
+   "caption": "Rear wing main element",
+   "alt": "Rear wing main element on bench"
+  },
+  "v-rw-first": {
+   "w": 594,
+   "h": 948,
+   "caption": "Rear wing first element",
+   "alt": "Narrow carbon wing element"
+  },
+  "v-rw-endplate": {
+   "w": 650,
+   "h": 867,
+   "caption": "Manufactured rear wing endplate",
+   "alt": "Carbon fibre endplate"
+  },
+  "v-sandwich": {
+   "w": 589,
+   "h": 787,
+   "caption": "Endplate sandwich panel",
+   "alt": "Carbon sandwich panel"
+  },
+  "v-truss": {
+   "w": 662,
+   "h": 801,
+   "caption": "Rear wing truss",
+   "alt": "Machined truss part"
+  },
+  "v-rod-mount": {
+   "w": 727,
+   "h": 602,
+   "caption": "Cross-rod stiffener mount",
+   "alt": "Metal mount bonded to carbon"
+  },
+  "v-rod": {
+   "w": 567,
+   "h": 799,
+   "caption": "Cross-rod stiffeners",
+   "alt": "Crossed carbon rods"
+  },
+  "v-spacer": {
+   "w": 494,
+   "h": 526,
+   "caption": "Spacer",
+   "alt": "Machined spacer"
+  },
+  "diat-sph": {
+   "w": 576,
+   "h": 362,
+   "caption": "SPH bird disintegrating on the leading edge",
+   "alt": "SPH particles hitting a composite wing"
+  },
+  "diat-sph2": {
+   "w": 1218,
+   "h": 467,
+   "caption": "SPH projectile, total deformation",
+   "alt": "Deformed wing skin under SPH impact"
+  },
+  "diat-final-def": {
+   "w": 1043,
+   "h": 494,
+   "caption": "Final iteration: MAT*59 with erosion · deformation",
+   "alt": "Wing deformation contour"
+  },
+  "diat-final-stress": {
+   "w": 1141,
+   "h": 583,
+   "caption": "Final iteration · equivalent stress",
+   "alt": "Wing stress contour"
+  },
+  "diat-lag": {
+   "w": 549,
+   "h": 537,
+   "caption": "Lagrangian bird: mesh distortion",
+   "alt": "Distorted Lagrangian bird mesh"
+  },
+  "diat-lag-impact": {
+   "w": 1079,
+   "h": 515,
+   "caption": "Impact with a Lagrangian bird",
+   "alt": "Lagrangian bird impacting wing"
+  },
+  "diat-r140": {
+   "w": 1076,
+   "h": 584,
+   "caption": "Total deformation",
+   "alt": "Wing deformation contour"
+  },
+  "diat-r141": {
+   "w": 1186,
+   "h": 590,
+   "caption": "Von Mises stress",
+   "alt": "Wing stress contour"
+  },
+  "diat-r142": {
+   "w": 1167,
+   "h": 568,
+   "caption": "Directional deformation (Y)",
+   "alt": "Wing deformation contour"
+  },
+  "diat-r143": {
+   "w": 1287,
+   "h": 580,
+   "caption": "Total deformation",
+   "alt": "Wing deformation contour"
+  },
+  "diat-r144": {
+   "w": 928,
+   "h": 550,
+   "caption": "Equivalent stress",
+   "alt": "Wing stress contour"
+  },
+  "diat-r147": {
+   "w": 960,
+   "h": 496,
+   "caption": "Total deformation",
+   "alt": "Wing deformation contour"
+  },
+  "diat-r148": {
+   "w": 907,
+   "h": 481,
+   "caption": "Von Mises stress",
+   "alt": "Wing stress contour"
+  },
+  "diat-r149": {
+   "w": 934,
+   "h": 528,
+   "caption": "Total deformation",
+   "alt": "Wing deformation contour"
+  },
+  "diat-r150": {
+   "w": 979,
+   "h": 655,
+   "caption": "Von Mises stress",
+   "alt": "Wing stress contour"
+  },
+  "diat-r151": {
+   "w": 779,
+   "h": 413,
+   "caption": "Total deformation",
+   "alt": "Wing deformation contour"
+  },
+  "diat-r154": {
+   "w": 1182,
+   "h": 424,
+   "caption": "Total deformation",
+   "alt": "Wing deformation contour"
+  },
+  "diat-r155": {
+   "w": 1058,
+   "h": 651,
+   "caption": "Equivalent stress",
+   "alt": "Wing stress contour"
+  },
+  "diat-cad": {
+   "w": 957,
+   "h": 661,
+   "caption": "Bird and wing assembly",
+   "alt": "CAD of a bird shape in front of a wing"
+  },
+  "diat-mesh": {
+   "w": 928,
+   "h": 549,
+   "caption": "Wing mesh",
+   "alt": "Mesh of wing"
+  },
+  "diat-particles": {
+   "w": 451,
+   "h": 345,
+   "caption": "Particle mesh of the bird (SPH)",
+   "alt": "Particle mesh"
+  },
+  "diat-bc": {
+   "w": 524,
+   "h": 601,
+   "caption": "Boundary conditions",
+   "alt": "Boundary condition setup"
+  },
+  "diat-plies": {
+   "w": 997,
+   "h": 456,
+   "caption": "All plies in Ansys ACP",
+   "alt": "Ply stack in Ansys ACP"
+  },
+  "diat-250": {
+   "w": 858,
+   "h": 497,
+   "caption": "Bird velocity: 250 m/s",
+   "alt": "Wing with bird at 250 m/s boundary condition"
+  },
+  "diat-jet": {
+   "w": 479,
+   "h": 359,
+   "caption": "Where the problem is real",
+   "alt": "Fighter aircraft and engine in a hangar"
+  },
+  "diat-flags": {
+   "w": 621,
+   "h": 565,
+   "caption": "DIAT · DRDO, Pune",
+   "alt": "Flags of the Indian armed forces"
+  },
+  "crompton-cfd": {
+   "w": 1040,
+   "h": 552,
+   "caption": "BLDC fan blade · velocity magnitude",
+   "alt": "Velocity contour on a three-blade ceiling fan"
+  },
+  "crompton-opt": {
+   "w": 621,
+   "h": 381,
+   "caption": "Surrogate-in-the-loop optimisation, NACA 0012 test case",
+   "alt": "Optimisation plot with L/D history"
+  },
+  "fan-streamlines": {
+   "w": 1000,
+   "h": 800,
+   "caption": "Optimised blade · streamlines (open-source follow-up)",
+   "alt": "Fan streamlines"
+  },
+  "fan-iso": {
+   "w": 910,
+   "h": 780,
+   "caption": "Optimised blade geometry",
+   "alt": "3D plot of optimised fan blade"
+  },
+  "fan-pareto": {
+   "w": 1105,
+   "h": 780,
+   "caption": "CFD-confirmed Pareto front, air vs power",
+   "alt": "Pareto front scatter plot"
+  },
+  "fan-parity": {
+   "w": 1430,
+   "h": 1170,
+   "caption": "Surrogate vs CFD parity",
+   "alt": "Parity plots"
+  },
+  "fan-blade-p": {
+   "w": 1000,
+   "h": 800,
+   "caption": "Blade surface pressure",
+   "alt": "Fan blade pressure contour"
+  },
+  "fan-umag": {
+   "w": 1000,
+   "h": 800,
+   "caption": "The jet the optimiser found",
+   "alt": "Velocity slice under the fan"
+  },
+  "mdo-surface-cp": {
+   "w": 1540,
+   "h": 845,
+   "caption": "SU2 · surface pressure on the wing",
+   "alt": "Wing coloured by pressure coefficient"
+  },
+  "mdo-mach": {
+   "w": 1540,
+   "h": 845,
+   "caption": "SU2 · Mach slice",
+   "alt": "Mach number slice around a wing section"
+  },
+  "mdo-failure": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "Failure index across the composite skin",
+   "alt": "Wing coloured by failure index"
+  },
+  "mdo-cp-mach": {
+   "w": 1800,
+   "h": 720,
+   "caption": "Optimised wing · Cp and Mach",
+   "alt": "Planform plots of Cp and Mach"
+  },
+  "mdo-deflection": {
+   "w": 1800,
+   "h": 771,
+   "caption": "MYSTRAN deflection",
+   "alt": "Wing deflection plot"
+  },
+  "mdo-sizing": {
+   "w": 1800,
+   "h": 750,
+   "caption": "Final ply sizing per zone",
+   "alt": "Bar charts of ply thickness"
+  },
+  "pinn-fields": {
+   "w": 1800,
+   "h": 1140,
+   "caption": "PINN flow fields through the nozzle",
+   "alt": "Velocity and pressure fields in a nozzle"
+  },
+  "pinn-compare": {
+   "w": 1680,
+   "h": 1330,
+   "caption": "PINN vs OpenFOAM, same nozzle",
+   "alt": "Side-by-side PINN and OpenFOAM fields"
+  },
+  "pinn-timing": {
+   "w": 1190,
+   "h": 770,
+   "caption": "Amortisation: train once, query for ~free",
+   "alt": "Cost vs number of designs plot"
+  },
+  "pinn-sweep": {
+   "w": 1680,
+   "h": 1540,
+   "caption": "Design sweep over throat diameter",
+   "alt": "Grid of sweep plots"
+  },
+  "sus-live-map": {
+   "w": 2200,
+   "h": 1375,
+   "caption": "Live: every issue pinned to its ward",
+   "alt": "Sushaasan web app showing Pune ward map and issue markers"
+  },
+  "sus-live-phone": {
+   "w": 780,
+   "h": 1688,
+   "caption": "On a phone",
+   "alt": "Sushaasan mobile view"
+  },
+  "sus-dashboard": {
+   "w": 2200,
+   "h": 1375,
+   "caption": "Transparency dashboard",
+   "alt": "Sushaasan transparency dashboard"
+  },
+  "sus-wards": {
+   "w": 2200,
+   "h": 1375,
+   "caption": "Ward by ward, by category",
+   "alt": "Grid of wards shaded by report count"
+  },
+  "sus-deck-cover": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "Seva First Innovation Challenge 2026",
+   "alt": "Sushaasan pitch deck cover"
+  },
+  "sus-deck-problem": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "The problem",
+   "alt": "Pitch slide: no middle layer to escalate a complaint"
+  },
+  "sus-deck-solution": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "The solution",
+   "alt": "Pitch slide: a costed brief, not a hundred tickets"
+  },
+  "sus-deck-feasibility": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "Feasibility",
+   "alt": "Pitch slide: live on Pune data"
+  },
+  "sus-deck-impact": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "Impact & scale",
+   "alt": "Pitch slide: when the brief replaces the backlog"
+  },
+  "rself-home": {
+   "w": 2000,
+   "h": 1250,
+   "caption": "rself.tech",
+   "alt": "RSelf website hero: Building intelligence. Connecting lives."
+  },
+  "rself-about": {
+   "w": 2000,
+   "h": 1250,
+   "caption": "One intelligence. Every kind of connection.",
+   "alt": "RSelf about section"
+  },
+  "dateify-home": {
+   "w": 2000,
+   "h": 1250,
+   "caption": "dateify.app · less swiping, more butterflies",
+   "alt": "Dateify landing page"
+  },
+  "dateify-feel": {
+   "w": 2000,
+   "h": 1250,
+   "caption": "How dating ought to feel",
+   "alt": "Dateify feature cards"
+  },
+  "dateify-phone": {
+   "w": 780,
+   "h": 1688,
+   "caption": "Dateify on a phone",
+   "alt": "Dateify mobile landing page"
+  },
+  "rself-deck-traits": {
+   "w": 1800,
+   "h": 1012,
+   "caption": "From the deck: personality as a latent space",
+   "alt": "Slide showing Big Five traits and an encoder-decoder network"
+  },
+  "mvawt-home": {
+   "w": 2000,
+   "h": 1250,
+   "caption": "Project MVAWT",
+   "alt": "MVAWT website: every passing truck is an untapped power plant"
+  },
+  "mvawt-river": {
+   "w": 2000,
+   "h": 1250,
+   "caption": "A river of wind along every highway",
+   "alt": "MVAWT website section"
+  },
+  "antigravity": {
+   "w": 640,
+   "h": 640,
+   "caption": "AntiGravity",
+   "alt": "Abstract green-lit geometric artwork"
+  }
+ },
+ "groups": [
+  {
+   "id": "life",
+   "label": "Life",
+   "items": [
+    "portrait",
+    "vit-campus",
+    "basketball",
+    "workshop-teach",
+    "workshop-room",
+    "workshop-group",
+    "workshop-screens",
+    "siemens-team",
+    "siemens-testing"
+   ]
+  },
+  {
+   "id": "lab-vit",
+   "label": "University research",
+   "items": [
+    "bearing-rig",
+    "bearing-sensors",
+    "bearing-paper",
+    "plasma-device",
+    "plasma-diagram"
+   ]
+  },
+  {
+   "id": "v-race",
+   "label": "Race",
+   "items": [
+    "veloce-car",
+    "veloce-team",
+    "veloce-pit",
+    "veloce-rank"
+   ]
+  },
+  {
+   "id": "v-cad",
+   "label": "Design",
+   "items": [
+    "v-nose-planes",
+    "v-hoop",
+    "v-nose-final",
+    "v-sidepanel-cad",
+    "v-sidepanel-final",
+    "v-sidepod-outlet",
+    "v-sidepod-front",
+    "v-sidepod-top",
+    "v-sidepod-side",
+    "v-radiator",
+    "v-sidepod-dims",
+    "v-sidepod-sketch",
+    "v-rear-right-off",
+    "v-rear-right-on",
+    "v-power-off",
+    "v-power-on",
+    "v-motor-off",
+    "v-motor-on",
+    "v-damper-rear",
+    "v-damper-iso",
+    "v-fw-exploded",
+    "v-truss-front",
+    "v-truss-iso",
+    "v-endplate-inner",
+    "v-rw-insert",
+    "v-stiffener-od",
+    "v-stiffener",
+    "v-endplate-design",
+    "v-rw-exploded"
+   ]
+  },
+  {
+   "id": "v-cfd",
+   "label": "Simulate",
+   "items": [
+    "v-fullbody",
+    "v-fullbody-stream",
+    "v-fw-tyres",
+    "v-nose-cfd",
+    "v-fw-upper",
+    "v-fw-lower",
+    "v-fw-main",
+    "v-fw-3el",
+    "v-fw-2el-p",
+    "v-fw-2el-v",
+    "v-fw-2el-p2",
+    "v-fw-mesh",
+    "v-fw-stream",
+    "v-rw-nondrs",
+    "v-rw-drs",
+    "v-rw-nondrs-low",
+    "v-rw-drs-low",
+    "v-rw-noend",
+    "v-rw-drs-stream",
+    "v-rw-stream",
+    "v-main-2d",
+    "v-main-2d-b",
+    "v-multi-2d",
+    "v-e423",
+    "v-e387",
+    "v-sidepod-stream",
+    "v-sidepod-norad",
+    "v-sidepod-rad",
+    "v-sidepod-mesh",
+    "v-sidepod-infl",
+    "v-sidepod-infl2",
+    "v-skid-front",
+    "v-skid-rear",
+    "v-domain",
+    "v-domain-mesh",
+    "v-domain-top",
+    "v-skid-domain",
+    "v-skid-mesh",
+    "v-cop-linear",
+    "v-cop-linear2",
+    "v-cop-skid",
+    "v-cop-skid2"
+   ]
+  },
+  {
+   "id": "v-fea",
+   "label": "Structure",
+   "items": [
+    "v-sp-stress-setup",
+    "v-ply1",
+    "v-ply2",
+    "v-ply4",
+    "v-sp-mesh",
+    "v-sp-iso",
+    "v-sp-stress",
+    "v-sp-disp",
+    "v-sp-cstress",
+    "v-sp-cstrain"
+   ]
+  },
+  {
+   "id": "v-make",
+   "label": "Make",
+   "items": [
+    "v-layup-nose",
+    "v-layup-sp",
+    "v-vacuum-sp",
+    "v-vacuum-nose",
+    "v-layup-floor",
+    "v-layup-pods",
+    "v-mould-nose",
+    "v-mould-sp",
+    "v-cfrp",
+    "v-main-element",
+    "v-elements-core",
+    "v-rw-main",
+    "v-rw-first",
+    "v-rw-endplate",
+    "v-sandwich",
+    "v-truss",
+    "v-rod-mount",
+    "v-rod",
+    "v-spacer"
+   ]
+  },
+  {
+   "id": "diat",
+   "label": "Impact",
+   "items": [
+    "diat-sph",
+    "diat-sph2",
+    "diat-final-def",
+    "diat-final-stress",
+    "diat-lag",
+    "diat-lag-impact",
+    "diat-r140",
+    "diat-r141",
+    "diat-r142",
+    "diat-r143",
+    "diat-r144",
+    "diat-r147",
+    "diat-r148",
+    "diat-r149",
+    "diat-r150",
+    "diat-r151",
+    "diat-r154",
+    "diat-r155"
+   ]
+  },
+  {
+   "id": "diat-setup",
+   "label": "Setup",
+   "items": [
+    "diat-cad",
+    "diat-mesh",
+    "diat-particles",
+    "diat-bc",
+    "diat-plies",
+    "diat-250",
+    "diat-jet",
+    "diat-flags"
+   ]
+  },
+  {
+   "id": "crompton",
+   "label": "Fan",
+   "items": [
+    "crompton-cfd",
+    "crompton-opt",
+    "fan-streamlines",
+    "fan-iso",
+    "fan-pareto",
+    "fan-parity",
+    "fan-blade-p",
+    "fan-umag"
+   ]
+  },
+  {
+   "id": "mdo",
+   "label": "MDO",
+   "items": [
+    "mdo-surface-cp",
+    "mdo-mach",
+    "mdo-failure",
+    "mdo-cp-mach",
+    "mdo-deflection",
+    "mdo-sizing"
+   ]
+  },
+  {
+   "id": "pinn",
+   "label": "PINN",
+   "items": [
+    "pinn-fields",
+    "pinn-compare",
+    "pinn-timing",
+    "pinn-sweep"
+   ]
+  },
+  {
+   "id": "sushaasan",
+   "label": "Sushaasan",
+   "items": [
+    "sus-deck-cover",
+    "sus-deck-problem",
+    "sus-deck-solution",
+    "sus-deck-feasibility",
+    "sus-deck-impact",
+    "sus-live-map",
+    "sus-live-phone",
+    "sus-dashboard",
+    "sus-wards"
+   ]
+  },
+  {
+   "id": "rself",
+   "label": "RSelf",
+   "items": [
+    "rself-home",
+    "rself-about",
+    "dateify-home",
+    "dateify-feel",
+    "dateify-phone",
+    "rself-deck-traits"
+   ]
+  },
+  {
+   "id": "projects",
+   "label": "Projects",
+   "items": [
+    "mvawt-home",
+    "mvawt-river",
+    "antigravity"
+   ]
+  }
+ ]
+}
