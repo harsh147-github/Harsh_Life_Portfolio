@@ -1,13 +1,13 @@
 import { motion } from "motion/react";
 import { useState } from "react";
-import type { Chapter as ChapterT } from "../data/content";
+import type { Act, Chapter as ChapterT } from "../data/content";
 import { mediaGroup } from "../lib/media";
 import { ease } from "../lib/motion";
 import { BrowserFrame, Filmstrip, Mosaic, PhoneFrame, Shot } from "./Gallery";
 import { MotionPlayer } from "./MotionPlayer";
 import { Reveal, SplitLetters } from "./Reveal";
 
-export function Chapter({ c, total }: { c: ChapterT; total: number }) {
+export function Chapter({ c, act, pos }: { c: ChapterT; act: Act; pos: number }) {
   const [archivesOpen, setArchivesOpen] = useState(!c.collapseArchives);
   const archiveCount = c.archives?.reduce((n, a) => n + mediaGroup(a.group).items.length, 0) ?? 0;
   const visual = c.motion && !c.motionWide ? (
@@ -21,15 +21,27 @@ export function Chapter({ c, total }: { c: ChapterT; total: number }) {
   const showcaseKeys = c.showcase ? [...c.showcase.browsers.map((b) => b.k), ...(c.showcase.phone ? [c.showcase.phone] : [])] : [];
 
   return (
-    <section id={c.id} className={`chapter chapter-${c.id}`} data-theme={c.theme} data-label={`${c.index} — ${c.title}`}>
+    <section
+      id={c.id}
+      className={`chapter chapter-${c.id}`}
+      data-theme={c.theme}
+      data-act={act.id}
+      data-label={`${act.title} · ${c.title}`}
+    >
       <header className="ch-head">
         <div className="ch-index">
-          <span className="accent">{c.index}</span> / {String(total).padStart(2, "0")}
+          <span className="ch-act" style={{ ["--c" as string]: act.color }}>
+            <i /> Act {act.num} · {act.title}
+          </span>
+          <span className="ch-pos">
+            <span className="accent">{String(pos + 1).padStart(2, "0")}</span> / {String(act.entries.length).padStart(2, "0")}
+          </span>
         </div>
         <h2 className="ch-title">
           <Reveal className="label">{c.kicker}</Reveal>
-          <span className="display-xl">
+          <span className="ch-name">
             <SplitLetters text={c.title} />
+            <span className="accent">.</span>
           </span>
         </h2>
         <dl className="ch-meta">
@@ -95,9 +107,9 @@ export function Chapter({ c, total }: { c: ChapterT; total: number }) {
           <div className="block-label">
             <span className="accent">●</span> {c.deck.label}
           </div>
-          <div className="deck-grid">
+          <div className="deck-grid" style={{ ["--cols" as string]: c.deck.cols ?? 2, ["--ar" as string]: c.deck.aspect ?? "16 / 9" }}>
             {c.deck.slides.map((k) => (
-              <Shot key={k} k={k} set={c.deck!.slides} className="deck-slide" sizes="(max-width: 860px) 100vw, 50vw" />
+              <Shot key={k} k={k} set={c.deck!.slides} className="deck-slide" sizes="(max-width: 860px) 100vw, 40vw" />
             ))}
           </div>
         </div>

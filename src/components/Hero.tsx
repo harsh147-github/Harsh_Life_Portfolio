@@ -1,52 +1,39 @@
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { motion } from "motion/react";
 import { hero, links } from "../data/content";
+import { media } from "../lib/media";
 import { ease } from "../lib/motion";
 import { scrollToId } from "../lib/scroll";
 import { useTheme } from "../lib/theme";
+import { Journey } from "./Journey";
 import { MotionPlayer } from "./MotionPlayer";
 import { Reveal, SplitLetters } from "./Reveal";
 
 export function Hero() {
   const { mode } = useTheme();
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const drift = useTransform(scrollYProgress, [0, 1], ["0%", "-18%"]);
   const ink = mode === "light" ? "#0a0a0a" : "#f2f2ee";
+  const photo = media("portrait");
 
   return (
-    <section id="top" ref={ref} className="hero" data-theme="base" data-label="Index">
+    <section id="top" className="hero" data-theme="base" data-label="Index">
       <div className="hero-head">
-        <motion.h1 className="wordmark" style={{ y: drift }}>
-          <span className="sr-only">Harsh Sonavane</span>
-          <span className="wordmark-line" aria-hidden>
-            <SplitLetters text={hero.first} delay={1.3} />
-          </span>
-          <span className="wordmark-line" aria-hidden>
-            <SplitLetters text={hero.last} delay={1.45} />
-            <motion.span
-              className="wordmark-dot"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.8, ease, delay: 1.95 }}
-            >
-              .
-            </motion.span>
-          </span>
-        </motion.h1>
-        <aside className="hero-roles">
-          <ul>
-            {hero.roles.map((r, i) => (
-              <Reveal as="li" key={r} delay={1.6 + i * 0.08}>
-                {r}
-              </Reveal>
-            ))}
-          </ul>
-          <Reveal delay={1.9} className="hero-place">
+        <h1 className="hero-name">
+          <SplitLetters text={hero.name} delay={1.25} />
+        </h1>
+        <ul className="hero-roles">
+          {hero.roles.map((r, i) => (
+            <Reveal as="li" key={r} delay={1.55 + i * 0.08}>
+              {r}
+            </Reveal>
+          ))}
+          <Reveal as="li" className="hero-place" delay={1.8}>
             {hero.place}
           </Reveal>
-        </aside>
+        </ul>
       </div>
+
+      <motion.div className="hero-journey" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease, delay: 1.7 }}>
+        <Journey />
+      </motion.div>
 
       <div className="hero-intro">
         <div className="hero-copy">
@@ -79,17 +66,23 @@ export function Hero() {
             </a>
           </Reveal>
         </div>
-        <div className="hero-portrait">
-          <img src="media/portrait.webp" alt="Harsh Sonavane in a convertible, looking over his shoulder" />
-          <span className="hero-portrait-tag">Pune → Bengaluru</span>
-        </div>
+        <figure className="hero-portrait">
+          <img src={photo.src} alt={photo.alt} width={photo.w} height={photo.h} />
+          <figcaption>{photo.caption}</figcaption>
+        </figure>
       </div>
 
       <div className="hero-motion">
+        <div className="hero-motion-head">
+          <Reveal className="label">what I do</Reveal>
+          <Reveal as="p" className="hero-motion-text" delay={0.1}>
+            {hero.whatIDo}
+          </Reveal>
+        </div>
         <MotionPlayer
-          id="airflowWide"
-          inputProps={{ bg: "transparent", ink, accent: ink, inverted: false, labels: false, alphaDeg: 6 }}
-          caption="Potential flow past a Joukowski airfoil, solved live in your browser with Remotion. Where it all started: making air behave."
+          id="operator"
+          inputProps={{ ink, accent: "#ff5a1f" }}
+          caption="Illustrative: a physics-informed neural operator learns how a composite wing bends under load, then predicts the full stress field for every new design instantly. The governing equation sits inside the loss."
         />
       </div>
     </section>

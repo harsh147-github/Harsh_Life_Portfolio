@@ -4,7 +4,7 @@ export const FPS = 30;
 
 export const meta = {
   airflow: { durationInFrames: 600, width: 1600, height: 900 },
-  airflowWide: { durationInFrames: 600, width: 1600, height: 560 },
+  operator: { durationInFrames: 600, width: 1600, height: 720 },
   eigen: { durationInFrames: 375, width: 1600, height: 900 },
   surrogate: { durationInFrames: 420, width: 1600, height: 900 },
   signal: { durationInFrames: 430, width: 1600, height: 900 },

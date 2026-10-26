@@ -1,9 +1,10 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 export type Mode = "light" | "dark";
-type Ctx = { mode: Mode; toggle: () => void; active: { theme: string; label: string } };
+type Active = { theme: string; label: string; act: string };
+type Ctx = { mode: Mode; toggle: () => void; active: Active };
 
-const ThemeCtx = createContext<Ctx>({ mode: "light", toggle: () => {}, active: { theme: "base", label: "" } });
+const ThemeCtx = createContext<Ctx>({ mode: "light", toggle: () => {}, active: { theme: "base", label: "", act: "" } });
 export const useTheme = () => useContext(ThemeCtx);
 
 const read = (): Mode => {
@@ -23,7 +24,7 @@ const read = (): Mode => {
  */
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mode, setMode] = useState<Mode>(read);
-  const [active, setActive] = useState({ theme: "base", label: "" });
+  const [active, setActive] = useState<Active>({ theme: "base", label: "", act: "" });
 
   useEffect(() => {
     document.documentElement.dataset.mode = mode;
@@ -50,7 +51,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
           const el = e.target as HTMLElement;
           sections.forEach((s) => s !== el && s.classList.remove("is-active"));
           el.classList.add("is-active");
-          setActive({ theme: el.dataset.theme || "base", label: el.dataset.label || "" });
+          setActive({ theme: el.dataset.theme || "base", label: el.dataset.label || "", act: el.dataset.act || "" });
         }
       },
       { rootMargin: "-50% 0px -50% 0px" },

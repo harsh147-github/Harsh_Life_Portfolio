@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import {
+  acts,
   achievements,
   education,
   glance,
@@ -8,11 +9,12 @@ import {
   publications,
   sideQuests,
   toolbox,
-  type Chapter,
+  type Act,
 } from "../data/content";
 import { lightbox, media, totalImages } from "../lib/media";
 import { ease } from "../lib/motion";
 import { scrollToId } from "../lib/scroll";
+import { useTheme } from "../lib/theme";
 import { Filmstrip, Shot } from "./Gallery";
 import { Reveal, SplitLetters } from "./Reveal";
 
@@ -58,35 +60,24 @@ export function Glance() {
   );
 }
 
-/** A chapter index that opens the "work" and "ventures" acts. */
-export function Divider({
-  id,
-  kicker,
-  word,
-  line,
-  chapters,
-  theme = "base",
-}: {
-  id: string;
-  kicker: string;
-  word: string;
-  line: string;
-  chapters: Chapter[];
-  theme?: string;
-}) {
+/** Opens an act: number, title, thesis, and the ladder of entries inside it. */
+export function ActDivider({ act }: { act: Act }) {
   return (
-    <section id={id} className="divider" data-theme={theme} data-label={`${kicker} ${word}`}>
-      <div className="divider-head">
-        <Reveal className="label">{kicker}</Reveal>
-        <h2 className="display-xxl">
-          <SplitLetters text={word} />
+    <section id={act.id} className="divider" data-theme={act.theme} data-act={act.id} data-label={`Act ${act.num} · ${act.title}`}>
+      <div className="divider-head" style={{ ["--c" as string]: act.color }}>
+        <Reveal className="divider-kicker">
+          <i /> {act.kicker} · {act.period}
+        </Reveal>
+        <h2 className="display-xxl divider-title">
+          <SplitLetters text={act.title} />
+          <span className="divider-dot">.</span>
         </h2>
         <Reveal as="p" className="divider-line" delay={0.15}>
-          {line}
+          {act.line}
         </Reveal>
       </div>
       <ol className="divider-index">
-        {chapters.map((c, i) => (
+        {act.entries.map((c, i) => (
           <motion.li
             key={c.id}
             initial={{ opacity: 0, y: 24 }}
@@ -95,9 +86,9 @@ export function Divider({
             transition={{ duration: 0.8, ease, delay: i * 0.06 }}
           >
             <a href={`#${c.id}`} onClick={jump(c.id)}>
-              <span className="di-n">{c.index}</span>
+              <span className="di-n">{String(i + 1).padStart(2, "0")}</span>
               <span className="di-t">{c.title}</span>
-              <span className="di-o">{c.org.split(" · ")[0]}</span>
+              <span className="di-o">{c.kicker}</span>
               <span className="di-p">{c.period}</span>
               <span className="di-arrow">→</span>
             </a>
@@ -105,6 +96,24 @@ export function Divider({
         ))}
       </ol>
     </section>
+  );
+}
+
+/** A slim fixed rail that always shows which act you're in. */
+export function ActRail() {
+  const { active } = useTheme();
+  if (!acts.some((a) => a.id === active.act)) return null;
+  return (
+    <nav className="act-rail" aria-label="Acts">
+      {acts.map((a) => (
+        <a key={a.id} href={`#${a.id}`} onClick={jump(a.id)} className={a.id === active.act ? "is-on" : ""} style={{ ["--c" as string]: a.color }}>
+          <span className="act-rail-label">
+            {a.num} · {a.title}
+          </span>
+          <i />
+        </a>
+      ))}
+    </nav>
   );
 }
 

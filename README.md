@@ -6,7 +6,8 @@ A single-page portfolio. It starts in black & white, and each chapter fades into
 
 - **Vite + React + TypeScript**
 - **Remotion** (`@remotion/player`): the motion pieces are real physics, computed in the browser:
-  - `airflow` / `airflowWide`: potential flow around a Joukowski airfoil with the Kutta condition. Particles move at the true local velocity.
+  - `operator` (hero): a physics-informed neural operator predicting the stress field on a composite wing as the design changes.
+  - `airflow`: potential flow around an inverted Joukowski wing (Veloce chapter).
   - `eigen`: exact Euler–Bernoulli beam and Kirchhoff plate mode shapes.
   - `surrogate`: a Gaussian process (RBF kernel, Cholesky solve) learning from 10 samples.
   - `signal`: Sushaasan's complaints → clusters → costed briefs → dispatch.
@@ -16,14 +17,14 @@ A single-page portfolio. It starts in black & white, and each chapter fades into
 
 ## What's on the page
 
-Index → At a glance → The story → **Work** (Veloce Racing, DIAT/DRDO, Crompton, Paninian Aerospace, IISc) → **Ventures** (Sushaasan, RSelf/Dateify, CarbonDistrict) → The lab (public GitHub projects) → Also (publications, university research, life, achievements, toolbox) → Contact.
+Hero (name, interactive journey timeline, intro, neural-operator animation) → At a glance → The story → **Act 01 · Physics-informed ML** (IISc, PINNs-Bernoulli, CFD × ML × CAD) → **Act 02 · Ventures** (Sushaasan, RSelf.tech, CarbonDistrict) → **Act 03 · Aerospace structures** (Paninian Aerospace, DIAT/DRDO) → **Act 04 · Simulation engineering** (Crompton, Veloce Racing, VIT research) → The lab → Also → Contact. Acts run newest first; the timeline runs oldest → now and every bar jumps to its section.
 
-- **184 images.** Every usable figure and photo from the Formula Bharat design report, the DIAT bird-strike thesis, the portfolio deck and the Sushaasan/RSelf pitch deck. Also result figures from the public repos and live screenshots of sushaasan.in, rself.tech, dateify.app and the MVAWT site. Curated mosaics show the highlights, and complete archives scroll horizontally. Any image opens in a lightbox (arrow keys / swipe / Esc).
+- **197 images.** Every usable figure and photo from the Formula Bharat design report, the DIAT bird-strike thesis, the portfolio deck and the Sushaasan/RSelf pitch deck. Also result figures from the public repos and live screenshots of sushaasan.in, rself.tech, dateify.app and the MVAWT site. Curated mosaics show the highlights, and complete archives scroll horizontally. Any image opens in a lightbox (arrow keys / swipe / Esc).
 - Images live in `public/media/<key>.webp` (full size) and `<key>.t.webp` (720px thumbnail). Captions, alt text and dimensions are in `src/data/media.json`.
 
 ## Editing
 
-All copy, numbers, links and which images appear where are in **`src/data/content.ts`**. Image captions are in `src/data/media.json`.
+All copy, numbers, links, the acts, the timeline dates and which images appear where are in **`src/data/content.ts`**. Image captions are in `src/data/media.json`.
 
 ## Scripts
 

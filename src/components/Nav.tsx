@@ -6,10 +6,11 @@ import { useTheme } from "../lib/theme";
 
 const items = [
   { id: "story", label: "Story" },
-  { id: "work", label: "Work" },
+  { id: "piml", label: "PIML" },
   { id: "ventures", label: "Ventures" },
+  { id: "aerospace", label: "Aerospace" },
+  { id: "simulation", label: "Simulation" },
   { id: "lab", label: "Lab" },
-  { id: "also", label: "Also" },
   { id: "contact", label: "Contact" },
 ];
 

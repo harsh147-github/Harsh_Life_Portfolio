@@ -1,10 +1,10 @@
 {
  "items": {
   "portrait": {
-   "w": 690,
-   "h": 720,
-   "caption": "Harsh Sonavane",
-   "alt": "Harsh Sonavane in a convertible, looking over his shoulder"
+   "w": 1080,
+   "h": 1281,
+   "caption": "Graduation day, VIT Pune, on the Veloce Racing car",
+   "alt": "Harsh Sonavane in a red graduation gown and saffron stole, holding an award, sitting on the Veloce Racing car"
   },
   "vit-campus": {
    "w": 479,
@@ -879,7 +879,7 @@
   "fan-streamlines": {
    "w": 1000,
    "h": 800,
-   "caption": "Optimised blade · streamlines (open-source follow-up)",
+   "caption": "Optimised blade · streamlines",
    "alt": "Fan streamlines"
   },
   "fan-iso": {
@@ -911,6 +911,78 @@
    "h": 800,
    "caption": "The jet the optimiser found",
    "alt": "Velocity slice under the fan"
+  },
+  "fan-baseline-umag": {
+   "w": 1000,
+   "h": 800,
+   "caption": "Baseline blade: a weak jet",
+   "alt": "Velocity slice under the baseline fan"
+  },
+  "fan-surrogate-sweep": {
+   "w": 1105,
+   "h": 780,
+   "caption": "Surrogate sweep over the design space",
+   "alt": "Surrogate sweep plots"
+  },
+  "fan-pinn-training": {
+   "w": 910,
+   "h": 520,
+   "caption": "PINN surrogate training curve",
+   "alt": "Training loss curve"
+  },
+  "cmame-fig1": {
+   "w": 1224,
+   "h": 661,
+   "caption": "Fig. 1 · Frozen-basis PIELM: one linear solve, no backpropagation",
+   "alt": "Schematic of the frozen trial basis and the strong- and weak-form reductions"
+  },
+  "cmame-fig2": {
+   "w": 1224,
+   "h": 918,
+   "caption": "Fig. 2 · First five modes of bars and beams: exact vs weak form",
+   "alt": "Grid of 1D mode shapes with exact solution lines and weak-form markers"
+  },
+  "cmame-fig3": {
+   "w": 1046,
+   "h": 907,
+   "caption": "Fig. 3 · 2D Helmholtz cavity: exact, weak form and error",
+   "alt": "Mode shapes of a 2D acoustic cavity with error maps"
+  },
+  "cmame-fig4": {
+   "w": 1046,
+   "h": 1001,
+   "caption": "Fig. 4 · In-plane plate modes and pointwise error",
+   "alt": "In-plane plate mode shapes with error maps"
+  },
+  "cmame-fig5": {
+   "w": 927,
+   "h": 424,
+   "caption": "Fig. 5 · Beam with a point mass, spring and tip mass",
+   "alt": "Diagram of an Euler–Bernoulli beam with attachments"
+  },
+  "cmame-fig6": {
+   "w": 1224,
+   "h": 672,
+   "caption": "Fig. 6 · The four concentrated-mass test cases",
+   "alt": "Diagrams of four beam configurations"
+  },
+  "cmame-fig7": {
+   "w": 1224,
+   "h": 503,
+   "caption": "Fig. 7 · Second mode and shear force: weak vs strong form",
+   "alt": "Line plots comparing weak and strong form solutions"
+  },
+  "cmame-fig8": {
+   "w": 749,
+   "h": 1243,
+   "caption": "Fig. 8 · SSSS and SSFF Kirchhoff plate modes",
+   "alt": "Plate mode shapes for two boundary conditions"
+  },
+  "cmame-fig9": {
+   "w": 1046,
+   "h": 686,
+   "caption": "Fig. 9 · Six lowest modes of the fully free plate",
+   "alt": "Six plate mode shapes with nodal lines"
   },
   "mdo-surface-cp": {
    "w": 1540,
@@ -1103,6 +1175,12 @@
    "h": 640,
    "caption": "AntiGravity",
    "alt": "Abstract green-lit geometric artwork"
+  },
+  "pinn-anim": {
+   "w": 900,
+   "h": 504,
+   "caption": "One trained PINN, every throat diameter: d_t sweeps 0.4 → 1.0",
+   "alt": "Animated PINN flow field as the nozzle throat diameter changes"
   }
  },
  "groups": [
@@ -1309,13 +1387,37 @@
    "label": "Fan",
    "items": [
     "crompton-cfd",
-    "crompton-opt",
+    "crompton-opt"
+   ]
+  },
+  {
+   "id": "fan",
+   "label": "Fan",
+   "items": [
     "fan-streamlines",
     "fan-iso",
     "fan-pareto",
     "fan-parity",
     "fan-blade-p",
-    "fan-umag"
+    "fan-umag",
+    "fan-baseline-umag",
+    "fan-surrogate-sweep",
+    "fan-pinn-training"
+   ]
+  },
+  {
+   "id": "cmame",
+   "label": "Paper",
+   "items": [
+    "cmame-fig1",
+    "cmame-fig2",
+    "cmame-fig3",
+    "cmame-fig4",
+    "cmame-fig5",
+    "cmame-fig6",
+    "cmame-fig7",
+    "cmame-fig8",
+    "cmame-fig9"
    ]
   },
   {
@@ -1334,6 +1436,7 @@
    "id": "pinn",
    "label": "PINN",
    "items": [
+    "pinn-anim",
     "pinn-fields",
     "pinn-compare",
     "pinn-timing",

@@ -2,6 +2,7 @@ import type { ComponentType } from "react";
 import { Airflow } from "./Airflow";
 import { EigenModes } from "./EigenModes";
 import { meta, type CompositionId } from "./meta";
+import { NeuralOperator } from "./NeuralOperator";
 import { SignalToBrief } from "./SignalToBrief";
 import { Surrogate } from "./Surrogate";
 import { PersonaTwin } from "./PersonaTwin";
@@ -22,10 +23,10 @@ export const compositions: Record<CompositionId, Entry> = {
     component: C(Airflow),
     defaultProps: { bg: "#0b0b0b", ink: "#f5f5f5", accent: "#e10600", inverted: true, labels: true, alphaDeg: 8 },
   },
-  airflowWide: {
-    ...meta.airflowWide,
-    component: C(Airflow),
-    defaultProps: { bg: "#fafaf8", ink: "#0a0a0a", accent: "#0a0a0a", inverted: false, labels: false, alphaDeg: 6 },
+  operator: {
+    ...meta.operator,
+    component: C(NeuralOperator),
+    defaultProps: { ink: "#0a0a0a", accent: "#ff5a1f" },
   },
   eigen: { ...meta.eigen, component: C(EigenModes), defaultProps: { bg: "#f3eee3", ink: "#141a3c", accent: "#2d3fbf" } },
   surrogate: { ...meta.surrogate, component: C(Surrogate), defaultProps: { bg: "#e9f3f1", ink: "#062925", accent: "#0e8c7f" } },
