@@ -31,7 +31,7 @@ const pctM = (m: number) => {
 };
 const pct = (d: string) => pctM(toM(d));
 const fmt = (d: string) => (d === "now" ? "now" : `${MONTHS[Number(d.split("-")[1]) - 1]} ${d.split("-")[0]}`);
-const ROW = 40;
+const ROW = 48;
 const NOMINAL = 1000; // px width the label-collision layout assumes
 
 /** Greedy row packing that accounts for each bar's label width. */
@@ -41,7 +41,7 @@ function pack(items: TimelineItem[]) {
     .slice()
     .sort((a, b) => toM(a.from) - toM(b.from))
     .map((it) => {
-      const lw = ((it.label.length * 7.4 + 18) / NOMINAL) * 100;
+      const lw = ((it.label.length * 8.8 + 20) / NOMINAL) * 100;
       const right = pct(it.from) + lw > pct("now") - 0.5;
       const a = right ? pct(it.to) - lw : pct(it.from);
       const b = right ? pct(it.to) : Math.max(pct(it.to), pct(it.from) + lw);

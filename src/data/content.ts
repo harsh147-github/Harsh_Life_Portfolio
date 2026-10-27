@@ -27,9 +27,9 @@ export const hero = {
   name: "Harsh Sonavane",
   roles: ["Physics-informed ML Engineer · IISc", "PINNs & neural operators for aerostructures", "Founder · Sushaasan · RSelf · CarbonDistrict"],
   place: "Namma Bengaluru · 12.97° N, 77.59° E",
-  intro:
-    "I’m Harsh Sonavane, a physics-informed ML engineer at the Indian Institute of Science, in Namma Bengaluru. I don’t limit myself to industrial job applications: I compound the same skill set into ventures, with ML engineering and ambition at the core.",
-  teaser: "And there’s a very interesting story about how I got here.",
+  title: "Physics-Informed Machine Learning Engineer",
+  quote:
+    "Hey, I am Harsh Sonavane, a Physics-Informed ML Researcher at the Indian Institute of Science, Bengaluru, with lots of experience in both motorsports and aerospace engineering. However, I’m extremely ambitious, so I am running two startups alongside a carbon fibre high-performance parts manufacturing business in Pune as well – so just managing a few interests in life, that’s it. If you find me interesting, please go through my story below.",
   whatIDo:
     "I build physics-informed neural networks and neural operators: models that learn the governing equations of a structure, then predict its full response for a new design in a single forward pass, instead of a fresh simulation.",
 };

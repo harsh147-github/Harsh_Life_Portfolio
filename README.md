@@ -6,7 +6,7 @@ A single-page portfolio. It starts in black & white, and each chapter fades into
 
 - **Vite + React + TypeScript**
 - **Remotion** (`@remotion/player`): the motion pieces are real physics, computed in the browser:
-  - `pinnHero` (hero): a physics-informed network on a composite wing: collocation residuals, PDE/BC/data loss, backprop, then stress-field inference per design.
+  - `pinnHero`: a physics-informed network on a composite wing (kept for Remotion Studio; no longer on the page).
   - `veloceFlow`: the Veloce full-body CFD image with streamlines traced live over it (velocity from the image colour bar, direction from potential flow around the car; field in `src/remotion/veloceField.ts`).
   - `eigen`: exact Euler–Bernoulli beam and Kirchhoff plate mode shapes.
   - `surrogate`: a Gaussian process (RBF kernel, Cholesky solve) learning from 10 samples.
@@ -17,7 +17,7 @@ A single-page portfolio. It starts in black & white, and each chapter fades into
 
 ## What's on the page
 
-Hero (name, interactive journey timeline, intro, neural-operator animation) → At a glance → The story → **Act 01 · Physics-informed ML** (IISc, PINNs-Bernoulli, CFD × ML × CAD) → **Act 02 · Ventures** (Sushaasan, RSelf.tech, CarbonDistrict) → **Act 03 · Aerospace structures** (Paninian Aerospace, DIAT/DRDO) → **Act 04 · Simulation engineering** (Crompton, Veloce Racing, VIT research) → The lab → Also → Contact. Acts run newest first; the timeline runs oldest → now and every bar jumps to its section.
+Hero (photo, title and intro quote, then the interactive journey timeline) → At a glance → The story → **Act 01 · Physics-informed ML** (IISc, PINNs-Bernoulli, CFD × ML × CAD) → **Act 02 · Ventures** (Sushaasan, RSelf.tech, CarbonDistrict) → **Act 03 · Aerospace structures** (Paninian Aerospace, DIAT/DRDO) → **Act 04 · Simulation engineering** (Crompton, Veloce Racing, VIT research) → The lab → Also → Contact. Acts run newest first; the timeline runs oldest → now and every bar jumps to its section.
 
 - **197 images.** Every usable figure and photo from the Formula Bharat design report, the DIAT bird-strike thesis, the portfolio deck and the Sushaasan/RSelf pitch deck. Also result figures from the public repos and live screenshots of sushaasan.in, rself.tech, dateify.app and the MVAWT site. Curated mosaics show the highlights, and complete archives scroll horizontally. Any image opens in a lightbox (arrow keys / swipe / Esc).
 - Images live in `public/media/<key>.webp` (full size) and `<key>.t.webp` (720px thumbnail). Captions, alt text and dimensions are in `src/data/media.json`.
