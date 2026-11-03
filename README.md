@@ -40,7 +40,7 @@ npm run studio     # open Remotion Studio to tweak or render the compositions as
 
 **Live at https://harshsonavane.com.** Cloudflare Workers Builds deploys this branch on every push: it runs `npm run build`, then `npx wrangler deploy`, which uploads `dist/` as static assets and attaches `harshsonavane.com` and `www.harshsonavane.com` (see `wrangler.jsonc`).
 
-The older GitHub Pages copy is still available: `npm run deploy` builds the site and publishes `dist/` to the `gh-pages` branch, which GitHub Pages serves at https://harsh147-github.github.io/Harsh_Life_Portfolio/. To use a custom domain later, add it under the repo's Settings → Pages and put a `CNAME` file containing the domain in `public/`.
+The old GitHub Pages address (https://harsh147-github.github.io/Harsh_Life_Portfolio/) redirects to harshsonavane.com, keeping any `#section` in the link. `npm run deploy:gh-redirect` republishes that redirect page.
 
 The build uses a relative base (`./`), so `dist/` can be deployed to any static host (Vercel, Netlify, GitHub Pages).
 

@@ -1,23 +1,22 @@
 #!/usr/bin/env bash
-# Publish the production build (dist/) to the gh-pages branch for GitHub Pages.
-# Usage: npm run deploy
+# The site now lives on Cloudflare (harshsonavane.com, deployed by Cloudflare Workers Builds on push).
+# This publishes a small redirect page to the old GitHub Pages address so existing links still work.
+# Usage: npm run deploy:gh-redirect
 set -euo pipefail
 
 root="$(git rev-parse --show-toplevel)"
 remote="$(git -C "$root" remote get-url origin)"
-source_sha="$(git -C "$root" rev-parse --short HEAD)"
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
 
-cp -R "$root/dist/." "$work/"
-touch "$work/.nojekyll"          # serve files as-is, no Jekyll processing
-cp "$work/index.html" "$work/404.html"
+cp "$root"/scripts/gh-pages-redirect/*.html "$work/"
+touch "$work/.nojekyll"
 
 cd "$work"
 git init -q -b gh-pages
 git add -A
 git -c user.name="$(git -C "$root" config user.name || echo deploy)" \
     -c user.email="$(git -C "$root" config user.email || echo deploy@localhost)" \
-    commit -q -m "Deploy ${source_sha}"
+    commit -q -m "Redirect to harshsonavane.com"
 git push -q --force "$remote" gh-pages
-echo "Deployed ${source_sha} to gh-pages"
+echo "Published GitHub Pages redirect to harshsonavane.com"

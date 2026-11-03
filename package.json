@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "studio": "remotion studio src/remotion/index.ts",
-    "deploy": "npm run build && bash scripts/deploy-gh-pages.sh"
+    "deploy:gh-redirect": "bash scripts/deploy-gh-pages.sh"
   },
   "dependencies": {
     "@remotion/player": "^4.0.539",
