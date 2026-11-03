@@ -74,7 +74,7 @@ export const story: StoryBeat[] = [
     when: "2022 – 2024",
     where: "Team Veloce Racing",
     title: "Head of Aerodynamics & Composites",
-    body: "Over three seasons and four international competitions I led a 5–6 person sub-team. We designed the team’s first complete carbon-fibre aero package in OpenFOAM (front wing, rear wing with DRS, diffuser) and laid it up by hand: 300 N of downforce and 1.8 s a lap faster. The team reached World Rank 2 (combustion, 2023) and All India Rank 1 at Formula Bharat.",
+    body: "Over three seasons and four national competitions I led a 5–6 person sub-team. We designed the team’s first complete carbon-fibre aero package in OpenFOAM (front wing, rear wing with DRS, diffuser) and laid it up by hand: 300 N of downforce and 1.8 s a lap faster. The team reached World Rank 2 (combustion, 2023) and All India Rank 1 at Formula Bharat.",
     thread: "That is where I learned CFD and composites, and how many simulations a good design takes.",
     anchor: "veloce",
   },
@@ -555,7 +555,7 @@ export const acts: Act[] = [
       org: "Team Veloce Racing India · Formula Student, VIT Pune",
       role: "Head of Aerodynamics & Composite Structures",
       period: "Feb 2022 – Oct 2024",
-      lede: "Three seasons, four international competitions and a 5–6 person sub-team. I designed the team’s first complete carbon-fibre aero package over 100+ OpenFOAM iterations, then manufactured it by hand.",
+      lede: "Three seasons, four national competitions and a 5–6 person sub-team. I designed the team’s first complete carbon-fibre aero package over 100+ OpenFOAM iterations, then manufactured it by hand.",
       points: [
         "Front wing, rear wing (with DRS mode) and diffuser, plus nose, sidepods, side panels, floor and rear body",
         "Weight distribution moved from 48/52 to 49.1/50.9",
