@@ -372,7 +372,7 @@ export const acts: Act[] = [
       id: "carbon",
       theme: "carbon",
       card: {
-        role: "Founder & COO",
+        role: "Founder",
         line: "High-performance carbon-fibre car parts, built with the methods from the race car.",
         stats: [],
         visual: { kind: "vignette", scene: "weave" },
@@ -380,7 +380,7 @@ export const acts: Act[] = [
       kicker: "High-performance carbon-fibre parts",
       title: "CarbonDistrict",
       org: "CarbonDistrict · Pune",
-      role: "Founder & COO",
+      role: "Founder",
       period: "Ongoing",
       lede: "High-performance carbon-fibre automotive parts, built with the same CFRP design and hand lay-up methods we developed on the Formula Student car. The craft that started all of this, turned into a business.",
       points: ["CFRP design, tooling, hand lay-up and vacuum bagging", "From race-car aero to road-car parts"],
