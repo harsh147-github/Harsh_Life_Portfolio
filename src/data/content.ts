@@ -25,115 +25,35 @@ export const links = {
 
 export const hero = {
   name: "Harsh Sonavane",
-  roles: ["Physics-informed ML Engineer · IISc", "PINNs & neural operators for aerostructures", "Founder · Sushaasan · RSelf · CarbonDistrict"],
   place: "Namma Bengaluru · 12.97° N, 77.59° E",
   title: "Physics-Informed Machine Learning Engineer",
   quote:
     "Hey, I am Harsh Sonavane, a Physics-Informed ML Researcher at the Indian Institute of Science, Bengaluru, with lots of experience in both motorsports and aerospace engineering. However, I’m extremely ambitious, so I am running two startups alongside a carbon fibre high-performance parts manufacturing business in Pune as well – so just managing a few interests in life, that’s it. If you find me interesting, please go through my story below.",
-  whatIDo:
-    "I build physics-informed neural networks and neural operators: models that learn the governing equations of a structure, then predict its full response for a new design in a single forward pass, instead of a fresh simulation.",
 };
 
-export const marquee = [
-  "Formula Student · World Rank 2",
-  "All India Rank 1 · Formula Bharat 2023",
-  "All India Rank 1 · SAE Supra 2024",
-  "Second author · CMAME (under review)",
-  "Springer · ICMech-REC 2023",
-  "Patent filed · South Africa",
-  "DPIIT-recognised founder",
-  "Sarvam AI startup programme",
-  "Claude for Startups",
-  "Forbes Marshall Best Project 2025",
+/** Six numbers that carry the profile. Each opens its case study. */
+export const numbers: { value: string; label: string; entry: string }[] = [
+  { value: "#2", label: "team world rank, Formula Student 2023", entry: "veloce" },
+  { value: "35–50×", label: "faster vibration solves for structures", entry: "iisc" },
+  { value: "−30%", label: "airframe weight, Mach 0.9 UAVs", entry: "paninian" },
+  { value: "3,000+", label: "designs screened from 10 simulations", entry: "crompton" },
+  { value: "₹9.23 Cr", label: "of civic fixes costed for Pune", entry: "sushaasan" },
+  { value: "0.26 s", label: "per design, where CFD takes 34.6 s", entry: "pinns" },
 ];
-
-/** The profile at a glance — the résumé, without the résumé. */
-export const glance: { label: string; value: string; detail: string; href?: string }[] = [
-  { label: "Now", value: "IISc Bengaluru", detail: "Research Associate, physics-informed ML · NMCAD Lab", href: "iisc" },
-  { label: "Building", value: "3 ventures", detail: "Sushaasan · RSelf.tech · CarbonDistrict", href: "ventures" },
-  { label: "Before", value: "Aerospace & defence", detail: "Paninian Aerospace · Feynman · DIAT (DRDO)", href: "aerospace" },
-  { label: "Raced", value: "World Rank 2", detail: "Head of Aero & Composites, Team Veloce Racing", href: "veloce" },
-  { label: "Published", value: "2 papers", detail: "CMAME (under review) · Springer LNME", href: "also" },
-  { label: "Invented", value: "2 patents filed", detail: "Hybrid vertical-axis wind turbine (South Africa) · compliant steering", href: "lab" },
-  { label: "Trained", value: "B.Tech, VIT Pune", detail: "Mechanical · CGPA 8.83 · GoI merit scholarship", href: "also" },
-  { label: "The move", value: "Model → ship", detail: "Fast, verifiable models of complex systems, deployed as products", href: "story" },
-];
-
-export type StoryBeat = { when: string; where: string; title: string; body: string; thread?: string; anchor?: string };
-
-/** How I got here, in order. Each beat ends with the thread that leads to the next one. */
-export const story: StoryBeat[] = [
-  {
-    when: "2021",
-    where: "VIT Pune",
-    title: "A mechanical engineer from Pune",
-    body: "I joined Vishwakarma Institute of Technology for a B.Tech in Mechanical Engineering on a fully funded Government of India merit scholarship, and finished in the department’s top 5% (CGPA 8.83).",
-    thread: "The next year I joined the college’s Formula Student team.",
-  },
-  {
-    when: "2022 – 2024",
-    where: "Team Veloce Racing",
-    title: "Head of Aerodynamics & Composites",
-    body: "Over three seasons and four national competitions I led a 5–6 person sub-team. We designed the team’s first complete carbon-fibre aero package in OpenFOAM (front wing, rear wing with DRS, diffuser) and laid it up by hand: 300 N of downforce and 1.8 s a lap faster. The team reached World Rank 2 (combustion, 2023) and All India Rank 1 at Formula Bharat.",
-    thread: "That is where I learned CFD and composites, and how many simulations a good design takes.",
-    anchor: "veloce",
-  },
-  {
-    when: "2022 – 2024",
-    where: "VIT Tribology & Fluids Lab",
-    title: "Measuring real hardware",
-    body: "In parallel, as an undergraduate research assistant, I built a 10-sensor test rig to compare plain and herringbone-grooved journal bearings up to 2,500 rpm. The grooved bearings ran 21% hotter, and the study became my first paper (Springer, ICMech-REC 2023). I also built a cold-plasma module with Whirlpool India.",
-    thread: "Experiments taught me what any model has to match.",
-    anchor: "vitlab",
-  },
-  {
-    when: "2024",
-    where: "DIAT (DRDO), Pune",
-    title: "Composite wings under bird strike",
-    body: "For my B.Tech thesis at the Defence Institute of Advanced Technology I simulated birds and projectiles hitting composite wings at 250–500 m/s in LS-DYNA, then re-stacked the CFRP/Kevlar laminate with the Puck failure criterion until peak deformation fell by 30%.",
-    thread: "Each of those runs was expensive, so exploring many designs was out of reach.",
-    anchor: "diat",
-  },
-  {
-    when: "2025",
-    where: "Crompton",
-    title: "The turn: ten simulations were enough",
-    body: "Crompton asked us to cut the power of a 1,200 mm ceiling fan with a budget of ten CFD runs. I trained a Gaussian-process surrogate on those ten, screened over 3,000 blade designs, and confirmed the winners in OpenFOAM: 15% less drive power at the same airflow, and the Forbes Marshall Best Project Award.",
-    thread: "A cheap model that knows its own uncertainty can explore where simulation can’t. The project grew into CFD × ML × CAD, a PINN-surrogate pipeline.",
-    anchor: "crompton",
-  },
-  {
-    when: "2025 – 2026",
-    where: "Feynman → Paninian Aerospace",
-    title: "Composite airframes at Mach 0.9",
-    body: "As a trainee at Feynman Aerospace and then an aerostructural engineer at Paninian, I designed composite airframes for a UAV family flying to Mach 0.9 within 7g: a topology-optimised monocoque 30% lighter with a 20% higher factor of safety. I replaced a commercial workflow with an open-source MDO pipeline that made design iteration 5× faster.",
-    thread: "Industry made the bottleneck obvious: every design change still needed a fresh solve.",
-    anchor: "paninian",
-  },
-  {
-    when: "Aug 2026 – now",
-    where: "IISc Bengaluru",
-    title: "Physics-informed ML for structures",
-    body: "Today I’m a Research Associate in IISc’s NMCAD lab with Prof. Dineshkumar Harursampath. Our weak-form PIELM returns a structure’s whole vibration spectrum in one eigensolve, where iterating the strong form needs 79–111 (under review at CMAME). Alongside it I built PINNs-Bernoulli, a network that stands in for OpenFOAM across a whole family of nozzles at 0.26 s per design.",
-    thread: "Models that obey the physics are fast enough to explore whole design spaces and trustworthy enough to use.",
-    anchor: "iisc",
-  },
-  {
-    when: "2026 – now",
-    where: "Ventures",
-    title: "The same method, pointed outward",
-    body: "Sushaasan (DPIIT-recognised) turns citizens’ complaints into costed, ward-level action plans for Pune’s municipal officers. RSelf.tech applies the aerospace surrogate workflow to people, as human digital twins. CarbonDistrict makes carbon-fibre car parts with the methods from the race car.",
-    thread: "The work below starts here, today, and runs back to the race car.",
-    anchor: "piml",
-  },
-];
-
-export const scaleLadder = ["bearing", "wing", "fan blade", "airframe", "eigenproblem", "city", "person"];
 
 export type Stat = { value: string; label: string };
+/** What a work card shows on the page; the full chapter opens as a case study. */
+export type CardVisual =
+  | { kind: "image"; k: string; fit?: "cover" | "contain" }
+  | { kind: "video" }
+  | { kind: "vignette"; scene: "wing" | "surrogate" | "lattice" | "modes" | "twin" | "weave" }
+  | { kind: "motion"; id: CompositionId; props?: Record<string, unknown> };
+export type Card = { role: string; line: string; stats: Stat[]; visual: CardVisual };
+
 export type Chapter = {
   id: string;
   theme: string;
+  card: Card;
   kicker: string;
   title: string;
   org: string;
@@ -177,6 +97,8 @@ export type Act = {
   line: string;
   color: string;
   theme: string;
+  /** one line for the act header */
+  short: string;
   entries: Chapter[];
 };
 
@@ -190,11 +112,18 @@ export const acts: Act[] = [
     period: "2025 – now",
     line: "Models that obey the physics they predict: physics-informed networks, extreme learning machines and neural surrogates. Fast enough to explore whole design spaces, verifiable enough to trust.",
     color: "#5b6cff",
-    theme: "base",
+    theme: "act-piml",
+    short: "Models that obey the physics they predict.",
     entries: [
     {
       id: "iisc",
       theme: "paper",
+      card: {
+        role: "Research Associate",
+        line: "Teaching a frozen network to return a structure’s whole vibration spectrum in a single solve.",
+        stats: [{ value: "1", label: "eigensolve" }, { value: "35–50×", label: "faster" }, { value: "CMAME", label: "under review" }],
+        visual: { kind: "vignette", scene: "modes" },
+      },
       kicker: "Weak-form PIELM · research",
       title: "IISc Bengaluru",
       headerImage: "iisc-building",
@@ -230,6 +159,12 @@ export const acts: Act[] = [
     {
       id: "pinns",
       theme: "pinn",
+      card: {
+        role: "Open source",
+        line: "One trained network stands in for OpenFOAM across a whole family of nozzles.",
+        stats: [{ value: "0.26 s", label: "per design" }, { value: "0.40%", label: "velocity error" }, { value: "22×", label: "cheaper at scale" }],
+        visual: { kind: "image", k: "pinn-anim", fit: "contain" },
+      },
       kicker: "Parametric PINN · open source",
       title: "PINNs-Bernoulli",
       org: "Open source · github.com/harsh147-github/PINNs---Bernoulli",
@@ -256,6 +191,12 @@ export const acts: Act[] = [
     {
       id: "fan",
       theme: "fan",
+      card: {
+        role: "Open source",
+        line: "CAD → CFD → PINN surrogate → optimiser: a fan blade that moves 7× the air for less power.",
+        stats: [{ value: "+607%", label: "air delivery" }, { value: "−13%", label: "power" }, { value: "1M", label: "designs in 1.6 s" }],
+        visual: { kind: "image", k: "fan-streamlines", fit: "contain" },
+      },
       kicker: "PINN surrogate · shape optimisation",
       title: "CFD × ML × CAD",
       org: "B.Tech final-year project, open-sourced · github.com/harsh147-github",
@@ -290,11 +231,18 @@ export const acts: Act[] = [
     period: "2026 – now",
     line: "The same move, pointed outward: build a fast, verifiable model of a complex system, then ship it as a product. For cities, for people, and back to carbon fibre.",
     color: "#f08a24",
-    theme: "inverse",
+    theme: "act-ventures",
+    short: "The same method, shipped as products.",
     entries: [
     {
       id: "sushaasan",
       theme: "civic",
+      card: {
+        role: "Founder",
+        line: "Turns scattered citizen complaints into costed, ward-level action plans for Pune’s officers.",
+        stats: [{ value: "836", label: "complaints" }, { value: "345", label: "costed plans" }, { value: "₹9.23 Cr", label: "of fixes" }],
+        visual: { kind: "video" },
+      },
       kicker: "Civic AI infrastructure",
       title: "Sushaasan",
       org: "Sushaasan · Civic AI infrastructure · DPIIT recognised",
@@ -343,6 +291,12 @@ export const acts: Act[] = [
     {
       id: "rself",
       theme: "rself",
+      card: {
+        role: "Founder",
+        line: "The aerospace surrogate workflow, applied to people: a digital twin tailored from ~20 reactions.",
+        stats: [{ value: "0.73", label: "rank correlation" }, { value: "~44×", label: "cheaper search" }, { value: "~20", label: "reactions" }],
+        visual: { kind: "vignette", scene: "twin" },
+      },
       kicker: "RSelf Ventures · human digital twins",
       title: "RSelf.tech",
       org: "RSelf Ventures · Human digital twins",
@@ -398,6 +352,12 @@ export const acts: Act[] = [
     {
       id: "carbon",
       theme: "carbon",
+      card: {
+        role: "Founder & COO",
+        line: "High-performance carbon-fibre car parts, built with the methods from the race car.",
+        stats: [],
+        visual: { kind: "vignette", scene: "weave" },
+      },
       kicker: "High-performance carbon-fibre parts",
       title: "CarbonDistrict",
       org: "CarbonDistrict · Pune",
@@ -424,11 +384,18 @@ export const acts: Act[] = [
     period: "2024 – 2026",
     line: "Composite airframes at Mach 0.9 and wings hit by birds at 500 m/s: where I learned what a model of a structure has to get right.",
     color: "#14b8a6",
-    theme: "base",
+    theme: "act-aerospace",
+    short: "Airframes at Mach 0.9. Wings versus birds.",
     entries: [
     {
       id: "paninian",
       theme: "aero",
+      card: {
+        role: "Aerostructural Engineer",
+        line: "Composite airframes for Mach 0.9 UAVs, and an open-source pipeline that made design 5× faster.",
+        stats: [{ value: "−30%", label: "airframe weight" }, { value: "+20%", label: "factor of safety" }, { value: "5×", label: "faster iteration" }],
+        visual: { kind: "vignette", scene: "lattice" },
+      },
       kicker: "Composite airframes · open-source MDO",
       title: "Paninian Aerospace",
       org: "Paninian Aerospace India · Feynman Aerospace",
@@ -469,6 +436,12 @@ export const acts: Act[] = [
     {
       id: "diat",
       theme: "impact",
+      card: {
+        role: "Research Intern",
+        line: "What happens when a bird hits a composite wing at 500 m/s, and how to re-stack it so it holds.",
+        stats: [{ value: "500 m/s", label: "impact" }, { value: "−30%", label: "deformation" }, { value: "8", label: "iterations" }],
+        visual: { kind: "image", k: "diat-sph" },
+      },
       kicker: "Bird strike on composite wings",
       title: "DIAT · DRDO",
       org: "Defence Institute of Advanced Technology (DIAT, DRDO), Pune",
@@ -516,11 +489,18 @@ export const acts: Act[] = [
     period: "2022 – 2025",
     line: "Where it started: a race car, a test rig and a ceiling fan. CFD, FEA and experiments, and the first surrogate model that changed how I work.",
     color: "#e10600",
-    theme: "inverse",
+    theme: "act-simulation",
+    short: "Where it started: a race car, a test rig and a fan.",
     entries: [
     {
       id: "crompton",
       theme: "airflow",
+      card: {
+        role: "Research Assistant",
+        line: "Ten CFD runs, one Gaussian process, 3,000+ fan blades screened.",
+        stats: [{ value: "−15%", label: "drive power" }, { value: "10", label: "CFD runs" }, { value: "3,000+", label: "screened" }],
+        visual: { kind: "vignette", scene: "surrogate" },
+      },
       kicker: "Gaussian-process surrogate · CFD",
       title: "Crompton",
       org: "Crompton Greaves Consumer Electricals, Pune",
@@ -550,6 +530,12 @@ export const acts: Act[] = [
     {
       id: "veloce",
       theme: "veloce",
+      card: {
+        role: "Head of Aero & Composites",
+        line: "Designed the team’s first full carbon-fibre aero package, then built it by hand.",
+        stats: [{ value: "300 N", label: "downforce" }, { value: "−1.8 s", label: "lap time" }, { value: "#2", label: "world rank" }],
+        visual: { kind: "motion", id: "veloceFlow", props: { clean: true } },
+      },
       kicker: "Formula Student · aero & composites",
       title: "Veloce Racing",
       org: "Team Veloce Racing India · Formula Student, VIT Pune",
@@ -604,6 +590,12 @@ export const acts: Act[] = [
     {
       id: "vitlab",
       theme: "bench",
+      card: {
+        role: "Research Assistant",
+        line: "Built a 10-sensor rig to measure bearings; it became my first paper.",
+        stats: [{ value: "10", label: "sensors" }, { value: "+21%", label: "hotter, grooved" }, { value: "Springer", label: "published" }],
+        visual: { kind: "image", k: "bearing-rig" },
+      },
       kicker: "Experimental tribology · cold plasma",
       title: "VIT research",
       org: "Vishwakarma Institute of Technology, Pune · Tribology and Fluids Lab",
@@ -639,7 +631,7 @@ export type TimelineItem = { id: string; label: string; role: string; from: stri
 export const timeline: { start: string; end: string; now: string; lanes: { act: string; label: string; color: string; items: TimelineItem[] }[] } = {
   start: "2021-07",
   end: "2027-01",
-  now: "2026-10",
+  now: "2026-11",
   lanes: [
     {
       act: "piml",
@@ -682,10 +674,10 @@ export const timeline: { start: string; end: string; now: string; lanes: { act: 
       ],
     },
     {
-      act: "also",
+      act: "more",
       label: "Education",
       color: "#8a8a8a",
-      items: [{ id: "also", label: "B.Tech Mechanical · VIT Pune", role: "2021 – 2025", from: "2021-08", to: "2025-06", note: "CGPA 8.83 · GoI merit scholarship" }],
+      items: [{ id: "more", label: "B.Tech Mechanical · VIT Pune", role: "2021 – 2025", from: "2021-08", to: "2025-06", note: "CGPA 8.83 · GoI merit scholarship" }],
     },
   ],
 };

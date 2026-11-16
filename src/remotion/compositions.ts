@@ -6,6 +6,8 @@ import { SignalToBrief } from "./SignalToBrief";
 import { Surrogate } from "./Surrogate";
 import { VeloceFlow } from "./VeloceFlow";
 import { PersonaTwin } from "./PersonaTwin";
+import { Reel } from "./Reel";
+import { Vignette } from "./Vignette";
 
 export { FPS, type CompositionId } from "./meta";
 
@@ -18,10 +20,13 @@ const C = (c: unknown) => c as ComponentType<Record<string, unknown>>;
 // Single source of truth for every motion piece — used by the site's <Player>
 // and by Remotion Studio (npm run studio) for rendering MP4s.
 export const compositions: Record<CompositionId, Entry> = {
+  reel: { ...meta.reel, component: C(Reel), defaultProps: { bg: "#fafaf8", fg: "#0a0a0a" } },
+  reelTall: { ...meta.reelTall, component: C(Reel), defaultProps: { bg: "#fafaf8", fg: "#0a0a0a" } },
+  vignette: { ...meta.vignette, component: C(Vignette), defaultProps: { scene: "modes", bg: "#f3eee3", fg: "#141a3c", accent: "#2d3fbf" } },
   veloceFlow: {
     ...meta.veloceFlow,
     component: C(VeloceFlow),
-    defaultProps: { src: "media/v-fullbody.webp", accent: "#e10600" },
+    defaultProps: { src: "media/v-fullbody.webp", accent: "#e10600", clean: false },
   },
   pinnHero: {
     ...meta.pinnHero,

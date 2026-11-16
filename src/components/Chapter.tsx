@@ -1,6 +1,6 @@
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef, useState } from "react";
-import type { Act, Chapter as ChapterT } from "../data/content";
+import { motion } from "motion/react";
+import { useState } from "react";
+import type { Chapter as ChapterT } from "../data/content";
 import { mediaGroup } from "../lib/media";
 import { ease } from "../lib/motion";
 import { LoopVideo, TalkButton, VideoCard } from "./FounderVideo";
@@ -8,13 +8,11 @@ import { BrowserFrame, Filmstrip, Mosaic, PhoneFrame, Shot } from "./Gallery";
 import { MotionPlayer } from "./MotionPlayer";
 import { Reveal, SplitLetters } from "./Reveal";
 
-export function Chapter({ c, act, pos }: { c: ChapterT; act: Act; pos: number }) {
+/** The full write-up of one piece of work. Shown inside the case-study overlay. */
+export function Chapter({ c }: { c: ChapterT }) {
   const [archivesOpen, setArchivesOpen] = useState(!c.collapseArchives);
   const archiveCount = c.archives?.reduce((n, a) => n + mediaGroup(a.group).items.length, 0) ?? 0;
   const bgVideo = c.video?.mode === "background" ? c.video : null;
-  const stage = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: stage, offset: ["start end", "end start"] });
-  const videoY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
   const visual = c.motion && !c.motionWide ? (
     <MotionPlayer id={c.motion.id} caption={c.motion.caption} inputProps={c.motion.props} />
   ) : c.video?.mode === "card" ? (
@@ -28,31 +26,17 @@ export function Chapter({ c, act, pos }: { c: ChapterT; act: Act; pos: number })
   const showcaseKeys = c.showcase ? [...c.showcase.browsers.map((b) => b.k), ...(c.showcase.phone ? [c.showcase.phone] : [])] : [];
 
   return (
-    <section
-      id={c.id}
-      className={`chapter chapter-${c.id}`}
-      data-theme={c.theme}
-      data-act={act.id}
-      data-label={`${act.title} · ${c.title}`}
-    >
-      <div ref={stage} className={`ch-stage ${bgVideo ? "has-video" : ""}`}>
+    <article className={`chapter chapter-${c.id}`}>
+      <div className={`ch-stage ${bgVideo ? "has-video" : ""}`}>
       {bgVideo && (
         <div className="ch-stage-media" aria-hidden>
-          <motion.div className="ch-stage-video" style={{ y: videoY }}>
+          <div className="ch-stage-video">
             <LoopVideo v={bgVideo} />
-          </motion.div>
+          </div>
           <div className="ch-stage-scrim" />
         </div>
       )}
       <header className={`ch-head ${c.headerImage ? "has-photo" : ""}`}>
-        <div className="ch-index">
-          <span className="ch-act" style={{ ["--c" as string]: act.color }}>
-            <i /> Act {act.num} · {act.title}
-          </span>
-          <span className="ch-pos">
-            <span className="accent">{String(pos + 1).padStart(2, "0")}</span> / {String(act.entries.length).padStart(2, "0")}
-          </span>
-        </div>
         <h2 className="ch-title">
           <Reveal className="label">{c.kicker}</Reveal>
           <span className="ch-name">
@@ -190,7 +174,7 @@ export function Chapter({ c, act, pos }: { c: ChapterT; act: Act; pos: number })
         </ul>
         {c.note && <p className="ch-note">{c.note}</p>}
       </footer>
-    </section>
+    </article>
   );
 }
 

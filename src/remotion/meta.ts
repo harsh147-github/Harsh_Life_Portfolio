@@ -2,7 +2,12 @@
 // players before the Remotion bundle is lazy-loaded.
 export const FPS = 30;
 
+import { reelFrames } from "./reelScenes";
+
 export const meta = {
+  reel: { durationInFrames: reelFrames, width: 1600, height: 900 },
+  reelTall: { durationInFrames: reelFrames, width: 1080, height: 1520 },
+  vignette: { durationInFrames: 240, width: 800, height: 600 },
   veloceFlow: { durationInFrames: 600, width: 1600, height: 804 },
   pinnHero: { durationInFrames: 600, width: 1600, height: 820 },
   eigen: { durationInFrames: 375, width: 1600, height: 900 },

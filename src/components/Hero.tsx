@@ -3,7 +3,6 @@ import { hero, links } from "../data/content";
 import { media } from "../lib/media";
 import { ease } from "../lib/motion";
 import { scrollToId } from "../lib/scroll";
-import { Journey } from "./Journey";
 import { Reveal, SplitLetters } from "./Reveal";
 
 export function Hero() {
@@ -48,13 +47,13 @@ export function Hero() {
           <Reveal className="btn-row" delay={2.3}>
             <a
               className="btn"
-              href="#story"
+              href="#reel"
               onClick={(e) => {
                 e.preventDefault();
-                scrollToId("story");
+                scrollToId("reel");
               }}
             >
-              Read my story ↓
+              Watch my story ↓
             </a>
             <a className="btn btn-ghost" href={links.linkedin} target="_blank" rel="noreferrer">
               LinkedIn ↗
@@ -66,15 +65,6 @@ export function Hero() {
         </div>
       </div>
 
-      <motion.div
-        className="hero-journey"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-        transition={{ duration: 1, ease }}
-      >
-        <Journey />
-      </motion.div>
     </section>
   );
 }

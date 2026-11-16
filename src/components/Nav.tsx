@@ -5,12 +5,12 @@ import { scrollToId } from "../lib/scroll";
 import { useTheme } from "../lib/theme";
 
 const items = [
-  { id: "story", label: "Story" },
+  { id: "reel", label: "Story" },
   { id: "piml", label: "PIML" },
   { id: "ventures", label: "Ventures" },
   { id: "aerospace", label: "Aerospace" },
   { id: "simulation", label: "Simulation" },
-  { id: "lab", label: "Lab" },
+  { id: "more", label: "More" },
   { id: "contact", label: "Contact" },
 ];
 

@@ -34,10 +34,10 @@ export function lockScroll(locked: boolean) {
 }
 
 /** Smooth-scroll to an in-page anchor, falling back to native scrolling. */
-export function scrollToId(id: string) {
+export function scrollToId(id: string, opts: { hash?: boolean; instant?: boolean } = {}) {
   const el = document.getElementById(id);
   if (!el) return;
-  if (lenis) lenis.scrollTo(el, { offset: -56 });
-  else el.scrollIntoView({ behavior: "smooth" });
-  history.replaceState(null, "", `#${id}`);
+  if (lenis) lenis.scrollTo(el, { offset: -56, immediate: opts.instant });
+  else el.scrollIntoView({ behavior: opts.instant ? "auto" : "smooth" });
+  if (opts.hash !== false) history.replaceState(null, "", `#${id}`);
 }

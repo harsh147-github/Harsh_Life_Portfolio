@@ -1,21 +1,13 @@
 import { motion } from "motion/react";
-import {
-  acts,
-  achievements,
-  education,
-  glance,
-  links,
-  projects,
-  publications,
-  sideQuests,
-  toolbox,
-  type Act,
-} from "../data/content";
+import { useEffect, useRef, useState } from "react";
+import { achievements, education, links, numbers, projects, publications, sideQuests, toolbox } from "../data/content";
+import { caseStudy } from "../lib/caseStudy";
+import { figure } from "../lib/figure";
 import { lightbox, media, totalImages } from "../lib/media";
-import { ease } from "../lib/motion";
+import { ease, useReducedMotion } from "../lib/motion";
 import { scrollToId } from "../lib/scroll";
-import { useTheme } from "../lib/theme";
-import { Filmstrip, Shot } from "./Gallery";
+import { Shot } from "./Gallery";
+import { Journey } from "./Journey";
 import { Reveal, SplitLetters } from "./Reveal";
 
 const jump = (id: string) => (e: React.MouseEvent) => {
@@ -23,34 +15,65 @@ const jump = (id: string) => (e: React.MouseEvent) => {
   scrollToId(id);
 };
 
-/** The profile at a glance — what a recruiter would otherwise dig out of a CV. */
-export function Glance() {
+/** A stat that counts up the first time it scrolls into view. */
+function CountUp({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const reduced = useReducedMotion();
+  const [t, setT] = useState(reduced ? 1 : 0);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || reduced) return;
+    let raf = 0;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        const t0 = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min(1, (now - t0) / 1300);
+          setT(1 - Math.pow(1 - p, 3));
+          if (p < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [reduced]);
+  return <span ref={ref}>{figure(value, t)}</span>;
+}
+
+/** Six numbers that carry the profile; each opens its case study. */
+export function Numbers() {
   return (
-    <section id="glance" className="glance" data-theme="base" data-label="At a glance">
-      <div className="glance-head">
-        <Reveal className="label">at a</Reveal>
-        <h2 className="display-lg">
-          <SplitLetters text="glance." />
-        </h2>
-        <Reveal as="p" className="glance-sub" delay={0.1}>
-          The whole profile in eight lines, for when you don’t have time for the story. Every line links to the proof.
-        </Reveal>
-      </div>
-      <ul className="glance-grid">
-        {glance.map((g, i) => (
+    <section id="numbers" className="numbers" data-theme="base" data-label="In numbers">
+      <Reveal className="label">the proof, in six numbers</Reveal>
+      <ul className="numbers-grid">
+        {numbers.map((n, i) => (
           <motion.li
-            key={g.label}
-            initial={{ opacity: 0, y: 30 }}
+            key={n.label}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px 0px -8% 0px" }}
-            transition={{ duration: 0.8, ease, delay: (i % 4) * 0.07 }}
+            transition={{ duration: 0.8, ease, delay: (i % 3) * 0.07 }}
           >
-            <a href={`#${g.href}`} onClick={jump(g.href ?? "top")}>
-              <span className="glance-label">{g.label}</span>
-              <span className="glance-value">{g.value}</span>
-              <span className="glance-detail">{g.detail}</span>
-              <span className="glance-arrow" aria-hidden>
-                ↘
+            <a
+              href={`#${n.entry}`}
+              onClick={(e) => {
+                e.preventDefault();
+                caseStudy.open(n.entry);
+              }}
+            >
+              <span className="numbers-value">
+                <CountUp value={n.value} />
+              </span>
+              <span className="numbers-label">{n.label}</span>
+              <span className="numbers-arrow" aria-hidden>
+                ↗
               </span>
             </a>
           </motion.li>
@@ -60,193 +83,135 @@ export function Glance() {
   );
 }
 
-/** Opens an act: number, title, thesis, and the ladder of entries inside it. */
-export function ActDivider({ act }: { act: Act }) {
+/** The dated timeline: everything in parallel, at a glance. Wide screens only. */
+export function JourneySection() {
   return (
-    <section id={act.id} className="divider" data-theme={act.theme} data-act={act.id} data-label={`Act ${act.num} · ${act.title}`}>
-      <div className="divider-head" style={{ ["--c" as string]: act.color }}>
-        <Reveal className="divider-kicker">
-          <i /> {act.kicker} · {act.period}
-        </Reveal>
-        <h2 className="display-xxl divider-title">
-          <SplitLetters text={act.title} />
-          <span className="divider-dot">.</span>
-        </h2>
-        <Reveal as="p" className="divider-line" delay={0.15}>
-          {act.line}
-        </Reveal>
-      </div>
-      <ol className="divider-index">
-        {act.entries.map((c, i) => (
-          <motion.li
-            key={c.id}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-            transition={{ duration: 0.8, ease, delay: i * 0.06 }}
-          >
-            <a href={`#${c.id}`} onClick={jump(c.id)}>
-              <span className="di-n">{String(i + 1).padStart(2, "0")}</span>
-              <span className="di-t">{c.title}</span>
-              <span className="di-o">{c.kicker}</span>
-              <span className="di-p">{c.period}</span>
-              <span className="di-arrow">→</span>
-            </a>
-          </motion.li>
-        ))}
-      </ol>
+    <section id="journey" className="journey-section" data-theme="base" data-label="The journey">
+      <Journey />
     </section>
   );
 }
 
-/** A slim fixed rail that always shows which act you're in. */
-export function ActRail() {
-  const { active } = useTheme();
-  if (!acts.some((a) => a.id === active.act)) return null;
+const TABS = ["Projects", "Publications", "Recognition", "Toolbox", "Beyond work"] as const;
+type Tab = (typeof TABS)[number];
+
+/** Everything that isn't a chapter, one tab at a time. */
+export function More() {
+  const [tab, setTab] = useState<Tab>("Projects");
   return (
-    <nav className="act-rail" aria-label="Acts">
-      {acts.map((a) => (
-        <a key={a.id} href={`#${a.id}`} onClick={jump(a.id)} className={a.id === active.act ? "is-on" : ""} style={{ ["--c" as string]: a.color }}>
-          <span className="act-rail-label">
-            {a.num} · {a.title}
-          </span>
-          <i />
-        </a>
-      ))}
-    </nav>
-  );
-}
-
-/** Code: the public GitHub work. */
-export function Lab() {
-  return (
-    <section id="lab" className="lab" data-theme="inverse" data-label="The lab">
-      <div className="lab-head">
-        <Reveal className="label">the</Reveal>
-        <h2 className="display-xl">
-          <SplitLetters text="lab." />
-        </h2>
-        <Reveal as="p" className="divider-line" delay={0.1}>
-          Things I build on my own time, in the open. Every number below is from the project’s own README.
-        </Reveal>
-      </div>
-      <div className="lab-grid">
-        {projects.map((p, i) => (
-          <Reveal key={p.name} className={`project ${p.img ? "" : "project-text project-wide"} ${i === 0 ? "project-feature" : ""}`} delay={(i % 3) * 0.06}>
-            {p.img && (
-              <button type="button" className="project-img" onClick={() => lightbox.open([p.img!], 0)} aria-label={`View larger: ${p.name}`}>
-                <img src={media(p.img).thumb} srcSet={`${media(p.img).thumb} 720w, ${media(p.img).src} ${media(p.img).w}w`} sizes="(max-width: 860px) 100vw, 40vw" alt={media(p.img).alt} width={media(p.img).w} height={media(p.img).h} loading="lazy" />
-              </button>
-            )}
-            <div className="project-body">
-              <span className="project-kind">{p.kind}</span>
-              <h3>{p.name}</h3>
-              <p>{p.body}</p>
-              <ul>
-                {p.facts.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
-              <div className="project-links">
-                <a href={p.href} target="_blank" rel="noreferrer">
-                  GitHub ↗
-                </a>
-                {p.site && (
-                  <a href={p.site} target="_blank" rel="noreferrer">
-                    Live site ↗
-                  </a>
-                )}
-              </div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-      <Filmstrip group="projects" label="From the projects" />
-      <Reveal className="lab-more">
-        <a className="btn btn-ghost" href={links.github} target="_blank" rel="noreferrer">
-          All repositories on GitHub ↗
-        </a>
-      </Reveal>
-    </section>
-  );
-}
-
-export function Also() {
-  return (
-    <section id="also" className="also" data-theme="base" data-label="Also">
-      <div className="also-head">
-        <Reveal className="label">and</Reveal>
-        <h2 className="display-xl">
-          <SplitLetters text="also." />
-        </h2>
-      </div>
-
-      <div className="also-block">
-        <h3 className="also-h">Publications</h3>
-        <ol className="pubs">
-          {publications.map((p, i) => (
-            <Reveal as="li" key={p.title} delay={i * 0.06}>
-              <a href={p.href} target="_blank" rel="noreferrer">
-                <span className="pub-title">{p.title}</span>
-                <span className="pub-cite">{p.cite}</span>
-                <span className="pub-venue">{p.venue} ↗</span>
-              </a>
-            </Reveal>
-          ))}
-        </ol>
-      </div>
-
-      <div className="also-block">
-        <h3 className="also-h">University, research & life</h3>
-        <div className="quests">
-          {sideQuests.map((q) => (
-            <div className="quest" key={q.title}>
-              <Reveal className="quest-text">
-                <h4>{q.title}</h4>
-                <p>{q.body}</p>
-              </Reveal>
-              <div className={`quest-tiles quest-tiles-${q.tiles.length}`}>
-                {q.tiles.map((k) => (
-                  <Shot key={k} k={k} set={q.tiles} sizes="(max-width: 860px) 50vw, 20vw" />
-                ))}
-              </div>
-            </div>
+    <section id="more" className="more" data-theme="base" data-label="More">
+      <header className="more-head">
+        <div>
+          <Reveal className="label">and</Reveal>
+          <h2 className="display-md">
+            <SplitLetters text="more." />
+          </h2>
+        </div>
+        <div className="more-tabs" role="tablist" aria-label="More about Harsh" data-hscroll>
+          {TABS.map((t) => (
+            <button key={t} type="button" role="tab" aria-selected={t === tab} className={t === tab ? "is-on" : ""} onClick={() => setTab(t)}>
+              {t}
+            </button>
           ))}
         </div>
-      </div>
+      </header>
 
-      <div className="also-split">
-        <div className="also-block">
-          <h3 className="also-h">On the record</h3>
+      <motion.div key={tab} className="more-panel" role="tabpanel" aria-label={tab} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease }}>
+        {tab === "Projects" && (
+          <>
+            <div className="lab-grid" data-hscroll>
+              {projects.map((p) => (
+                <article key={p.name} className={`project ${p.img ? "" : "project-text"}`}>
+                  {p.img && (
+                    <button type="button" className="project-img" onClick={() => lightbox.open([p.img!], 0)} aria-label={`View larger: ${p.name}`}>
+                      <img src={media(p.img).thumb} alt={media(p.img).alt} width={media(p.img).w} height={media(p.img).h} loading="lazy" />
+                    </button>
+                  )}
+                  <div className="project-body">
+                    <span className="project-kind">{p.kind}</span>
+                    <h3>{p.name}</h3>
+                    <p>{p.body}</p>
+                    <ul>
+                      {p.facts.map((f) => (
+                        <li key={f}>{f}</li>
+                      ))}
+                    </ul>
+                    <div className="project-links">
+                      <a href={p.href} target="_blank" rel="noreferrer">
+                        GitHub ↗
+                      </a>
+                      {p.site && (
+                        <a href={p.site} target="_blank" rel="noreferrer">
+                          Live site ↗
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <a className="btn btn-ghost" href={links.github} target="_blank" rel="noreferrer">
+              All repositories on GitHub ↗
+            </a>
+          </>
+        )}
+
+        {tab === "Publications" && (
+          <ol className="pubs">
+            {publications.map((p) => (
+              <li key={p.title}>
+                <a href={p.href} target="_blank" rel="noreferrer">
+                  <span className="pub-title">{p.title}</span>
+                  <span className="pub-cite">{p.cite}</span>
+                  <span className="pub-venue">{p.venue} ↗</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        )}
+
+        {tab === "Recognition" && (
           <ul className="achievements">
-            {achievements.map((a, i) => (
-              <Reveal as="li" key={a} delay={i * 0.03}>
-                {a}
-              </Reveal>
+            {achievements.map((a) => (
+              <li key={a}>{a}</li>
             ))}
           </ul>
-        </div>
-        <div className="also-block">
-          <h3 className="also-h">Education</h3>
-          <Reveal className="edu">
-            <p className="edu-school">{education.school}</p>
-            <p className="edu-degree">{education.degree}</p>
-            <p className="edu-note">{education.note}</p>
-          </Reveal>
-        </div>
-      </div>
+        )}
 
-      <div className="also-block">
-        <h3 className="also-h">Toolbox</h3>
-        <dl className="toolbox">
-          {toolbox.map((t, i) => (
-            <Reveal key={t.group} className="tool" delay={(i % 3) * 0.05}>
-              <dt>{t.group}</dt>
-              <dd>{t.items}</dd>
-            </Reveal>
-          ))}
-        </dl>
-      </div>
+        {tab === "Toolbox" && (
+          <dl className="toolbox">
+            {toolbox.map((t) => (
+              <div key={t.group} className="tool">
+                <dt>{t.group}</dt>
+                <dd>{t.items}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+
+        {tab === "Beyond work" && (
+          <div className="beyond">
+            <div className="edu">
+              <p className="edu-school">{education.school}</p>
+              <p className="edu-degree">{education.degree}</p>
+              <p className="edu-note">{education.note}</p>
+            </div>
+            {sideQuests.map((q) => (
+              <div className="quest" key={q.title}>
+                <div className="quest-text">
+                  <h4>{q.title}</h4>
+                  <p>{q.body}</p>
+                </div>
+                <div className={`quest-tiles quest-tiles-${q.tiles.length}`}>
+                  {q.tiles.map((k) => (
+                    <Shot key={k} k={k} set={q.tiles} sizes="(max-width: 860px) 50vw, 20vw" />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </motion.div>
     </section>
   );
 }
@@ -263,7 +228,7 @@ export function Contact() {
     <section id="contact" className="contact" data-theme="inverse" data-label="Contact">
       <div className="contact-head">
         <Reveal className="label">research, roles, ventures, or a race car</Reveal>
-        <h2 className="display-xxl">
+        <h2 className="display-xl">
           <SplitLetters text="let’s talk." />
         </h2>
       </div>
@@ -281,7 +246,7 @@ export function Contact() {
       <footer className="footer">
         <span>© 2026 Harsh Sonavane</span>
         <span>Namma Bengaluru · Pune</span>
-        <span>{totalImages} images · 6 live animations · 0 boring résumés</span>
+        <span>{totalImages} images · 11 case studies · 0 boring résumés</span>
         <a href="#top" onClick={jump("top")}>
           Back to top ↑
         </a>

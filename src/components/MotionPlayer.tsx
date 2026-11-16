@@ -10,13 +10,15 @@ type Props = {
   inputProps?: Record<string, unknown>;
   caption?: string;
   className?: string;
+  /** no pause button or caption: for use as a picture inside a card */
+  bare?: boolean;
 };
 
 /**
  * A Remotion <Player> that only loads and mounts near the viewport and only plays
  * while visible, so several compositions can live on one page without costing frames.
  */
-export function MotionPlayer({ id, inputProps, caption, className }: Props) {
+export function MotionPlayer({ id, inputProps, caption, className, bare }: Props) {
   const c = meta[id];
   const wrap = useRef<HTMLDivElement>(null);
   const player = useRef<PlayerRef>(null);
@@ -69,14 +71,14 @@ export function MotionPlayer({ id, inputProps, caption, className }: Props) {
   }, [visible, paused, reduced, ready]);
 
   return (
-    <figure className={`motion ${className ?? ""}`}>
+    <figure className={`motion ${bare ? "motion-bare" : ""} ${className ?? ""}`}>
       <div ref={wrap} className="motion-stage" style={{ aspectRatio: `${c.width} / ${c.height}` }}>
         {mounted && (
           <Suspense fallback={<div className="motion-loading" aria-hidden />}>
             <PlayerStage ref={player} id={id} inputProps={inputProps} initialFrame={reduced ? Math.floor(c.durationInFrames * 0.7) : 0} />
           </Suspense>
         )}
-        {!reduced && (
+        {!reduced && !bare && (
           <button
             type="button"
             className="motion-toggle"

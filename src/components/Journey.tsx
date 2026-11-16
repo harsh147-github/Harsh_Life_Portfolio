@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { timeline, type TimelineItem } from "../data/content";
+import { caseStudy } from "../lib/caseStudy";
 import { ease } from "../lib/motion";
 import { scrollToId } from "../lib/scroll";
 
@@ -85,8 +86,8 @@ export function Journey() {
   return (
     <div className={`journey ${hover ? "has-hover" : ""}`} ref={wrap} onMouseLeave={() => setHover(null)}>
       <div className="journey-head">
-        <span className="journey-title">The journey</span>
-        <span className="journey-hint">Hover to preview · click to jump to the section</span>
+        <span className="journey-title">The journey, side by side</span>
+        <span className="journey-hint">Hover to preview · click to open the case study</span>
       </div>
       <div className="journey-scroll" data-hscroll ref={scroller}>
         <div className="journey-grid">
@@ -134,8 +135,8 @@ export function Journey() {
                           onMouseEnter={(e) => show(e, it, lane.label, lane.color)}
                           onFocus={(e) => show(e, it, lane.label, lane.color)}
                           onBlur={() => setHover(null)}
-                          onClick={() => scrollToId(it.id)}
-                          aria-label={`${it.label}, ${it.role}, ${fmt(it.from)} to ${fmt(it.to)}. Jump to section.`}
+                          onClick={() => (caseStudy.has(it.id) ? caseStudy.open(it.id) : scrollToId(it.id))}
+                          aria-label={`${it.label}, ${it.role}, ${fmt(it.from)} to ${fmt(it.to)}. Open the case study.`}
                         >
                           <span className="journey-bar-label">{it.label}</span>
                           <motion.span
@@ -172,7 +173,7 @@ export function Journey() {
             {hover.lane !== "Education" && ` · ${fmt(hover.item.from)} – ${fmt(hover.item.to)}`}
           </span>
           {hover.item.note && <span className="journey-card-note">{hover.item.note}</span>}
-          <span className="journey-card-go">Click to jump ↓</span>
+          <span className="journey-card-go">{caseStudy.has(hover.item.id) ? "Click to open →" : "Click to jump ↓"}</span>
         </motion.div>
       )}
     </div>

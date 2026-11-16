@@ -2,7 +2,8 @@ import { useEffect, useMemo, useRef } from "react";
 import { AbsoluteFill, Img, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { FIELD } from "./veloceField";
 
-export type VeloceFlowProps = { src: string; accent: string };
+/** `clean` hides the title and callouts: just the flow, for small sizes */
+export type VeloceFlowProps = { src: string; accent: string; clean?: boolean };
 
 const mono = "'JetBrains Mono', ui-monospace, monospace";
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -98,7 +99,7 @@ const NOTES = [
   { x: 1060, y: 250, at: 180, title: "Wake", body: "low-velocity air behind the rear wheels", dx: 40, dy: 70 },
 ];
 
-export const VeloceFlow: React.FC<VeloceFlowProps> = ({ src, accent }) => {
+export const VeloceFlow: React.FC<VeloceFlowProps> = ({ src, accent, clean }) => {
   const frame = useCurrentFrame();
   const { width, height, durationInFrames, fps } = useVideoConfig();
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -161,11 +162,13 @@ export const VeloceFlow: React.FC<VeloceFlowProps> = ({ src, accent }) => {
       <AbsoluteFill style={{ background: "radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%)" }} />
       <canvas ref={canvas} width={width * 2} height={height * 2} style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
 
+      {!clean && (
       <div style={{ position: "absolute", left: 36, top: 30, display: "flex", gap: 14, alignItems: "center", padding: "10px 16px", background: "rgba(8,8,8,0.72)", color: "#f5f5f5", fontSize: 20, letterSpacing: "0.08em" }}>
         <span style={{ color: accent }}>●</span> FULL-BODY CFD · VELOCITY MAGNITUDE · TOP VIEW
       </div>
+      )}
 
-      {NOTES.map((n) => {
+      {!clean && NOTES.map((n) => {
         const o = interpolate(frame, [n.at, n.at + 20], [0, 1], clamp);
         const x = n.x * k;
         const y = n.y * k;
