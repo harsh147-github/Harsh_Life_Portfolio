@@ -48,7 +48,7 @@ export type CardVisual =
   | { kind: "video" }
   | { kind: "vignette"; scene: "wing" | "surrogate" | "lattice" | "modes" | "twin" | "weave" }
   | { kind: "motion"; id: CompositionId; props?: Record<string, unknown> };
-export type Card = { role: string; line: string; stats: Stat[]; visual: CardVisual };
+export type Card = { role: string; line: string; stats: Stat[]; visual: CardVisual; /** a short flag over the card image */ badge?: string };
 
 export type Chapter = {
   id: string;
@@ -69,6 +69,8 @@ export type Chapter = {
   headerImage?: string;
   /** founder talk: "background" plays behind the chapter opening, "card" sits beside the text */
   video?: { mode: "background" | "card"; loop: string; poster: string; full: string; caption: string };
+  /** press coverage, linked to the original post */
+  press?: { outlet: string; headline: string; href: string; img: string; cta: string }[];
   /** original pitch-deck slides, shown uncropped */
   deck?: { label: string; slides: string[]; cols?: number; aspect?: string };
   /** a single hero image when there is no motion piece */
@@ -242,6 +244,7 @@ export const acts: Act[] = [
         line: "Turns scattered citizen complaints into costed, ward-level action plans for Pune’s officers.",
         stats: [{ value: "836", label: "complaints" }, { value: "345", label: "costed plans" }, { value: "₹9.23 Cr", label: "of fixes" }],
         visual: { kind: "video" },
+        badge: "In the news · Rising Startup · Punekar News",
       },
       kicker: "Civic AI infrastructure",
       title: "Sushaasan",
@@ -265,8 +268,24 @@ export const acts: Act[] = [
       motion: {
         id: "signal",
         caption: "From a hundred tickets to one costed brief. Headline numbers are from the pilot; the per-card values are illustrative.",
-        props: { bg: "rgba(14,10,6,0.62)", ink: "#fff4e8", accent: "#ff8a1f", good: "#3ddc84" },
       },
+      motionWide: true,
+      press: [
+        {
+          outlet: "Rising Startup",
+          headline: "Pune citizen builds a complete JARVIS-like AI infrastructure to assist the govt & citizens to address the massive number of civic grievances together as a team.",
+          href: "https://www.instagram.com/p/Ddl2OXJEolm/?img_index=1",
+          img: "press-rising",
+          cta: "Read the post on Instagram",
+        },
+        {
+          outlet: "Punekar News",
+          headline: "Sushaasan.in: Pune citizen builds AI platform for civic issues.",
+          href: "https://www.instagram.com/reels/DeJP2zpitX4/",
+          img: "press-punekar",
+          cta: "Watch the reel on Instagram",
+        },
+      ],
       showcase: {
         browsers: [
           { k: "sus-live-map", url: "sushaasan.in" },
@@ -275,7 +294,7 @@ export const acts: Act[] = [
         phone: "sus-live-phone",
       },
       video: {
-        mode: "background",
+        mode: "card",
         loop: "video/sushaasan-loop.mp4",
         poster: "video/sushaasan-poster.jpg",
         full: "video/sushaasan-talk.mp4",

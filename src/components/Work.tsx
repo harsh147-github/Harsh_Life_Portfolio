@@ -30,6 +30,11 @@ function WorkCard({ c, n, of }: { c: Chapter; n: number; of: number }) {
         <span className="wcard-n">
           {String(n).padStart(2, "0")} / {String(of).padStart(2, "0")}
         </span>
+        {c.card.badge && (
+          <span className="wcard-badge">
+            <i /> {c.card.badge}
+          </span>
+        )}
       </div>
       <div className="wcard-body">
         <p className="wcard-meta">

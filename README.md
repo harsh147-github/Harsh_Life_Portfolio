@@ -6,7 +6,7 @@ A single-page portfolio built to be short: about nine phone screens from top to 
 
 - **Vite + React + TypeScript**
 - **Remotion** (`@remotion/player`): the motion pieces are real physics, computed in the browser:
-  - `reel` / `reelTall`: the 40-second story film (landscape and portrait cuts of the same scenes; scene list in `src/remotion/reelScenes.ts`, drawings in `src/remotion/gfx.tsx`).
+  - `reel` / `reelTall`: the story film, cut like a trailer (under a minute) (landscape and portrait cuts of the same scenes; scene list in `src/remotion/reelScenes.ts`, drawings in `src/remotion/gfx.tsx`).
   - `vignette`: the small looping drawings on the work cards.
   - `pinnHero`: a physics-informed network on a composite wing (kept for Remotion Studio; no longer on the page).
   - `veloceFlow`: the Veloce full-body CFD image with streamlines traced live over it (velocity from the image colour bar, direction from potential flow around the car; field in `src/remotion/veloceField.ts`).
@@ -20,11 +20,11 @@ A single-page portfolio built to be short: about nine phone screens from top to 
 
 ## What's on the page
 
-Hero (photo, title, intro quote) → **My story in 40 seconds** (a Remotion film with story-style controls: tap either side to skip, each scene opens its case study) → six headline numbers → the journey timeline (wide screens only) → four acts, each one row of cards → More (tabs: projects, publications, recognition, toolbox, beyond work) → Contact.
+Hero (photo, title, intro quote) → **My story, in under a minute** (a Remotion film with story-style controls: tap either side to skip, each scene opens its case study) → six headline numbers → the journey timeline (wide screens only) → four acts, each one row of cards → More (tabs: projects, publications, recognition, toolbox, beyond work) → Contact.
 
 The acts run newest first: **Act 01 · Physics-informed ML** (IISc, PINNs-Bernoulli, CFD × ML × CAD), **Act 02 · Ventures** (Sushaasan, RSelf.tech, CarbonDistrict), **Act 03 · Aerospace structures** (Paninian Aerospace, DIAT/DRDO), **Act 04 · Simulation engineering** (Crompton, Veloce Racing, VIT research). On phones and tablets each row swipes sideways. Everything long (the points, figures, decks, galleries and archives) lives inside the case study for that card, one tap away.
 
-- **194 images.** Figures and photos from the Formula Bharat design report, the DIAT bird-strike thesis, the portfolio deck and the Sushaasan/RSelf pitch deck, plus result figures from the public repos and live screenshots of sushaasan.in, rself.tech and the MVAWT site. Any image opens in a lightbox (arrow keys / swipe / Esc).
+- **196 images.** Figures and photos from the Formula Bharat design report, the DIAT bird-strike thesis, the portfolio deck and the Sushaasan/RSelf pitch deck, plus result figures from the public repos and live screenshots of sushaasan.in, rself.tech and the MVAWT site. Any image opens in a lightbox (arrow keys / swipe / Esc).
 - Images live in `public/media/<key>.webp` (full size) and `<key>.t.webp` (720px thumbnail). Captions, alt text and dimensions are in `src/data/media.json`.
 
 ## Editing

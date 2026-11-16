@@ -1163,6 +1163,18 @@
    "h": 504,
    "caption": "One trained PINN, every throat diameter: d_t sweeps 0.4 → 1.0",
    "alt": "Animated PINN flow field as the nozzle throat diameter changes"
+  },
+  "press-rising": {
+   "w": 1032,
+   "h": 1296,
+   "caption": "Rising Startup",
+   "alt": "Rising Startup post: Pune citizen builds a complete JARVIS-like AI infrastructure to assist the government and citizens with civic grievances, showing the Pune Municipal Corporation building and the Sushaasan ward map"
+  },
+  "press-punekar": {
+   "w": 687,
+   "h": 1182,
+   "caption": "Punekar News",
+   "alt": "Punekar News reel cover: Sushaasan.in, Pune citizen builds AI platform for civic issues, over the Sushaasan app welcome screen"
   }
  },
  "groups": [

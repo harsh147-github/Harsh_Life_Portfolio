@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import type { Chapter as ChapterT } from "../data/content";
-import { mediaGroup } from "../lib/media";
+import { media, mediaGroup } from "../lib/media";
 import { ease } from "../lib/motion";
 import { LoopVideo, TalkButton, VideoCard } from "./FounderVideo";
 import { BrowserFrame, Filmstrip, Mosaic, PhoneFrame, Shot } from "./Gallery";
@@ -94,6 +94,33 @@ export function Chapter({ c }: { c: ChapterT }) {
         </div>
       )}
       </div>
+
+      {c.press && (
+        <div className="press">
+          <div className="block-label">
+            <span className="accent">●</span> In the news
+          </div>
+          <div className="press-grid">
+            {c.press.map((p, i) => {
+              const m = media(p.img);
+              return (
+                <Reveal key={p.href} delay={i * 0.08}>
+                  <a className="press-card" href={p.href} target="_blank" rel="noreferrer">
+                    <span className="press-img">
+                      <img src={m.thumb} alt={m.alt} width={m.w} height={m.h} loading="lazy" decoding="async" />
+                    </span>
+                    <span className="press-text">
+                      <span className="press-outlet">{p.outlet}</span>
+                      <span className="press-quote">“{p.headline}”</span>
+                      <span className="press-go">{p.cta} ↗</span>
+                    </span>
+                  </a>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {c.motion && c.motionWide && (
         <div className="ch-motion-wide">

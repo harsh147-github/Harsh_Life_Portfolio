@@ -259,11 +259,12 @@ ul, ol { list-style: none; }
 /* =====================================================================
    STORY REEL
    ===================================================================== */
-.reel { padding: clamp(48px, 6vw, 96px) var(--gx) clamp(40px, 5vw, 80px); }
-.reel-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px clamp(24px, 4vw, 72px); align-items: end; margin-bottom: clamp(20px, 2.4vw, 36px); }
-.reel-head .display-md { margin-top: 6px; font-size: clamp(40px, 6.4vw, 108px); }
-.reel-sub { justify-self: end; max-width: 40ch; font-family: var(--serif); font-style: italic; font-size: clamp(18px, 1.6vw, 26px); line-height: 1.25; padding-bottom: 0.3em; }
-.reel-frame { position: relative; width: 100%; overflow: hidden; border: 1px solid var(--line); transition: background-color 0.4s; }
+.reel { --reel-w: min(100%, max(280px, calc((100svh - var(--nav-h) - 210px) * var(--ar, 1.7778)))); padding: clamp(28px, 3vw, 48px) var(--gx) clamp(32px, 4vw, 64px); }
+.reel-head, .reel-frame, .reel-controls { width: var(--reel-w); margin-inline: auto; }
+.reel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 24px; flex-wrap: wrap; margin-bottom: 14px; }
+.reel-title { font-size: clamp(24px, 2.6vw, 40px); font-weight: 800; letter-spacing: -0.045em; line-height: 1.05; }
+.reel-sub { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.reel-frame { position: relative; overflow: hidden; border: 1px solid var(--line); transition: background-color 0.25s; }
 .reel-bars { position: absolute; left: 12px; right: 12px; top: 12px; display: flex; gap: 4px; z-index: 3; mix-blend-mode: difference; pointer-events: none; }
 .reel-bars i { flex: 1; height: 3px; background: rgba(255, 255, 255, 0.3); overflow: hidden; }
 .reel-bars i:first-child, .reel-bars i:last-child { flex: 0.6; }
@@ -537,6 +538,21 @@ ul, ol { list-style: none; }
 .idea-card p { font-size: 16.5px; line-height: 1.5; color: var(--muted); }
 
 .ch-motion-wide { margin-top: clamp(40px, 5vw, 80px); }
+/* press coverage */
+.press { margin-top: clamp(40px, 5vw, 80px); }
+.press .block-label { display: block; margin-bottom: 14px; }
+.press-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 22px); }
+.press-card { display: grid; grid-template-columns: clamp(120px, 15vw, 230px) minmax(0, 1fr); height: 100%; border: 1px solid var(--line); background: color-mix(in srgb, var(--accent) 7%, var(--bg)); transition: border-color 0.4s, transform 0.5s var(--ease), box-shadow 0.5s var(--ease); }
+.press-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 30px 60px -36px color-mix(in srgb, var(--accent) 80%, transparent); }
+.press-img { display: block; aspect-ratio: 4 / 5; overflow: hidden; background: #000; border-right: 1px solid var(--line); }
+.press-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; transition: transform 1s var(--ease); }
+.press-card:hover .press-img img { transform: scale(1.04); }
+.press-text { display: flex; flex-direction: column; gap: 12px; padding: clamp(16px, 1.8vw, 28px); }
+.press-outlet { font-family: var(--mono); font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+.press-quote { font-family: var(--serif); font-style: italic; font-size: clamp(21px, 1.9vw, 32px); line-height: 1.16; letter-spacing: -0.01em; }
+.press-go { margin-top: auto; padding-top: 10px; font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; }
+.press-card:hover .press-go { color: var(--accent); }
+
 .deck-block { margin-top: clamp(48px, 6vw, 96px); }
 .deck-block .block-label { display: block; margin-bottom: 14px; }
 .deck-grid { display: grid; grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 24px) clamp(10px, 1.2vw, 18px); }
@@ -770,6 +786,8 @@ ul, ol { list-style: none; }
 .wcard-media .motion { position: absolute; inset: 0; }
 .wcard-media .motion-stage { height: 100%; aspect-ratio: auto !important; border: 0; }
 .wcard-n { position: absolute; left: 12px; top: 12px; padding: 4px 8px; background: var(--bg); color: var(--fg); font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.1em; }
+.wcard-badge { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 8px; padding: 9px 12px; background: var(--accent); color: #14100b; font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.wcard-badge i { flex: none; width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: pulse 1.6s ease-in-out infinite; }
 .wcard-body { display: flex; flex-direction: column; flex: 1; gap: 12px; padding: clamp(16px, 1.6vw, 26px); }
 .wcard-meta { display: flex; justify-content: space-between; gap: 12px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 .wcard-meta span:last-child { text-align: right; white-space: nowrap; }
@@ -876,8 +894,7 @@ ul, ol { list-style: none; }
   .hero-portrait { min-height: 0; aspect-ratio: 1 / 1; max-height: 62svh; }
   .hero-copy { border-left: 0; padding-left: var(--gx); }
   .hero-quote { font-size: 17.5px; }
-  .reel-head { grid-template-columns: minmax(0, 1fr); }
-  .reel-sub { justify-self: start; font-size: 18px; padding-bottom: 0; }
+  .reel { --reel-w: min(100%, max(280px, calc((100svh - var(--nav-h) - 250px) * var(--ar, 0.71)))); }
   .reel-controls { grid-template-columns: auto minmax(0, 1fr); }
   .reel-chips { grid-column: 1 / -1; grid-row: 2; margin: 0 calc(-1 * var(--gx)); padding: 0 var(--gx); }
   .reel-open { justify-self: end; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
@@ -910,6 +927,7 @@ ul, ol { list-style: none; }
   .strip-nav { display: none; }
   .wrow-arrows { display: none; }
   .cs-count { display: none; }
+  .press-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 560px) {

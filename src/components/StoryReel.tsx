@@ -5,8 +5,8 @@ import { caseStudy } from "../lib/caseStudy";
 import { useReducedMotion } from "../lib/motion";
 import { useTheme } from "../lib/theme";
 import { meta } from "../remotion/meta";
-import { reelScenes, reelStarts, sceneAt } from "../remotion/reelScenes";
-import { Reveal, SplitLetters } from "./Reveal";
+import { reelFrames, reelScenes, reelStarts, sceneAt } from "../remotion/reelScenes";
+import { Reveal } from "./Reveal";
 
 const PlayerStage = lazy(() => import("./PlayerStage"));
 const N = reelScenes.length;
@@ -87,6 +87,11 @@ export function StoryReel() {
     return () => window.clearInterval(t);
   }, [visible, paused, reduced, ready]);
 
+  // development only: jump to an exact frame from the console or a test
+  useEffect(() => {
+    if (import.meta.env.DEV) (window as unknown as { __reelSeek?: (f: number) => void }).__reelSeek = (f) => player.current?.seekTo(f);
+  }, []);
+
   const scene = sceneAt(frame);
   const s = reelScenes[scene];
   const entry = s.entry ? allEntries.find((e) => e.id === s.entry) : null;
@@ -107,23 +112,22 @@ export function StoryReel() {
   const base = mode === "light" ? { bg: "#fafaf8", fg: "#0a0a0a" } : { bg: "#0a0a0a", fg: "#f2f2ee" };
 
   return (
-    <section id="reel" className="reel" data-theme="base" data-label="The story">
+    <section id="reel" className="reel" data-theme="base" data-label="The story" style={{ ["--ar" as string]: c.width / c.height }}>
       <header className="reel-head">
-        <div>
-          <Reveal className="label">my story</Reveal>
-          <h2 className="display-md">
-            <SplitLetters text="in 40 seconds." />
-          </h2>
-        </div>
+        <h2 className="reel-title">
+          <Reveal as="span">
+            My story, in under a minute<span className="accent">.</span>
+          </Reveal>
+        </h2>
         <Reveal as="p" className="reel-sub" delay={0.1}>
-          From a race car to physics-informed ML and three ventures. Tap either side to skip; every scene opens its case study.
+          Tap either side to skip · every scene opens its case study
         </Reveal>
       </header>
 
       <div className="reel-frame" ref={wrap} style={{ aspectRatio: `${c.width} / ${c.height}`, background: (s.pal ?? base).bg }}>
         {mounted && (
           <Suspense fallback={<div className="motion-loading" aria-hidden />}>
-            <PlayerStage key={id} ref={player} id={id} inputProps={base} initialFrame={reduced ? reelStarts[N - 1] + 120 : 0} />
+            <PlayerStage key={id} ref={player} id={id} inputProps={base} initialFrame={reduced ? reelFrames - 30 : 0} />
           </Suspense>
         )}
         <div className="reel-bars" aria-hidden>
