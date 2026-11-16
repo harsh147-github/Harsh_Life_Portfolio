@@ -1,9 +1,9 @@
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { achievements, education, links, numbers, projects, publications, sideQuests, toolbox } from "../data/content";
+import { achievements, education, links, numbers, publications, sideQuests, toolbox } from "../data/content";
 import { caseStudy } from "../lib/caseStudy";
 import { figure } from "../lib/figure";
-import { lightbox, media, totalImages } from "../lib/media";
+import { totalImages } from "../lib/media";
 import { ease, useReducedMotion } from "../lib/motion";
 import { scrollToId } from "../lib/scroll";
 import { Shot } from "./Gallery";
@@ -92,12 +92,12 @@ export function JourneySection() {
   );
 }
 
-const TABS = ["Projects", "Publications", "Recognition", "Toolbox", "Beyond work"] as const;
+const TABS = ["Publications", "Recognition", "Toolbox", "Beyond work"] as const;
 type Tab = (typeof TABS)[number];
 
 /** Everything that isn't a chapter, one tab at a time. */
 export function More() {
-  const [tab, setTab] = useState<Tab>("Projects");
+  const [tab, setTab] = useState<Tab>("Publications");
   return (
     <section id="more" className="more" data-theme="base" data-label="More">
       <header className="more-head">
@@ -117,45 +117,6 @@ export function More() {
       </header>
 
       <motion.div key={tab} className="more-panel" role="tabpanel" aria-label={tab} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease }}>
-        {tab === "Projects" && (
-          <>
-            <div className="lab-grid" data-hscroll>
-              {projects.map((p) => (
-                <article key={p.name} className={`project ${p.img ? "" : "project-text"}`}>
-                  {p.img && (
-                    <button type="button" className="project-img" onClick={() => lightbox.open([p.img!], 0)} aria-label={`View larger: ${p.name}`}>
-                      <img src={media(p.img).thumb} alt={media(p.img).alt} width={media(p.img).w} height={media(p.img).h} loading="lazy" />
-                    </button>
-                  )}
-                  <div className="project-body">
-                    <span className="project-kind">{p.kind}</span>
-                    <h3>{p.name}</h3>
-                    <p>{p.body}</p>
-                    <ul>
-                      {p.facts.map((f) => (
-                        <li key={f}>{f}</li>
-                      ))}
-                    </ul>
-                    <div className="project-links">
-                      <a href={p.href} target="_blank" rel="noreferrer">
-                        GitHub ↗
-                      </a>
-                      {p.site && (
-                        <a href={p.site} target="_blank" rel="noreferrer">
-                          Live site ↗
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-            <a className="btn btn-ghost" href={links.github} target="_blank" rel="noreferrer">
-              All repositories on GitHub ↗
-            </a>
-          </>
-        )}
-
         {tab === "Publications" && (
           <ol className="pubs">
             {publications.map((p) => (
