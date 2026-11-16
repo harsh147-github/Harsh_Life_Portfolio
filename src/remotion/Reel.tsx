@@ -1,8 +1,9 @@
 import { useMemo } from "react";
-import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Easing, Img, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { figure } from "../lib/figure";
 import { GfxClusters, GfxLattice, GfxModes, GfxStrike, GfxSurrogate, GfxTwin, GfxWeave, GfxWing, type Pal } from "./gfx";
 import { rng } from "./physics";
+import { FlowLayer } from "./VeloceFlow";
 import { beatAt, reelScenes, reelStarts, sceneAt, type Beat } from "./reelScenes";
 
 export type ReelProps = { bg: string; fg: string };
@@ -119,11 +120,57 @@ function GfxSpace({ f, stage, pal }: { f: number; stage: number; pal: Pal }) {
   );
 }
 
+/* ------------------------------------------------------------------ */
+/* A neural network: a design goes in, a prediction comes out.          */
+/* ------------------------------------------------------------------ */
+const LAYERS = [4, 6, 6, 3];
+const NODES = LAYERS.map((n, l) => Array.from({ length: n }, (_, i) => ({ x: 170 + l * 220, y: 400 + (i - (n - 1) / 2) * (l === 0 || l === 3 ? 110 : 92) })));
+const EDGES = NODES.slice(0, -1).flatMap((layer, l) => layer.flatMap((a, i) => NODES[l + 1].map((b, j) => ({ a, b, l, h: ((i * 7 + j * 13 + l * 5) % 17) / 17 }))));
+
+function GfxNet({ f, pal }: { f: number; pal: Pal }) {
+  return (
+    <>
+      {EDGES.map((e, k) => {
+        const drawn = ip(f, 2 + e.l * 6, 14 + e.l * 6);
+        // a signal runs along each edge, layer after layer, on a loop
+        const t = (f / 26 - e.l * 0.33 - e.h * 0.5 + 10) % 1;
+        const on = e.h < 0.55 ? Math.sin(Math.PI * t) : 0;
+        return (
+          <g key={k}>
+            <line x1={e.a.x} y1={e.a.y} x2={e.a.x + (e.b.x - e.a.x) * drawn} y2={e.a.y + (e.b.y - e.a.y) * drawn} stroke={pal.fg} strokeOpacity={0.16} strokeWidth={2} />
+            {on > 0 && drawn === 1 && <circle cx={e.a.x + (e.b.x - e.a.x) * t} cy={e.a.y + (e.b.y - e.a.y) * t} r={5.5} fill={pal.accent} fillOpacity={on} />}
+          </g>
+        );
+      })}
+      {NODES.flatMap((layer, l) =>
+        layer.map((n, i) => {
+          const t = interpolate(f, [l * 6, 8 + l * 6], [0, 1], { ...cl, easing: pop });
+          const glow = 0.5 + 0.5 * Math.sin(f / 5 - l * 1.6 + i * 0.9);
+          return (
+            <g key={`${l}-${i}`}>
+              <circle cx={n.x} cy={n.y} r={Math.max(0, 19 * t)} fill={pal.bg} stroke={pal.fg} strokeWidth={3} />
+              <circle cx={n.x} cy={n.y} r={Math.max(0, 11 * t)} fill={pal.accent} fillOpacity={0.25 + 0.75 * glow} />
+            </g>
+          );
+        }),
+      )}
+      <text x={170} y={720} textAnchor="middle" fontFamily={mono} fontSize={27} fill={pal.fg} fillOpacity={0.75 * ip(f, 10, 22)}>
+        design in
+      </text>
+      <text x={830} y={720} textAnchor="middle" fontFamily={mono} fontSize={27} fill={pal.accent} fillOpacity={ip(f, 24, 36)}>
+        prediction out
+      </text>
+    </>
+  );
+}
+
 function Drawing({ b, gf, bf, pal }: { b: Beat; gf: number; bf: number; pal: Pal }) {
   const f = gf * (b.speed ?? 1);
   switch (b.gfx) {
     case "space":
       return <GfxSpace f={bf} stage={b.stage ?? 0} pal={pal} />;
+    case "net":
+      return <GfxNet f={gf} pal={pal} />;
     case "wing":
       return <GfxWing f={f} pal={pal} />;
     case "strike":
@@ -172,7 +219,13 @@ function Scene({ idx, f, base, wipe }: { idx: number; f: number; base: Pal; wipe
   const railY = P ? H - 74 : H - 66;
   const top = P ? 170 : 124;
   const hasGfx = !!b.gfx && !b.flip;
-  const box = P ? { left: 90, top: 800, width: 900, height: 600 } : { left: 830, top: 126, width: 700, height: 600 };
+  const car = hasGfx && b.gfx === "car";
+  const photo = hasGfx && b.gfx === "photo";
+  const box = photo
+    ? P ? { left: 190, top: 770, width: 700, height: 640 } : { left: 930, top: 112, width: 560, height: 664 }
+    : P ? { left: 90, top: 800, width: 900, height: 600 } : { left: 830, top: 126, width: 700, height: 600 };
+  // the car's CFD fills the frame behind the text (a band under it on a phone)
+  const carBox = P ? { left: 0, top: 830, width: W, height: Math.round(W * 0.5024) } : { left: 0, top: Math.round((H - W * 0.5024) / 2), width: W, height: Math.round(W * 0.5024) };
   const textH = (P && hasGfx ? box.top - 30 : railY - 70) - top;
   const textW = !P && hasGfx ? 720 : W - 2 * pad;
 
@@ -207,6 +260,14 @@ function Scene({ idx, f, base, wipe }: { idx: number; f: number; base: Pal; wipe
 
   return (
     <AbsoluteFill style={{ background: pal.bg, color: pal.fg, clipPath: wipe < 1 ? `inset(0 0 0 ${(1 - wipe) * 100}%)` : undefined }}>
+      {car && (
+        <div style={{ position: "absolute", ...carBox, opacity: ip(gf, 0, 10) }}>
+          <FlowLayer src="media/v-fullbody.webp" frame={gf + 30} width={carBox.width} height={carBox.height} durationInFrames={420} />
+          {!P && <AbsoluteFill style={{ background: "linear-gradient(90deg, rgba(8,8,8,0.94) 0%, rgba(8,8,8,0.8) 38%, rgba(8,8,8,0.15) 72%, rgba(8,8,8,0.3) 100%)" }} />}
+          {!P && <AbsoluteFill style={{ background: "linear-gradient(0deg, rgba(8,8,8,0.9) 0%, transparent 22%, transparent 84%, rgba(8,8,8,0.8) 100%)" }} />}
+        </div>
+      )}
+
       {/* where we are */}
       <div style={{ position: "absolute", left: pad, top: P ? 84 : 58, right: pad, fontFamily: mono, fontSize: P ? 29 : 22, letterSpacing: "0.12em", textTransform: "uppercase", opacity: ip(f, 0, 10), whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
         <span style={{ color: pal.accent }}>●</span>&nbsp; {s.kicker}
@@ -245,7 +306,12 @@ function Scene({ idx, f, base, wipe }: { idx: number; f: number; base: Pal; wipe
       </div>
 
       {/* the drawing */}
-      {hasGfx && (
+      {photo && (
+        <div style={{ position: "absolute", ...box, overflow: "hidden", clipPath: `inset(${(1 - ip(bf, 0, 18)) * 100}% 0 0 0)`, opacity: out }}>
+          <Img src="media/portrait.webp" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 30%", transform: `scale(${1.12 - 0.12 * ip(bf, 0, 40)})` }} />
+        </div>
+      )}
+      {hasGfx && !car && !photo && (
         <svg viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid meet" style={{ position: "absolute", ...box, opacity: Math.min(ip(gf, 0, 8), out) }}>
           <Drawing b={b} gf={gf} bf={bf} pal={pal} />
         </svg>

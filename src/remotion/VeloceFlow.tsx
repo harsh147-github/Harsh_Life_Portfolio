@@ -99,9 +99,8 @@ const NOTES = [
   { x: 1060, y: 250, at: 180, title: "Wake", body: "low-velocity air behind the rear wheels", dx: 40, dy: 70 },
 ];
 
-export const VeloceFlow: React.FC<VeloceFlowProps> = ({ src, accent, clean }) => {
-  const frame = useCurrentFrame();
-  const { width, height, durationInFrames, fps } = useVideoConfig();
+/** The CFD image with its streamlines moving over it, at any size: also used inside the story film. */
+export function FlowLayer({ src, frame, width, height, durationInFrames = 600, fps = 30 }: { src: string; frame: number; width: number; height: number; durationInFrames?: number; fps?: number }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const lines = useMemo(traceStreamlines, []);
   const k = width / FIELD.w;
@@ -157,10 +156,22 @@ export const VeloceFlow: React.FC<VeloceFlowProps> = ({ src, accent, clean }) =>
   }, [frame, lines, cycles, width, height, k, durationInFrames]);
 
   return (
-    <AbsoluteFill style={{ background: "#0a0a0a", fontFamily: mono }}>
+    <div style={{ position: "absolute", inset: 0, overflow: "hidden", background: "#0a0a0a" }}>
       <Img src={src} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.72) saturate(1.05) contrast(1.05)" }} />
       <AbsoluteFill style={{ background: "radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%)" }} />
       <canvas ref={canvas} width={width * 2} height={height * 2} style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
+    </div>
+  );
+}
+
+export const VeloceFlow: React.FC<VeloceFlowProps> = ({ src, accent, clean }) => {
+  const frame = useCurrentFrame();
+  const { width, height, durationInFrames, fps } = useVideoConfig();
+  const k = width / FIELD.w;
+
+  return (
+    <AbsoluteFill style={{ background: "#0a0a0a", fontFamily: mono }}>
+      <FlowLayer src={src} frame={frame} width={width} height={height} durationInFrames={durationInFrames} fps={fps} />
 
       {!clean && (
       <div style={{ position: "absolute", left: 36, top: 30, display: "flex", gap: 14, alignItems: "center", padding: "10px 16px", background: "rgba(8,8,8,0.72)", color: "#f5f5f5", fontSize: 20, letterSpacing: "0.08em" }}>

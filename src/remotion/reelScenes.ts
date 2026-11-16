@@ -4,7 +4,7 @@
 // The film is cut like a trailer: each scene is a run of short beats, one line
 // on screen at a time. Wrap words in *asterisks* to set them in the accent colour.
 
-export type Drawing = "space" | "wing" | "strike" | "surrogate" | "lattice" | "modes" | "clusters" | "twin" | "weave";
+export type Drawing = "car" | "net" | "photo" | "space" | "wing" | "strike" | "surrogate" | "lattice" | "modes" | "clusters" | "twin" | "weave";
 
 export type Beat = {
   /** how long the beat holds, in frames (30 per second) */
@@ -49,7 +49,7 @@ const script: ReelScene[] = [
       { d: 42, text: "But one run takes *hours*.", gfx: "space", stage: 0 },
       { d: 44, text: "So you test *10* designs.", gfx: "space", stage: 1 },
       { d: 38, text: "Not *10,000*.", gfx: "space", stage: 2 },
-      { d: 66, text: "I build the models that *close that gap*.", gfx: "space", stage: 3 },
+      { d: 70, text: "I build *machine-learning models* that close that gap.", gfx: "net" },
     ],
   },
   {
@@ -61,8 +61,8 @@ const script: ReelScene[] = [
     pal: { bg: "#0b0b0b", fg: "#f5f5f5", accent: "#e10600" },
     beats: [
       { d: 40, text: "It started with a *race car*." },
-      { d: 52, text: "One 2D airfoil became a full *aero package*.", gfx: "wing" },
-      { d: 44, big: "300 N", text: "of downforce, from wings I designed and built", gfx: "wing" },
+      { d: 58, text: "One 2D airfoil became a full *aero package*.", gfx: "car" },
+      { d: 50, big: "300 N", text: "of downforce, from wings I designed and built", gfx: "car" },
       { d: 50, big: "2", text: "national titles. World rank 2.", flip: true },
     ],
   },
@@ -118,7 +118,7 @@ const script: ReelScene[] = [
     pal: { bg: "#f3eee3", fg: "#141a3c", accent: "#2d3fbf" },
     beats: [
       { d: 42, text: "Now: the *mathematics* underneath." },
-      { d: 56, text: "A physics-informed solver for how structures *vibrate*.", gfx: "modes" },
+      { d: 58, text: "A physics-informed *neural network* for how structures vibrate.", gfx: "net" },
       { d: 48, big: "35–50×", text: "faster. One solve, the whole spectrum.", gfx: "modes" },
       { d: 44, text: "Paper under review at *CMAME*.", gfx: "modes" },
     ],
@@ -127,14 +127,15 @@ const script: ReelScene[] = [
     id: "ventures",
     label: "Ventures",
     when: "Now",
-    kicker: "Now · three ventures",
+    kicker: "Now · entrepreneurship · three ventures I founded",
     entry: "sushaasan",
     pal: { bg: "#fffaf4", fg: "#1b1611", accent: "#ef7a12" },
     beats: [
-      { d: 42, text: "Same method. *New systems.*" },
-      { d: 64, text: "*Sushaasan.* A city’s complaints become costed plans.", sub: "Featured by Rising Startup and Punekar News", gfx: "clusters", speed: 2.3 },
-      { d: 54, text: "*RSelf.* A person becomes a digital twin.", gfx: "twin", speed: 1.4, accent: "#e8006f" },
-      { d: 50, text: "*CarbonDistrict.* Carbon-fibre parts, made in Pune.", gfx: "weave", accent: "#b8862b" },
+      { d: 42, text: "I am also a *founder*." },
+      { d: 46, text: "Three ventures. *Same method.*", sub: "Model the system, then ship it as a product" },
+      { d: 64, text: "*Sushaasan.* A city’s complaints become costed plans.", sub: "Civic AI startup · featured by Rising Startup and Punekar News", gfx: "clusters", speed: 2.3 },
+      { d: 56, text: "*RSelf.* A person becomes a digital twin.", sub: "AI startup · human digital twins", gfx: "twin", speed: 1.4, accent: "#e8006f" },
+      { d: 52, text: "*CarbonDistrict.* Carbon-fibre parts, made in Pune.", sub: "Manufacturing business", gfx: "weave", accent: "#b8862b" },
     ],
   },
   {
@@ -145,7 +146,8 @@ const script: ReelScene[] = [
     beats: [
       { d: 46, text: "Thousands of designs, *in minutes*.", gfx: "space", stage: 3 },
       { d: 52, text: "And knowing how far to *trust* each one.", gfx: "space", stage: 4 },
-      { d: 84, text: "That is *Physics AI*. It is what I build.", sub: "Scroll for the work ↓" },
+      { d: 60, text: "That is *Physics AI*. It is what I build.", gfx: "net" },
+      { d: 96, text: "Let’s *connect*.", sub: "Harsh Sonavane · scroll for the work ↓", gfx: "photo" },
     ],
   },
 ];
